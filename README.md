@@ -23,18 +23,18 @@
     + Đặc tả use case: đầy đủ theo yêu cầu
 - Nguyễn Ngọc Trinh: review công việc của Trần Văn Trí
     + Đặc tả use case thuê xe
-        Tiền điều kiện phải là khách hàng đã có tài khoản trên hệ thống
-        Mô tả đúng các luồng sự kiện chính, luồng sự kiện thay thế, dữ liệu đầu vào, dữ liệu đầu ra
+        + Tiền điều kiện phải là khách hàng đã có tài khoản trên hệ thống
+        + Mô tả đúng các luồng sự kiện chính, luồng sự kiện thay thế, dữ liệu đầu vào, dữ liệu đầu ra
     + Từ điển thuật ngữ: Đầy đủ và chính xác các thuật ngữ trong tài liệu
 - Trần Văn Trí: review công việc của Nguyễn Mạnh Trường
     + Use case xem thông tin xe
-        Mô tả đúng các luồng sự kiện, dữ liệu vào/ra của hệ thống
-        Cần mô tả mục Giới thiệu, luồng sự kiện chính chi tiết hơn
+        + Mô tả đúng các luồng sự kiện, dữ liệu vào/ra của hệ thống
+        + Cần mô tả mục Giới thiệu, luồng sự kiện chính chi tiết hơn
     + Phạm vi hệ thống
-        Trình bày đầy đủ và chi tiết
+        + Trình bày đầy đủ và chi tiết
 - Nguyễn Mạnh Trường: review công việc của Đỗ Viết Trí
-    Góp ý bổ sung:
+    + Góp ý bổ sung:
     + Quy trình nghiệp vụ:
-	    Bỏ tiêu đề 2.4.1 vì không có 2.4.2
+	    + Bỏ tiêu đề 2.4.1 vì không có 2.4.2
     + Đặc tả Use-case "Xem thông tin bãi xe"
-	    Phần Giới thiệu cần nêu rõ: cho phép khách hàng xem thông tin về các bãi xe, số xe trong bãi
+	    + Phần Giới thiệu cần nêu rõ: cho phép khách hàng xem thông tin về các bãi xe, số xe trong bãi
