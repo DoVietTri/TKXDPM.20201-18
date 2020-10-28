@@ -38,3 +38,13 @@
 	    + Bỏ tiêu đề 2.4.1 vì không có 2.4.2
     + Đặc tả Use-case "Xem thông tin bãi xe"
 	    + Phần Giới thiệu cần nêu rõ: cho phép khách hàng xem thông tin về các bãi xe, số xe trong bãi
+
+# Lab 01
+## Nhiệm vụ
+- Thiết kế biểu đồ lớp tương tác (biểu đồ trình tự) và biểu đồ lớp phân tích cho từng use case mà mỗi thành viên phụ trách
+- Thiết kế biểu đồ lớp phân tích chung cho toàn hệ thống
+## Phân công nhiệm vụ
+- Đỗ Viết Trí : Vẽ biểu đồ trình tự và biểu đồ lớp phân tích cho use case Xem thông tin bãi xe (View Bike in Station)
+- Nguyễn Ngọc Trinh: Vẽ biểu đồ trình tự vào biểu đồ lớp phân tích cho use case trả xe (Return Bike)
+- Nguyễn Mạnh Trường: Vẽ biểu đồ trình tự và biểu đồ lớp phân tích cho use case xem thông tin chi tiết xe (View Bike InFo)
+- Trần Văn Trí: Vẽ biểu đồ trình tự và biểu đồ lớp phân tích cho use case thuê xe (Rent Bike)
