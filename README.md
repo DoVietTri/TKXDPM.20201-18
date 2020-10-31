@@ -48,3 +48,15 @@
 - Nguyễn Ngọc Trinh: Vẽ biểu đồ trình tự vào biểu đồ lớp phân tích cho use case trả xe (Return Bike)
 - Nguyễn Mạnh Trường: Vẽ biểu đồ trình tự và biểu đồ lớp phân tích cho use case xem thông tin chi tiết xe (View Bike InFo)
 - Trần Văn Trí: Vẽ biểu đồ trình tự và biểu đồ lớp phân tích cho use case thuê xe (Rent Bike)
+
+# Lab02
+
+## Nhiệm vụ
+- Thiết kế giao diện: Thiết kế giao diện người dùng, vẽ biểu đồ dịch chuyển màn hình và đặc tả chi tiết màn hình
+- Thiết kế giao diện với hệ thống khác 
+
+## Phân công nhiệm vụ
+- Đỗ Viết Trí: Đặc tả chi tiết màn hình, Biểu đồ dịch chuyển màn hình
+- Nguyễn Ngọc Trinh: Vẽ màn hình trang enter-qr-bike, các màn hình thông báo (notify)
+- Nguyễn Mạnh Trường: Vẽ màn hình trang bike-detail, invoice 
+- Trần Văn Trí: Vẽ màn hình trang station-detail, home, card-info 
