@@ -53,10 +53,24 @@
 
 ## Nhiệm vụ
 - Thiết kế giao diện: Thiết kế giao diện người dùng, vẽ biểu đồ dịch chuyển màn hình và đặc tả chi tiết màn hình
-- Thiết kế giao diện với hệ thống khác 
+- Thiết kế giao diện với hệ thống khác
+- Các file đặt trong thư mục (DetailDesign/InterfaceDesign)
 
 ## Phân công nhiệm vụ
 - Đỗ Viết Trí: Đặc tả chi tiết màn hình, Biểu đồ dịch chuyển màn hình
 - Nguyễn Ngọc Trinh: Vẽ màn hình trang enter-qr-bike, các màn hình thông báo (notify)
 - Nguyễn Mạnh Trường: Vẽ màn hình trang bike-detail, invoice 
 - Trần Văn Trí: Vẽ màn hình trang station-detail, home, card-info 
+
+# Lab03
+
+## Nhiệm vụ
+- Thiết kế lớp chi tiết cho từng use case mà thành viên phụ trách
+- Thiết kế lớp chi tiết chung cho toàn hệ thống
+- Các file đặt trong thư mục (DetailDesign/ClassDesign)
+
+## Phân công nhiệm vụ
+- Đỗ Viết Trí: Thiết kế lớp chi tiết cho use case: Xem thông tin bãi xe (View Bike in Station)
+- Nguyễn Ngọc Trinh: Thiết kế lớp chi tiết cho use case Trả xe (ReturnBike)
+- Nguyễn Mạnh Trường: Thiết kế lớp chi tiết cho use case: Xem thông tin xe
+- Trần Văn Trí: Thiết kế lớp chi tiết cho use case: Thuê xe
