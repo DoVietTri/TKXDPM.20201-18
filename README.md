@@ -72,5 +72,20 @@
 ## Phân công nhiệm vụ
 - Đỗ Viết Trí: Thiết kế lớp chi tiết cho use case: Xem thông tin bãi xe (View Bike in Station)
 - Nguyễn Ngọc Trinh: Thiết kế lớp chi tiết cho use case Trả xe (ReturnBike)
-- Nguyễn Mạnh Trường: Thiết kế lớp chi tiết cho use case: Xem thông tin xe
-- Trần Văn Trí: Thiết kế lớp chi tiết cho use case: Thuê xe
+- Nguyễn Mạnh Trường: Thiết kế lớp chi tiết cho use case Xem thông tin xe
+- Trần Văn Trí: Thiết kế lớp chi tiết cho use case Thuê xe
+
+# Lab04
+
+## Nhiệm vụ
+- Vẽ biểu đồ thực thể liên kết
+- Thiết kế cơ sở dữ liệu
+- Thiết kế chi tiết các thành phần trong cơ sở dữ liệu bám theo use case của từng thành viên
+- Hoàn thiện tài liệu đặc tả (SDD)
+- Các file đặt trong thư mục (DetailDesign/DataModeling)
+
+## Phân công nhiệm vụ
+- Đỗ Viết Trí: Vẽ biểu đồ thực thể liên kết
+- Nguyễn Ngọc Trinh: Thiết kế cơ sở dữ liệu cho use case Trả xe (ReturnBike)
+- Nguyễn Mạnh Trường: Thiết kế cơ sở dữ liệu cho use case Xem thông tin xe (ViewBikeInfo)
+- Trần Văn Trí: Thiết kế cơ sở dữ liệu cho use case Thuê xe (RentBike)
