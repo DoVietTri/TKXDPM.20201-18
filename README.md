@@ -137,7 +137,7 @@
 - Các file đặt trong thư mục (DetailDesign/DataModeling)
 
 ## Phân công nhiệm vụ
-- Đỗ Viết Trí: Vẽ biểu đồ thực thể liên kết
+- Đỗ Viết Trí: Vẽ biểu đồ thực thể liên kết và thiết kế cở sở dữ liệu cho use case Xem thông tin bãi xe (View Bike in Station)
 - Nguyễn Ngọc Trinh: Thiết kế cơ sở dữ liệu cho use case Trả xe (ReturnBike)
 - Nguyễn Mạnh Trường: Thiết kế cơ sở dữ liệu cho use case Xem thông tin xe (ViewBikeInfo)
 - Trần Văn Trí: Thiết kế cơ sở dữ liệu cho use case Thuê xe (RentBike)
