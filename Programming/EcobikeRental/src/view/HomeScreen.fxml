@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="780.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+   <children>
+      <Pane layoutY="50.0" prefHeight="450.0" prefWidth="780.0">
+         <children>
+            <Pane prefHeight="450.0" prefWidth="780.0">
+               <children>
+                  <Label layoutX="68.0" layoutY="62.0" text="Xin chào, Trí Trí">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnRentBike" layoutX="337.0" layoutY="327.0" mnemonicParsing="false" text="Thuê xe" />
+                  <Button fx:id="btnReturnBike" layoutX="246.0" layoutY="327.0" mnemonicParsing="false" text="Trả xe" />
+                  <Label layoutX="239.0" layoutY="204.0" text="Thuê xe ngay để trải nghiệm !" />
+               </children>
+            </Pane>
+         </children></Pane>
+   </children>
+</AnchorPane>

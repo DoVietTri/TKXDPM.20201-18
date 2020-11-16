@@ -1,7 +1,10 @@
 package controller;
 
+
+import java.awt.Label;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -14,40 +17,30 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import model.Bike;
 import model.Station;
 import ultilities.Contants;
 
-public class ViewStationController  implements Initializable{
+public class HomeController implements Initializable {
+
 	@FXML
-	Button btnReturnBike, btnViewBike;
-	
-	@FXML
-	TableView<Bike> tbvListBike;
+	Button btnRentBike, btnReturnBike;
 	
 	@FXML
-	TableColumn<Bike, Integer> idCol;
-	
-	@FXML
-	TableColumn<Bike, Integer> numCol;
-	
-	public ObservableList<Bike> listBike;
-	
-	Station station;
+	Label lbMessage;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		getAllBikes();
 		addEvents();
 	}
 	
 	public void addEvents() {
-		btnViewBike.setOnMouseClicked(e -> {
-			viewBike();
+		btnRentBike.setOnMouseClicked(e -> {
+			viewListStation();
 		});
 		btnReturnBike.setOnMouseClicked(e -> {
-			
+			viewListStation();
 		});
 	}
 		
@@ -57,28 +50,18 @@ public class ViewStationController  implements Initializable{
 		
 	}
 	
-	public void getAllBikes() {
-		listBike = FXCollections.observableArrayList();
-		listBike.addAll(Contants.sharedInstance.getAllBikes(111)) ;
-		
-		idCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("id"));
-
-		tbvListBike.setItems(listBike);
-		tbvListBike.refresh();
-	}
 	
 	
-	public void viewBike() {
+	public void viewListStation() {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/view/ViewBike.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/view/ViewStation.fxml"));
 	//	contentView.getChildren().removeAll();
-		
-
 	} 	 catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
-	
+
+
 }
