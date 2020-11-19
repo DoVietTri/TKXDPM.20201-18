@@ -32,7 +32,15 @@ public class Station {
 
 public Station() {}
 
-	
+	public int getStationID() {
+		return stationID;
+	}
+
+
+
+	public void setStationID(int stationID) {
+		this.stationID = stationID;
+	}
 
 
 
