@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -10,11 +11,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import model.Bike;
 import model.Station;
 import ultilities.Contants;
@@ -27,17 +31,24 @@ public class ViewStationController  implements Initializable{
 	TableView<Bike> tbvListBike;
 	
 	@FXML
-	TableColumn<Bike, Integer> idCol;
+	TableColumn<Bike, Integer> codeCol, batteryCol;
 	
 	@FXML
-	TableColumn<Bike, Integer> numCol;
+	TableColumn<Bike, Double> priceCol;
+	
+	@FXML
+	TableColumn<Bike, String> nameCol, typeCol;
+	
+	@FXML
+	Label lbStationID, lbStationName, lbStationAddress, lbStationTotalBike, lbStationAvailable;
 	
 	public ObservableList<Bike> listBike;
 	
-	Station station;
+	public Station station;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		getStationInfo();
 		getAllBikes();
 		addEvents();
 	}
@@ -49,6 +60,19 @@ public class ViewStationController  implements Initializable{
 		btnReturnBike.setOnMouseClicked(e -> {
 			
 		});
+		
+		tbvListBike.setRowFactory(tv -> {
+			TableRow<Bike> row = new TableRow<>();
+			row.setOnMouseClicked(e -> {
+				if (e.getClickCount() == 2 && !(row.isEmpty())) {
+					
+					Contants.bikeSelected.setBike(row.getItem());
+					viewBike();
+				}
+			});
+
+			return row;
+		});
 	}
 		
 	
@@ -57,12 +81,29 @@ public class ViewStationController  implements Initializable{
 		
 	}
 	
+	public void getStationInfo() {
+		lbStationID.setText("" + Contants.stationSelected.stationID);
+		lbStationName.setText(Contants.stationSelected.getName());
+		lbStationAddress.setText(Contants.stationSelected.address);
+		lbStationTotalBike.setText("" + Contants.stationSelected.totalBike);
+		lbStationAvailable.setText("" + Contants.stationSelected.available);
+	}
+	
 	public void getAllBikes() {
 		listBike = FXCollections.observableArrayList();
-		listBike.addAll(Contants.sharedInstance.getAllBikes(111)) ;
+		try {
+			listBike.addAll(Contants.getAllBikes(Contants.stationSelected.stationID)) ;
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		idCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("id"));
-
+		codeCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("code"));
+		priceCol.setCellValueFactory(new PropertyValueFactory<Bike, Double>("price"));
+		typeCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("type"));
+		nameCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("name"));
+		batteryCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("battery"));
+		
 		tbvListBike.setItems(listBike);
 		tbvListBike.refresh();
 	}
@@ -71,8 +112,12 @@ public class ViewStationController  implements Initializable{
 	public void viewBike() {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/view/ViewBike.fxml"));
-	//	contentView.getChildren().removeAll();
-		
+			
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setTitle("Bike Info");
+			stage.show();
 
 	} 	 catch (IOException e) {
 			// TODO Auto-generated catch block

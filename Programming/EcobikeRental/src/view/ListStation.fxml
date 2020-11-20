@@ -19,13 +19,14 @@
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnViewStation" layoutX="614.0" layoutY="218.0" mnemonicParsing="false" text="Xem bãi xe" />
-                  <TableView fx:id="tbvStation" layoutX="50.0" layoutY="50.0" prefHeight="350.0" prefWidth="500.0">
+                  <Button fx:id="btnViewStation" layoutX="673.0" layoutY="219.0" mnemonicParsing="false" text="Xem bãi xe" />
+                  <TableView fx:id="tbvStation" layoutX="50.0" layoutY="50.0" prefHeight="350.0" prefWidth="576.0">
                     <columns>
-                      <TableColumn fx:id="numberCol" prefWidth="75.0" text="STT" />
-                      <TableColumn fx:id="nameCol" prefWidth="118.0" text="Tên bãi xe" />
-                        <TableColumn fx:id="positionCol" prefWidth="173.0" text="Vị trí" />
-                        <TableColumn fx:id="distanceCol" prefWidth="132.0" text="Khoảng cách" />
+                      <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="nameCol" prefWidth="171.0" text="Tên bãi xe" />
+                        <TableColumn fx:id="addressCol" prefWidth="165.0" text="Địa chỉ" />
+                        <TableColumn fx:id="totalBikeCol" prefWidth="77.0" text="Số xe " />
+                        <TableColumn fx:id="availableCol" prefWidth="87.0" text="Có sẵn" />
                     </columns>
                   </TableView>
                </children>
