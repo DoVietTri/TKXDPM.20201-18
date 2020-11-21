@@ -1,7 +1,6 @@
 package model;
 
 public class Customer {
-	public static Customer currentUer = new Customer(20173410, 1, "Tran Van Tri");
 	public Card card;	
 	public int customerID, rentID;
 	public String customerName;
@@ -24,6 +23,11 @@ public class Customer {
 		this.customerID = customerID;
 		this.rentID = rentID;
 		this.customerName = customerName;
+	}
+	
+	public Customer(int id, String name) {
+		this.customerID = id;
+		this.customerName = name;
 	}
 
 	public Card getCard() {

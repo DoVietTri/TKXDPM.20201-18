@@ -43,9 +43,7 @@ public class ViewStationController  implements Initializable{
 	Label lbStationID, lbStationName, lbStationAddress, lbStationTotalBike, lbStationAvailable;
 	
 	public ObservableList<Bike> listBike;
-	
-	public Station station;
-	
+		
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		getStationInfo();
@@ -75,8 +73,6 @@ public class ViewStationController  implements Initializable{
 		});
 	}
 		
-	
-	
 	public void addControll() {
 		
 	}
@@ -94,7 +90,6 @@ public class ViewStationController  implements Initializable{
 		try {
 			listBike.addAll(Contants.getAllBikes(Contants.stationSelected.stationID)) ;
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -120,7 +115,6 @@ public class ViewStationController  implements Initializable{
 			stage.show();
 
 	} 	 catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
