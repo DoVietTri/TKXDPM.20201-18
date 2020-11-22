@@ -46,26 +46,32 @@ public class ViewStationController  implements Initializable{
 		
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		getStationInfo();
 		getAllBikes();
 		addEvents();
+		
 	}
 	
 	public void addEvents() {
+		
 		btnViewBike.setOnMouseClicked(e -> {
 			showBikeInfo();
 		});
+		
 		btnReturnBike.setOnMouseClicked(e -> {
 			
 		});
 		
 		tbvListBike.setRowFactory(tv -> {
+			
 			TableRow<Bike> row = new TableRow<>();
 			row.setOnMouseClicked(e -> {
 				if (e.getClickCount() == 2 && !(row.isEmpty())) {
 					
 					Contants.bikeSelected.setBike(row.getItem());
 					showBikeInfo();;
+					
 				}
 			});
 
@@ -78,19 +84,26 @@ public class ViewStationController  implements Initializable{
 	}
 	
 	public void getStationInfo() {
+		
 		lbStationID.setText("" + Contants.stationSelected.stationID);
 		lbStationName.setText(Contants.stationSelected.getName());
 		lbStationAddress.setText(Contants.stationSelected.address);
 		lbStationTotalBike.setText("" + Contants.stationSelected.totalBike);
 		lbStationAvailable.setText("" + Contants.stationSelected.available);
+		
 	}
 	
 	public void getAllBikes() {
+		
 		listBike = FXCollections.observableArrayList();
 		try {
-			listBike.addAll(Contants.getAllBikes(Contants.stationSelected.stationID)) ;
+			
+			listBike.addAll(Contants.getAllBikes(Contants.stationSelected.stationID));
+			
 		} catch (ClassNotFoundException | SQLException e) {
+			
 			e.printStackTrace();
+			
 		}
 		
 		codeCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("id"));

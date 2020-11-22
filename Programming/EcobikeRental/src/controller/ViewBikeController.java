@@ -30,15 +30,18 @@ public class ViewBikeController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		addEvents();
 		getBikeInfo();
 		
 	}
 	
 	public void addEvents() {
+		
 		btnRentBike.setOnMouseClicked(e -> {
 			showPaymentForm();
 		});
+		
 		btnClose.setOnMouseClicked(e -> {
 			Stage stage = (Stage) btnClose.getScene().getWindow();
 			stage.close();
@@ -48,8 +51,10 @@ public class ViewBikeController implements Initializable {
 	}
 	
 	public void getBikeInfo() {
+		
 		String type = Contants.bikeSelected.getType();
 		Image img = new Image("/resources/bike"+ type +".jpg");
+		
 		imgBike.setImage(img);
 		lbBikeCode.setText("" + Contants.bikeSelected.getId());
 		lbBikeBattery.setText("" + Contants.bikeSelected.getBattery());
@@ -58,10 +63,12 @@ public class ViewBikeController implements Initializable {
 		lbBikeStatus.setText(Contants.bikeSelected.getStatus());
 		lbBikePrice.setText("" +Contants.toString(Contants.bikeSelected.getPrice()));
 		lbBikeDesc.setText(Contants.bikeSelected.getDescription());
+		
 	}
 	
 	public void showPaymentForm() {
 		try {
+			
 			Parent root = FXMLLoader.load(getClass().getResource("/view/PaymentForm.fxml"));
 			
 			Scene scene = new Scene(root);
@@ -71,7 +78,9 @@ public class ViewBikeController implements Initializable {
 			stage.show();
 
 	} 	 catch (IOException e) {
+		
 			e.printStackTrace();
+			
 		}
 	}
 }
