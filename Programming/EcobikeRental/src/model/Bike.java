@@ -61,7 +61,9 @@ public class Bike {
 		this.name = b.name;
 		this.status = b.status;
 		this.type = b.type;
+		this.battery = b.battery;
 		this.description = b.description;
+		this.stationID = b.stationID;
 	}
 
 	public int getCode() {
