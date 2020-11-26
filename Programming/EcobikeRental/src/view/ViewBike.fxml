@@ -84,7 +84,10 @@
             </Label>
          </children>
       </GridPane>
-      <Button layoutX="345.0" layoutY="429.0" mnemonicParsing="false" text="Thuê ngay" />
+      <Button fx:id="btnRentBike" layoutX="370.0" layoutY="425.0" mnemonicParsing="false" style="-fx-background-color: red;" text="Thuê ngay" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
       <Label layoutX="131.0" layoutY="388.0" text="Loại xe">
          <font>
             <Font size="24.0" />
@@ -95,5 +98,10 @@
             <Font size="24.0" />
          </font>
       </Label>
+      <Button fx:id="btnClose" layoutX="262.0" layoutY="425.0" mnemonicParsing="false" text="Đóng">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

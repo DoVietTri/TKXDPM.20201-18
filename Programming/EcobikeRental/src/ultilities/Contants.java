@@ -8,8 +8,9 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
 
-
+import controller.HomeController;
 import model.Bike;
+import model.Card;
 import model.Customer;
 import model.Rent;
 import model.Station;
@@ -61,15 +62,14 @@ public final class Contants {
 		while(rs.next()) {
 			int id = rs.getInt(1);
 			String type = rs.getString(2);
-			int code = rs.getInt(3);
-			String desc = rs.getString(4);
-			double price = rs.getDouble(5);
-			String name = rs.getString(6);
-			String status = rs.getString(7);
-			int battery = rs.getInt(8);
-			int stationID = rs.getInt(9);
+			String desc = rs.getString(3);
+			double price = rs.getDouble(4);
+			String name = rs.getString(5);
+			String status = rs.getString(6);
+			int battery = rs.getInt(7);
+			int stationID = rs.getInt(8);
 			
-			Bike st = new Bike(id, code, battery, stationID, price, name, status, type, desc) ;
+			Bike st = new Bike(id, battery, stationID, price, name, status, type, desc) ;
 			list.add(st);
 		}
 		return list;
@@ -113,15 +113,56 @@ public final class Contants {
 		ResultSet rs = stmt.executeQuery(select1);
 
 		while(rs.next()) {
-			double price = rs.getDouble(5);
-			int battery = rs.getInt(8);
-			int stationID = rs.getInt(9);
-			Bike bike1 = new Bike(bikeID, bikeID, battery, stationID, price, "", "", "", "");
+			double price = rs.getDouble(4);
+			int battery = rs.getInt(7);
+			int stationID = rs.getInt(8);
+			Bike bike1 = new Bike(bikeID, battery, stationID, price, "", "", "", "");
 			return bike1;
 		} 
 		
 		return bike;
 	}
+	
+	public static Card getCustomerCard() throws ClassNotFoundException, SQLException {
+		Connection conn = getSQLServerConnection();
+		String select1 = "SELECT * FROM Card WHERE cardID = 111";
+				// + HomeController.currentUser.getCard().getCardID();
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(select1);
+		while(rs.next()) {
+			int cardID = rs.getInt(1);
+			String cardHolderName = rs.getString(2);
+			String cardNumber = rs.getString(3);
+			String expirationDate = rs.getString(5);
+			String securityCode = rs.getString(6);
+			int issuingBank = rs.getInt(7);
+			Card card = new Card(cardID, cardHolderName, cardNumber, "", expirationDate, securityCode, issuingBank);
+			return card;
+		} 
+		return new Card();
+	}
+	
+	public static void rentBike() {
+		
+	}
+	
+	public static void returnBike() {
+		
+	}
+	
+	public static long calculateMoney(Double price, long totalTime) {
+		if (totalTime <= 30) {
+			return 10000;
+		} else {
+			long total = 10000;
+			totalTime -= 30;
+			total += price*(totalTime/15);
+			totalTime -= 15*(totalTime/15);
+			if(totalTime > 0) total += price;
+			return total;
+		}
+	}
+	
 	
 	public static String toString(double d) {
 		

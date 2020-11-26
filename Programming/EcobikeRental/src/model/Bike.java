@@ -1,7 +1,7 @@
 package model;
 
 public class Bike {
-	public int id, code, battery, stationID;
+	public int id, battery, stationID;
 	public double price;
 	public String name, status, type, description;
 
@@ -14,11 +14,10 @@ public class Bike {
 
 	
 	
-	public Bike(int id, int code, int battery, int stationID, double price, String name, String status, String type,
+	public Bike(int id, int battery, int stationID, double price, String name, String status, String type,
 			String description) {
 		super();
 		this.id = id;
-		this.code = code;
 		this.battery = battery;
 		this.stationID = stationID;
 		this.price = price;
@@ -56,7 +55,6 @@ public class Bike {
 
 	public void setBike(Bike b) {
 		this.id = b.id;
-		this.code = b.code;
 		this.price = b.price;
 		this.name = b.name;
 		this.status = b.status;
@@ -66,13 +64,7 @@ public class Bike {
 		this.stationID = b.stationID;
 	}
 
-	public int getCode() {
-		return code;
-	}
 
-	public void setCode(int code) {
-		this.code = code;
-	}
 
 	public double getPrice() {
 		return price;
