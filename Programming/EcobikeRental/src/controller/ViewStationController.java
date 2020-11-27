@@ -53,7 +53,7 @@ public class ViewStationController  implements Initializable{
 	
 	public void addEvents() {
 		btnViewBike.setOnMouseClicked(e -> {
-			viewBike();
+			showBikeInfo();
 		});
 		btnReturnBike.setOnMouseClicked(e -> {
 			
@@ -65,7 +65,7 @@ public class ViewStationController  implements Initializable{
 				if (e.getClickCount() == 2 && !(row.isEmpty())) {
 					
 					Contants.bikeSelected.setBike(row.getItem());
-					viewBike();
+					showBikeInfo();;
 				}
 			});
 
@@ -93,7 +93,7 @@ public class ViewStationController  implements Initializable{
 			e.printStackTrace();
 		}
 		
-		codeCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("code"));
+		codeCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("id"));
 		priceCol.setCellValueFactory(new PropertyValueFactory<Bike, Double>("price"));
 		typeCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("type"));
 		nameCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("name"));
@@ -104,7 +104,7 @@ public class ViewStationController  implements Initializable{
 	}
 	
 	
-	public void viewBike() {
+	public void showBikeInfo() {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/view/ViewBike.fxml"));
 			

@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/controller/HomeController.java=UTF-8
 encoding//src/controller/ListStationController.java=UTF-8
+encoding//src/controller/PaymentFormController.java=UTF-8
 encoding//src/controller/ViewStationController.java=UTF-8

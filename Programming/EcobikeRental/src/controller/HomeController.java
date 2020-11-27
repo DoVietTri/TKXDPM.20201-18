@@ -2,8 +2,13 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+
+
 import java.sql.SQLException;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -20,6 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import model.Bike;
+import model.Card;
 import model.Customer;
 import model.Rent;
 import model.Station;
@@ -36,7 +42,7 @@ public class HomeController implements Initializable {
 	public Rent rent = new Rent();
 	public Bike bike = new Bike();
 	
-	public static Customer currentUser = new Customer( 20173410,"Đỗ Viết Trí");
+	public static Customer currentUser = new Customer(new Card(111), 20173410, 111, "Trần Văn Trí");
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -59,21 +65,16 @@ public class HomeController implements Initializable {
 		
 	}
 	
-	public void getBikeRentingInfo(int bikeID) throws SQLException, ClassNotFoundException {
-		//Bike bike1 = Contants.getBikeInfomation(bikeCode);
-		bike.setBike(Contants.getBikeInfomation(bikeID));
-	}
-	
 	public void getRentingInfo() {
 		try {
 			 rent.setRent(Contants.getRentingBike(currentUser.customerID));
 			if (rent.rentID != 0) {
-				//rent.setRent(rent1);
-				getBikeRentingInfo(rent.bikeID);
+				bike.setBike(Contants.getBikeInfomation(rent.bikeID));
+				updateView();
+			} else {
+				clearView();
 			}
-			System.out.print(rent.rentID);
-			System.out.print(rent.getBikeID());
-			updateView();
+
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -85,6 +86,9 @@ public class HomeController implements Initializable {
 	}
 	
 	public void updateView() {
+		// message
+		lbMessage.setText("Bạn đang thuê xe có ID " + bike.getId() );
+		
 		// user
 		lbTitle.setText("" + currentUser.getCustomerName());
 		
@@ -94,8 +98,46 @@ public class HomeController implements Initializable {
 		lbBikePrice.setText("" + Contants.toString(bike.getPrice()) );
 		
 		//rent
-		lbTimeStart.setText("" + rent.getTimeStart() );
+		lbTimeStart.setText("" + rent.getTimeStart());
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+		String timeNow = formatter.format(date);
 		
+		Time time = rent.timeStart;
+		Time time2 = Time.valueOf(timeNow);
+		long totalTimeRent = (time2.getTime() - time.getTime())/60000;
+		lbTotalTime.setText("" + totalTimeRent + " phút");
+		lbTotalMoney.setText("" + Contants.toString(Contants.calculateMoney(bike.getPrice() , totalTimeRent)) + " VNĐ");
+		
+		//button
+		btnRentBike.setDisable(true);
+		btnReturnBike.setDisable(false);
+		
+	}
+	
+	public void calculateMoney() {
+		
+	}
+	
+	public void clearView() {
+		// message
+		lbMessage.setText("Bạn chưa thuê xe !");
+		
+		// user
+		lbTitle.setText("" + currentUser.getCustomerName());
+				
+		//bike
+		lbBikeCode.setText("");
+		lbBikeBattery.setText("");
+		lbBikePrice.setText("");
+				
+		//rent
+		lbTimeStart.setText("");
+		
+		//button
+		btnRentBike.setDisable(false);
+		btnReturnBike.setDisable(true);
+				
 	}
 	
 	public void viewListStation() {
