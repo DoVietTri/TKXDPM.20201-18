@@ -125,7 +125,9 @@
     + Nên tách biệt lớp ViewController ra thành View gì, tên hơi khó hiểu
     
 - Nguyễn Mạnh Trường: review công việc của Đỗ Viết Trí
-    + 
+    + Tương đối đầy đủ các lớp cần thiết
+    + Bội số quan hệ giữa các lớp rõ ràng
+    + Chưa thể hiện các lớp thực thể, lớp điều khiển, lớp biên
 
 # Lab04
 
