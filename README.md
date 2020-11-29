@@ -50,43 +50,54 @@
 - Trần Văn Trí: Vẽ biểu đồ trình tự và biểu đồ lớp phân tích cho use case thuê xe (Rent Bike)
 
 ## Phân công nhiệm vụ review
-- Đỗ Viết Trí : review công việc của Nguyễn Ngọc Trinh
+- Đỗ Viết Trí : review công việc của Nguyễn Ngọc Trinh (use case Return Bike)
     + Đối với biểu đồ lớp phân tích
         + Các giá trị trả về của các phương thức chưa đúng, cần xem xét lại
         + Tương đối đầy đủ các lớp
     + Đối với biểu đồ trình tự
         + Cũng tương tự như biểu đồ lớp phân tích, xem xét lại các giá trị trả về của phương thức
-- Nguyễn Ngọc Trinh: review công việc của Trần Văn Trí
+- Nguyễn Ngọc Trinh: review công việc của Trần Văn Trí (use case RentBike)
     + Đối với biểu đồ lớp phân tích: Vẽ đúng theo biểu đồ trình tự, đầy đủ, rõ ràng
     + Đối với biểu đồ trình tự: đầy đủ, rõ ràng
-- Trần Văn Trí: review công việc của Nguyễn Mạnh Trường
+- Trần Văn Trí: review công việc của Nguyễn Mạnh Trường (use case View Bike Info)
     + Đối với biểu đồ lớp phân tích
         + Tương đối đầy đủ các lớp cần thiết
         + Nên đặt tên lớp ViewController thành tên khác dễ hiểu hơn
         + Chưa thấy được ý nghĩa của lớp RentBikeScreen
     + Đối với biểu đồ trình tự
         + Thể hiện đầy đủ các chức năng, rõ ràng
-- Nguyễn Mạnh Trường: review công việc của Đỗ Viết Trí
+- Nguyễn Mạnh Trường: review công việc của Đỗ Viết Trí (use case View Bike in Station)
     + Đối với biểu đồ lớp phân tích
         + Phân tích đầy đủ các lớp cần thiết.
         + Có sự thống nhất giữa biểu đồ trình tự và lớp phân tích.
     + Đối với biểu đồ trình tự
         + Thể hiện đầy đủ các chức năng, rõ ràng
+ 
 # Lab02
-
 ## Nhiệm vụ
 - Thiết kế giao diện: Thiết kế giao diện người dùng, vẽ biểu đồ dịch chuyển màn hình và đặc tả chi tiết màn hình
 - Thiết kế giao diện với hệ thống khác
 - Các file đặt trong thư mục (DetailDesign/InterfaceDesign)
-
 ## Phân công nhiệm vụ
 - Đỗ Viết Trí: Đặc tả chi tiết màn hình, Biểu đồ dịch chuyển màn hình
 - Nguyễn Ngọc Trinh: Vẽ màn hình trang enter-qr-bike, các màn hình thông báo (notify)
 - Nguyễn Mạnh Trường: Vẽ màn hình trang bike-detail, invoice 
 - Trần Văn Trí: Vẽ màn hình trang station-detail, home, card-info 
-
+## Phân công nhiệm vụ review
+- Đỗ Viết Trí : review công việc của Nguyễn Ngọc Trinh
+    + Hoàn thành đầy đủ các màn hình được giao
+    + Nên chỉ thiết kế 1 màn hình thông báo, sau đó chỉ cần thanh nội dung thông báo
+- Nguyễn Ngọc Trinh: review công việc của Trần Văn Trí
+    + Hoàn thành đầy đủ các màn hình được giao
+- Trần Văn Trí: review công việc của Nguyễn Mạnh Trường
+    + Hoàn thành đầy đủ các màn hình được giao
+- Nguyễn Mạnh Trường: review công việc của Đỗ Viết Trí
+    + Đối với biểu đồ dịch chuyển 
+        + Chưa thể hiện được các phụ thuộc giữa các màn hình
+        + Đang còn đơn điệu màn hình này chuyển màn hình kia
+    + Đối với đặc tả màn hình
+        + Đặc tả đầy đủ các màn hình
 # Lab03
-
 ## Nhiệm vụ
 - Thiết kế lớp chi tiết cho từng use case mà thành viên phụ trách
 - Thiết kế lớp chi tiết chung cho toàn hệ thống
@@ -97,6 +108,8 @@
 - Nguyễn Ngọc Trinh: Thiết kế lớp chi tiết cho use case Trả xe (ReturnBike)
 - Nguyễn Mạnh Trường: Thiết kế lớp chi tiết cho use case Xem thông tin xe
 - Trần Văn Trí: Thiết kế lớp chi tiết cho use case Thuê xe
+
+## Phân công nhiệm vụ review
 
 # Lab04
 
