@@ -49,6 +49,29 @@
 - Nguyễn Mạnh Trường: Vẽ biểu đồ trình tự và biểu đồ lớp phân tích cho use case xem thông tin chi tiết xe (View Bike InFo)
 - Trần Văn Trí: Vẽ biểu đồ trình tự và biểu đồ lớp phân tích cho use case thuê xe (Rent Bike)
 
+## Phân công nhiệm vụ review
+- Đỗ Viết Trí : review công việc của Nguyễn Ngọc Trinh
+    + Đối với biểu đồ lớp phân tích
+        + Các giá trị trả về của các phương thức chưa đúng, cần xem xét lại
+        + Tương đối đầy đủ các lớp
+    + Đối với biểu đồ trình tự
+        + Cũng tương tự như biểu đồ lớp phân tích, xem xét lại các giá trị trả về của phương thức
+- Nguyễn Ngọc Trinh: review công việc của Trần Văn Trí
+    + Đối với biểu đồ lớp phân tích: Vẽ đúng theo biểu đồ trình tự, đầy đủ, rõ ràng
+    + Đối với biểu đồ trình tự: đầy đủ, rõ ràng
+- Trần Văn Trí: review công việc của Nguyễn Mạnh Trường
+    + Đối với biểu đồ lớp phân tích
+        + Tương đối đầy đủ các lớp cần thiết
+        + Nên đặt tên lớp ViewController thành tên khác dễ hiểu hơn
+        + Chưa thấy được ý nghĩa của lớp RentBikeScreen
+    + Đối với biểu đồ trình tự
+        + Thể hiện đầy đủ các chức năng, rõ ràng
+- Nguyễn Mạnh Trường: review công việc của Đỗ Viết Trí
+    + Đối với biểu đồ lớp phân tích
+        + Phân tích đầy đủ các lớp cần thiết.
+        + Có sự thống nhất giữa biểu đồ trình tự và lớp phân tích.
+    + Đối với biểu đồ trình tự
+        + Thể hiện đầy đủ các chức năng, rõ ràng
 # Lab02
 
 ## Nhiệm vụ
