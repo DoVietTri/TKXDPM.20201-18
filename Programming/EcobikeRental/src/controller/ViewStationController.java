@@ -114,9 +114,7 @@ public class ViewStationController  implements Initializable{
 			stage.setTitle("Bike Info");
 			stage.show();
 
-	} 	 catch (IOException e) {
-			e.printStackTrace();
-		}
+	} 	 
 
 	}
 	
