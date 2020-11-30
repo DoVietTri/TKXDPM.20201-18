@@ -118,7 +118,8 @@
     + Chưa có phương thức để lấy thông tin xe ở lớp thực thể Bike 
     + Ở lớp biên HomeScreen thì nên thêm phương thức để hiển thị, ví dụ như hiển thông tin của tất cả bãi đổi xe (displayAllStation) 
 - Nguyễn Ngọc Trinh: review công việc của Trần Văn Trí (use case RentBike)
-    + 
+    + Tương đối đầy đủ các lớp
+    + Mới có liên kết giữa các lớp nhưng chưa thể hiện được mối quan hệ
 - Trần Văn Trí: review công việc của Nguyễn Mạnh Trường (use case View Bike InFo)
     + Tương đối đầy đủ các lớp
     + Chưa thể hiện được mối quan hệ giữa các lớp
