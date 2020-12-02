@@ -1,5 +1,4 @@
-/controller/
-/resources/
-/view/
-/model/
 /ultilities/
+/controller/
+/model/
+/view/

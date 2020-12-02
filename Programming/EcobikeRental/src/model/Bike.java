@@ -1,8 +1,7 @@
 package model;
 
 public class Bike {
-	public int id, battery, stationID;
-	public double price;
+	public int id, price, battery, stationID;
 	public String name, status, type, description;
 
 	public Bike(int id) {
@@ -14,7 +13,7 @@ public class Bike {
 
 	
 	
-	public Bike(int id, int battery, int stationID, double price, String name, String status, String type,
+	public Bike(int id, int battery, int stationID, int price, String name, String status, String type,
 			String description) {
 		super();
 		this.id = id;
@@ -66,11 +65,11 @@ public class Bike {
 
 
 
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 

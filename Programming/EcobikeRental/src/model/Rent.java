@@ -8,6 +8,7 @@ public class Rent {
 	public int rentID, customerID, bikeID;
 	public  Time timeStart, timeEnd;
 	public int totalTimeRent;
+	public String status;
 	
 	public Rent() {
 		this.rentID = 0;
@@ -23,9 +24,10 @@ public class Rent {
 	}
 	
 	
-	public Rent(int rentID, int customerID, int bikeID, Time timeStart, Time timeEnd, int totalTimeRent) {
+	public Rent(int rentID, String status, int customerID, int bikeID, Time timeStart, Time timeEnd, int totalTimeRent) {
 		super();
 		this.rentID = rentID;
+		this.status = status;
 		this.customerID = customerID;
 		this.bikeID = bikeID;
 		this.timeStart = timeStart;
@@ -33,7 +35,23 @@ public class Rent {
 		this.totalTimeRent = totalTimeRent;
 	}
 
+	public Rent(int rentID, String status, int customerID, int bikeID, Time timeStart) {
+		super();
+		this.rentID = rentID;
+		this.status = status;
+		this.customerID = customerID;
+		this.bikeID = bikeID;
+		this.timeStart = timeStart;
 
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public int getRentID() {
 		return rentID;

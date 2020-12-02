@@ -4,7 +4,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import com.sun.javafx.scene.web.Printable;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

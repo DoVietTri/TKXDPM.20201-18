@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import model.Bike;
 import ultilities.Contants;
 
 public class ViewBikeController implements Initializable {
@@ -28,11 +29,14 @@ public class ViewBikeController implements Initializable {
 	@FXML
 	ImageView imgBike;
 	
+	Bike bike = new Bike();
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		bike.setBike(Contants.bikeSelected);
 		addEvents();
-		getBikeInfo();
+		showBikeInfo();
 		
 	}
 	
@@ -50,19 +54,25 @@ public class ViewBikeController implements Initializable {
 		
 	}
 	
-	public void getBikeInfo() {
-		
-		String type = Contants.bikeSelected.getType();
+	public void showBikeInfo() {
+		bike.setBike(Contants.bikeSelected);
+		String type = bike.getType();
 		Image img = new Image("/resources/bike"+ type +".jpg");
 		
 		imgBike.setImage(img);
-		lbBikeCode.setText("" + Contants.bikeSelected.getId());
+		lbBikeCode.setText("" + bike.getId());
 		lbBikeBattery.setText("" + Contants.bikeSelected.getBattery());
 		lbBikeName.setText(Contants.bikeSelected.getName());
 		lbBikeType.setText("" + Contants.bikeSelected.getType());
 		lbBikeStatus.setText(Contants.bikeSelected.getStatus());
 		lbBikePrice.setText("" +Contants.toString(Contants.bikeSelected.getPrice()));
 		lbBikeDesc.setText(Contants.bikeSelected.getDescription());
+//		
+//		if(bike.status == "available") {
+//			btnRentBike.setDisable(false);
+//		} else {
+//			btnRentBike.setDisable(true);
+//		}
 		
 	}
 	

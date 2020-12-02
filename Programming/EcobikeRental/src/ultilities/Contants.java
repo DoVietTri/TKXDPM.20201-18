@@ -23,7 +23,7 @@ public final class Contants {
 	
 	public static Connection getSQLServerConnection() throws ClassNotFoundException, SQLException {
 
-		 String dbURL = "jdbc:sqlserver://localhost;databaseName=EcoBikeRental;user=group18;password=123456";
+		 String dbURL = "jdbc:sqlserver://localhost;databaseName=EcoBikeRentalDatabase;user=group18;password=123456";
 		    Connection conn = DriverManager.getConnection(dbURL);
 	 
 	     return conn;
@@ -63,7 +63,7 @@ public final class Contants {
 			int id = rs.getInt(1);
 			String type = rs.getString(2);
 			String desc = rs.getString(3);
-			double price = rs.getDouble(4);
+			int price = rs.getInt(4);
 			String name = rs.getString(5);
 			String status = rs.getString(6);
 			int battery = rs.getInt(7);
@@ -76,32 +76,20 @@ public final class Contants {
 	}
 	
 	public static Rent getRentingBike(int customerID ) throws ClassNotFoundException, SQLException {
-		Rent rent = new Rent();
 		Connection conn = getSQLServerConnection();
-		String select1 = "SELECT rentID FROM Customer WHERE customerID = \'" + customerID +"\' AND rentID IS NOT NULL";
+		String select1 = "SELECT * FROM Rent WHERE customerID = " + customerID +" AND status= \'renting\'";
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery(select1);
-		int rentID = 0;
 		while(rs.next()) {
-			rentID = rs.getInt(1);
-		} 
-		if(rentID == 0) {
-			return rent;
-		}
-		
-		String select2 = "SELECT * FROM Rent WHERE rentID = \'" + rentID +"\'";
-		rs = stmt.executeQuery(select2);
-		while(rs.next()) {
-			Time timeStart = rs.getTime(2);
-			Time timeEnd = rs.getTime(2);
-		//	Time timeNow = Time.
-			int bikeID = rs.getInt(5);
-			int totalTimeRent = 90;
-			Rent newRent = new Rent(rentID, customerID, bikeID, timeStart, timeEnd, totalTimeRent);
-			return newRent;
+			int rentID = rs.getInt(1);
+			String status = rs.getString(2);
+			Time timeStart = rs.getTime(3);
+			int bikeID = rs.getInt(6);
+	
+			return new Rent(rentID,status, customerID, bikeID, timeStart);
 		} 
 		
-		return rent;
+		return new Rent();
 	}
 	
 	public static Bike getBikeInfomation(int bikeID) throws ClassNotFoundException, SQLException {
@@ -113,7 +101,7 @@ public final class Contants {
 		ResultSet rs = stmt.executeQuery(select1);
 
 		while(rs.next()) {
-			double price = rs.getDouble(4);
+			int price = rs.getInt(4);
 			int battery = rs.getInt(7);
 			int stationID = rs.getInt(8);
 			Bike bike1 = new Bike(bikeID, battery, stationID, price, "", "", "", "");
@@ -135,22 +123,25 @@ public final class Contants {
 			String cardNumber = rs.getString(3);
 			String expirationDate = rs.getString(5);
 			String securityCode = rs.getString(6);
-			int issuingBank = rs.getInt(7);
+			String issuingBank = rs.getString(7);
 			Card card = new Card(cardID, cardHolderName, cardNumber, "", expirationDate, securityCode, issuingBank);
 			return card;
 		} 
 		return new Card();
 	}
 	
-	public static void rentBike() {
-		
+	public static boolean rentBike() throws ClassNotFoundException, SQLException {
+		Connection conn = getSQLServerConnection();
+		String upd = "UPDATE Customer SET rentID = 0 WHERE CustomerID = " + HomeController.currentUser.customerID;
+		Statement stmt = conn.createStatement();
+		return stmt.execute(upd);
 	}
 	
 	public static void returnBike() {
 		
 	}
 	
-	public static long calculateMoney(Double price, long totalTime) {
+	public static long calculateMoney(int price, long totalTime) {
 		if (totalTime <= 30) {
 			return 10000;
 		} else {
@@ -164,14 +155,14 @@ public final class Contants {
 	}
 	
 	
-	public static String toString(double d) {
+	public static String toString(long d) {
 		
-		String s = "" + (int)d ;
+		String s = "" + d ;
 		String ans = "";
 		int n = s.length();
 		for (int i = 1; i <= n; i++ ){
 			ans += s.charAt(n-i);
-			if(i%3 == 0) {
+			if(i%3 == 0 && i != n) {
 				ans += ",";
 			}
 		}

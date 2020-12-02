@@ -2,8 +2,8 @@ package model;
 
 public class Card {
 
-	public int cardID, issuingBank;
-	public String cardHolderName, cardNumber, transactionDescription, expirationDate , securityCode;
+	public int cardID;
+	public String cardHolderName, cardNumber, transactionDescription, expirationDate , securityCode, issuingBank;
 	
 	public Card() {}
 	
@@ -12,7 +12,7 @@ public class Card {
 	}
 	
 	public Card(int cardID, String cardHolderName, String cardNumber, String transactionDescription,
-			String expirationDate, String securityCode, int issuingBank) {
+			String expirationDate, String securityCode, String issuingBank) {
 		super();
 		this.cardID = cardID;
 		this.cardHolderName = cardHolderName;
@@ -69,10 +69,10 @@ public class Card {
 	public void setSecurityCode(String securityCode) {
 		this.securityCode = securityCode;
 	}
-	public int getIssuingBank() {
+	public String getIssuingBank() {
 		return issuingBank;
 	}
-	public void setIssuingBank(int issuingBank) {
+	public void setIssuingBank(String issuingBank) {
 		this.issuingBank = issuingBank;
 	}
 	

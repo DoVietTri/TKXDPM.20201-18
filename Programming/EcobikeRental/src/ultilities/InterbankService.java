@@ -1,4 +1,4 @@
-vpackage ultilities;
+package ultilities;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -32,6 +32,10 @@ public class InterbankService {
 	private static final String SECRETKEY = "BJrapO8Wdtw=";
 	private static final String APPCODE = "CUgp9eRNgwU=";
 	private static final String VERSION = "1.0.1";
+	private static final String CARDCODE = null;
+	private static final String OWNER = null;
+	private static final String CVVCODE = null;
+	private static final String DATEEXPIRED = null;
 	
 	public static String getMD5(String input) throws UnsupportedEncodingException
 	{

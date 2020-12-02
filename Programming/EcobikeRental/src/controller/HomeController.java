@@ -42,7 +42,7 @@ public class HomeController implements Initializable {
 	public Rent rent = new Rent();
 	public Bike bike = new Bike();
 	
-	public static Customer currentUser = new Customer(new Card(111), 20173410, 111, "Trần Văn Trí");
+	public static Customer currentUser = new Customer(20173410, "9704151300297331", 1, "Tran Van Tri");
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

@@ -1,7 +1,7 @@
 package model;
 
 public class Customer {
-	public Card card;	
+	public String cardNumber;	
 	public int customerID, rentID;
 	public String customerName;
 	
@@ -9,9 +9,9 @@ public class Customer {
 
 	
 	
-	public Customer(Card card, int customerID, int rentID, String customerName) {
+	public Customer(int customerID, String cardNumber,  int rentID, String customerName) {
 		super();
-		this.card = card;
+		this.cardNumber = cardNumber;
 		this.customerID = customerID;
 		this.rentID = rentID;
 		this.customerName = customerName;
@@ -30,13 +30,19 @@ public class Customer {
 		this.customerName = name;
 	}
 
-	public Card getCard() {
-		return card;
+
+
+	public String getCardNumber() {
+		return cardNumber;
 	}
 
-	public void setCard(Card card) {
-		this.card = card;
+
+
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
 	}
+
+
 
 	public int getCustomerID() {
 		return customerID;

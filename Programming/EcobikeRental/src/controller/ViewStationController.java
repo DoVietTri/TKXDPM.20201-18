@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Bike;
@@ -25,7 +26,7 @@ import ultilities.Contants;
 
 public class ViewStationController  implements Initializable{
 	@FXML
-	Button btnReturnBike, btnViewBike;
+	Button btnReturnBike, btnViewBike, btnSearch;
 	
 	@FXML
 	TableView<Bike> tbvListBike;
@@ -41,6 +42,9 @@ public class ViewStationController  implements Initializable{
 	
 	@FXML
 	Label lbStationID, lbStationName, lbStationAddress, lbStationTotalBike, lbStationAvailable;
+	
+	@FXML
+	TextField txtBikeCode;
 	
 	public ObservableList<Bike> listBike;
 		
