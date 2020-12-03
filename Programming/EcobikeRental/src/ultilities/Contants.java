@@ -2,6 +2,7 @@ package ultilities;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,6 +21,7 @@ public final class Contants {
 	
 	public static Station stationSelected = new Station();
 	public static Bike bikeSelected = new Bike();
+	public static Card cardSelected = new Card();
 	
 	public static Connection getSQLServerConnection() throws ClassNotFoundException, SQLException {
 
@@ -93,7 +95,6 @@ public final class Contants {
 	}
 	
 	public static Bike getBikeInfomation(int bikeID) throws ClassNotFoundException, SQLException {
-		Bike bike = new Bike();
 		
 		Connection conn = getSQLServerConnection();
 		String select1 = "SELECT * FROM Bike WHERE bikeID = \'" + bikeID +"\'";
@@ -101,19 +102,22 @@ public final class Contants {
 		ResultSet rs = stmt.executeQuery(select1);
 
 		while(rs.next()) {
+			String type = rs.getString(2);
+			String description = rs.getString(3);
 			int price = rs.getInt(4);
+			String name = rs.getString(5);
+			String status = rs.getString(6);
 			int battery = rs.getInt(7);
 			int stationID = rs.getInt(8);
-			Bike bike1 = new Bike(bikeID, battery, stationID, price, "", "", "", "");
-			return bike1;
+			return new Bike(bikeID, battery, stationID, price, name, status, type, description);
 		} 
 		
-		return bike;
+		return  new Bike();
 	}
 	
 	public static Card getCustomerCard() throws ClassNotFoundException, SQLException {
 		Connection conn = getSQLServerConnection();
-		String select1 = "SELECT * FROM Card WHERE cardID = 111";
+		String select1 = "SELECT * FROM Card WHERE cardNumber = \'118609_group18_2020\'";
 				// + HomeController.currentUser.getCard().getCardID();
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery(select1);
@@ -130,11 +134,22 @@ public final class Contants {
 		return new Card();
 	}
 	
-	public static boolean rentBike() throws ClassNotFoundException, SQLException {
+	public static boolean updateBike(int bikeID, String status) throws ClassNotFoundException, SQLException {
 		Connection conn = getSQLServerConnection();
-		String upd = "UPDATE Customer SET rentID = 0 WHERE CustomerID = " + HomeController.currentUser.customerID;
+		String upd = "UPDATE Bike SET status = \'" + status + "\' WHERE bikeID = \'" + bikeID + "\'" ;
 		Statement stmt = conn.createStatement();
 		return stmt.execute(upd);
+	}
+	
+	public static boolean rentBike(Time timeStart, int bikeID, int customerID) throws ClassNotFoundException, SQLException {
+		Connection conn = getSQLServerConnection();
+		String ins = "INSERT INTO Rent(status, timeStart, bikeID, customerID) VALUES(?,?,?,?) ";
+		PreparedStatement stm = conn.prepareStatement(ins);
+		stm.setString(1, "renting");
+		stm.setTime(2, timeStart);
+		stm.setInt(3, bikeID);
+		stm.setInt(4, customerID);
+		return stm.execute();
 	}
 	
 	public static void returnBike() {
@@ -171,6 +186,26 @@ public final class Contants {
 			rs += ans.charAt(i);
 		}
 		return rs;
+	}
+	
+	public static int getDepositMoney(String type) {
+		switch (type) {
+		case "1": {
+
+			return 100000;
+		}
+		case "2": {
+
+			return 200000;
+		}
+		case "3": {
+
+			return 300000;
+		}
+		default:
+			return 100000;
+		}
+
 	}
 	
 }

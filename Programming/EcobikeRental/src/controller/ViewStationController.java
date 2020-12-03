@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -12,13 +13,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Bike;
 import model.Station;
@@ -32,19 +39,19 @@ public class ViewStationController  implements Initializable{
 	TableView<Bike> tbvListBike;
 	
 	@FXML
-	TableColumn<Bike, Integer> codeCol, batteryCol;
+	TableColumn<Bike, Integer> codeCol,priceCol, batteryCol;
+	
 	
 	@FXML
-	TableColumn<Bike, Double> priceCol;
-	
-	@FXML
-	TableColumn<Bike, String> nameCol, typeCol;
+	TableColumn<Bike, String> nameCol, statusCol;
 	
 	@FXML
 	Label lbStationID, lbStationName, lbStationAddress, lbStationTotalBike, lbStationAvailable;
 	
 	@FXML
 	TextField txtBikeCode;
+	
+	Station station = new Station();
 	
 	public ObservableList<Bike> listBike;
 		
@@ -54,6 +61,7 @@ public class ViewStationController  implements Initializable{
 		getStationInfo();
 		getAllBikes();
 		addEvents();
+		addControl();
 		
 	}
 	
@@ -65,6 +73,11 @@ public class ViewStationController  implements Initializable{
 		
 		btnReturnBike.setOnMouseClicked(e -> {
 			
+		});
+		
+		
+		btnSearch.setOnMouseClicked(e -> {
+			searchBike();
 		});
 		
 		tbvListBike.setRowFactory(tv -> {
@@ -83,7 +96,13 @@ public class ViewStationController  implements Initializable{
 		});
 	}
 		
-	public void addControll() {
+	public void addControl() {
+		Image img = new Image("/resources/search.png");
+		ImageView imgview = new ImageView(img);
+		imgview.setFitWidth(20);
+		imgview.setFitHeight(20);
+		
+		btnSearch.setGraphic(imgview);
 		
 	}
 	
@@ -111,8 +130,8 @@ public class ViewStationController  implements Initializable{
 		}
 		
 		codeCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("id"));
-		priceCol.setCellValueFactory(new PropertyValueFactory<Bike, Double>("price"));
-		typeCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("type"));
+		priceCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("price"));
+		statusCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("status"));
 		nameCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("name"));
 		batteryCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("battery"));
 		
@@ -129,12 +148,44 @@ public class ViewStationController  implements Initializable{
 			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.setTitle("Bike Info");
-			stage.show();
+			stage.initModality(Modality.WINDOW_MODAL);
+			stage.setResizable(false);
+			stage.showAndWait();
 
 	} 	 catch (IOException e) {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public void searchBike() {
+		if (txtBikeCode.getText().isEmpty()) return ;
+		else {
+			int id = Integer.parseInt(txtBikeCode.getText());
+			try {
+				int bikeID = Contants.getBikeInfomation(id).id;
+				if (bikeID != 0) {
+					Contants.bikeSelected.setId(bikeID);;
+					showBikeInfo(); 
+				}
+				else {
+					showMessage("Không tìm thấy xe trong bãi xe này !");
+				}
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void showMessage(String mess) {
+		Alert dialog = new Alert(AlertType.ERROR);
+		dialog.setTitle("Thông báo");
+		dialog.setHeaderText(mess);
+		 dialog.showAndWait();
 	}
 	
 }

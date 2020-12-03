@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import model.Bike;
 import ultilities.Contants;
@@ -55,24 +57,38 @@ public class ViewBikeController implements Initializable {
 	}
 	
 	public void showBikeInfo() {
-		bike.setBike(Contants.bikeSelected);
+		try {
+			bike.setBike(Contants.getBikeInfomation(Contants.bikeSelected.id));
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	//	bike.getBikeInfo();
 		String type = bike.getType();
 		Image img = new Image("/resources/bike"+ type +".jpg");
 		
 		imgBike.setImage(img);
 		lbBikeCode.setText("" + bike.getId());
-		lbBikeBattery.setText("" + Contants.bikeSelected.getBattery());
-		lbBikeName.setText(Contants.bikeSelected.getName());
-		lbBikeType.setText("" + Contants.bikeSelected.getType());
-		lbBikeStatus.setText(Contants.bikeSelected.getStatus());
-		lbBikePrice.setText("" +Contants.toString(Contants.bikeSelected.getPrice()));
-		lbBikeDesc.setText(Contants.bikeSelected.getDescription());
-//		
-//		if(bike.status == "available") {
-//			btnRentBike.setDisable(false);
-//		} else {
-//			btnRentBike.setDisable(true);
-//		}
+		lbBikeBattery.setText("" + bike.getBattery());
+		lbBikeName.setText(bike.getName());
+		lbBikeType.setText("" + Contants.getDepositMoney(bike.getType()) );
+
+		lbBikeStatus.setText(bike.getStatus());
+		
+	
+		lbBikePrice.setText("" +Contants.toString(bike.getPrice()));
+		lbBikeDesc.setText(bike.getDescription());
+		
+		if("available".equals(bike.status)) {
+			btnRentBike.setDisable(false);
+			lbBikeStatus.setStyle("-fx-text-fill: black;");
+		} else {
+			btnRentBike.setDisable(true);
+			lbBikeStatus.setStyle("-fx-text-fill: red;");
+		}
 		
 	}
 	

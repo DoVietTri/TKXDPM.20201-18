@@ -1,5 +1,9 @@
 package model;
 
+import java.sql.SQLException;
+
+import ultilities.Contants;
+
 public class Bike {
 	public int id, price, battery, stationID;
 	public String name, status, type, description;
@@ -9,7 +13,9 @@ public class Bike {
 		this.id = id;
 	}
 	
-	public Bike() {}
+	public Bike() {
+		this.id = 0;
+	}
 
 	
 	
@@ -63,7 +69,17 @@ public class Bike {
 		this.stationID = b.stationID;
 	}
 
-
+	public void getBikeInfo() {
+		try {
+			this.setBike(Contants.getBikeInfomation(this.getId()));
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public int getPrice() {
 		return price;
@@ -104,6 +120,8 @@ public class Bike {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
 	
 	
 }
