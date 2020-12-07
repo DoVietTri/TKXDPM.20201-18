@@ -10,20 +10,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import model.Bike;
+import ultilities.Configs;
 import ultilities.Contants;
 
 public class ViewBikeController implements Initializable {
 
 	@FXML
 	Button btnRentBike, btnClose;
-	
 	
 	@FXML
 	Label lbBikeCode, lbBikeDesc, lbBikeStatus, lbBikeName, lbBikePrice, lbBikeBattery, lbBikeType;
@@ -45,7 +47,7 @@ public class ViewBikeController implements Initializable {
 	public void addEvents() {
 		
 		btnRentBike.setOnMouseClicked(e -> {
-			showPaymentForm();
+			checkRentAvailable();
 		});
 		
 		btnClose.setOnMouseClicked(e -> {
@@ -57,16 +59,7 @@ public class ViewBikeController implements Initializable {
 	}
 	
 	public void showBikeInfo() {
-		try {
-			bike.setBike(Contants.getBikeInfomation(Contants.bikeSelected.id));
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	//	bike.getBikeInfo();
+		bike.setBike(Contants.getBikeInfomation(Contants.bikeSelected.id));
 		String type = bike.getType();
 		Image img = new Image("/resources/bike"+ type +".jpg");
 		
@@ -90,6 +83,25 @@ public class ViewBikeController implements Initializable {
 			lbBikeStatus.setStyle("-fx-text-fill: red;");
 		}
 		
+	}
+	
+	public void checkRentAvailable() {
+		if(Contants.getRentingBike(HomeController.currentUser.customerID).rentID != 0) {
+			showMessage(Configs.CUSTOMER_IS_RENTING);
+			return;
+		}
+		if(!"available".equals(Contants.getBikeInfomation(bike.id).status)) {
+			showMessage(Configs.BIKE_IS_RENTING);
+			return;
+		}
+		showPaymentForm();
+	}
+	
+	public void showMessage(String mess) {
+		Alert dialog = new Alert(AlertType.ERROR);
+		dialog.setTitle(Configs.TITLE_FOR_ALERT);
+		dialog.setHeaderText(mess);
+		dialog.showAndWait();
 	}
 	
 	public void showPaymentForm() {

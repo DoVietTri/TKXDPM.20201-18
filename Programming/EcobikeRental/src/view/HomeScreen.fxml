@@ -20,7 +20,7 @@
                      </font>
                   </Label>
                   <Button fx:id="btnRentBike" layoutX="580.0" layoutY="358.0" mnemonicParsing="false" text="Thuê xe" />
-                  <Button fx:id="btnReturnBike" layoutX="396.0" layoutY="358.0" mnemonicParsing="false" text="Trả xe" />
+                  <Button fx:id="btnReturnBike" layoutX="449.0" layoutY="358.0" mnemonicParsing="false" text="Trả xe" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="544.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/bike1.jpg" />
@@ -105,6 +105,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
+                  <Button fx:id="btnRefresh" layoutX="322.0" layoutY="358.0" mnemonicParsing="false" text="Làm mới" />
                </children>
             </Pane>
          </children></Pane>

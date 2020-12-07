@@ -91,6 +91,8 @@ public class PaymentFormController implements Initializable {
 			System.out.print("Code: " + code);
 			if("00".equals(code)) {
 				createRent();
+				updateBike();
+				showMessage("Thành công");
 			}
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
@@ -99,20 +101,20 @@ public class PaymentFormController implements Initializable {
 
 	}
 	
+	public void updateView() {
+		showMessage("Thành công");
+	}
+	
 	public void updateBike() {
-		
+		Contants.updateBike(bike.id, "renting");
 	}
 	
 	public void createRent() {
-		try {
-			if (Contants.rentBike(current, bike.id, HomeController.currentUser.customerID)) showMessage("Thêm thành công");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		};
+		Contants.rentBike(current, bike.id, HomeController.currentUser.customerID);
+	}
+	
+	public void createTransaction(int depositMoney) {
+		Contants.createTransaction("deposit", "Deposit rent bike " + bike.id, 0, depositMoney, 1);
 	}
 	
 	public boolean checkBlankField() {

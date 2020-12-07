@@ -34,7 +34,7 @@ import ultilities.Contants;
 public class HomeController implements Initializable {
 
 	@FXML
-	Button btnRentBike, btnReturnBike;
+	Button btnRentBike, btnReturnBike, btnRefresh;
 	
 	@FXML
 	Label lbMessage,lbTitle, lbBikeCode, lbBikeBattery, lbBikePrice, lbTotalTime, lbTimeStart, lbTotalMoney;
@@ -57,31 +57,18 @@ public class HomeController implements Initializable {
 		btnReturnBike.setOnMouseClicked(e -> {
 			viewListStation();
 		});
-	}
-		
-	
-	
-	public void addControll() {
-		
+		btnRefresh.setOnMouseClicked(e -> {
+			getRentingInfo();
+		});
 	}
 	
 	public void getRentingInfo() {
-		try {
-			 rent.setRent(Contants.getRentingBike(currentUser.customerID));
-			if (rent.rentID != 0) {
-				bike.setBike(Contants.getBikeInfomation(rent.bikeID));
-				updateView();
-			} else {
-				clearView();
-			}
-
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		rent.setRent(Contants.getRentingBike(currentUser.customerID));
+		if (rent.rentID != 0) {
+			bike.setBike(Contants.getBikeInfomation(rent.bikeID));
+			updateView();
+		} else {
+			clearView();
 		}
 	}
 	

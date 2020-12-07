@@ -162,21 +162,13 @@ public class ViewStationController  implements Initializable{
 		if (txtBikeCode.getText().isEmpty()) return ;
 		else {
 			int id = Integer.parseInt(txtBikeCode.getText());
-			try {
-				int bikeID = Contants.getBikeInfomation(id).id;
-				if (bikeID != 0) {
-					Contants.bikeSelected.setId(bikeID);;
-					showBikeInfo(); 
-				}
-				else {
-					showMessage("Không tìm thấy xe trong bãi xe này !");
-				}
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			int bikeID = Contants.getBikeInfomation(id).id;
+			if (bikeID != 0) {
+				Contants.bikeSelected.setId(bikeID);;
+				showBikeInfo(); 
+			}
+			else {
+				showMessage("Không tìm thấy xe trong bãi xe này !");
 			}
 		}
 	}

@@ -70,15 +70,7 @@ public class Bike {
 	}
 
 	public void getBikeInfo() {
-		try {
-			this.setBike(Contants.getBikeInfomation(this.getId()));
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.setBike(Contants.getBikeInfomation(this.getId()));
 	}
 
 	public int getPrice() {
