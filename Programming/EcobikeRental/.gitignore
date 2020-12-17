@@ -1,0 +1,6 @@
+/bin
+/.metadata
+.project
+/.settings
+.classpath
+build.fxbuild
