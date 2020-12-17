@@ -37,5 +37,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/phuongle/Downloads/sqljdbc42.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/HTTP"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFx"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jdbc"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Json"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
