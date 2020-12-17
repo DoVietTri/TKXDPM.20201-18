@@ -73,7 +73,7 @@ public class ReturnBikeController implements Initializable {
 	
 	public void showMessage(String mess) {
 		Alert dialog = new Alert(AlertType.ERROR);
-		dialog.setTitle("Thông báo");
+		dialog.setTitle("Thï¿½ng bï¿½o");
 		dialog.setHeaderText(mess);
 		dialog.showAndWait();
 	}

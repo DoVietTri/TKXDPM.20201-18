@@ -18,6 +18,10 @@ class BikeTest {
 		
 	}
 	
+	/**
+	 * Test a bike exists in database
+	 * Test pass if exists bike has id
+	 */
 	@Test
 	void getBikeByIdExistTest() {
 		Bike bike;
@@ -25,6 +29,10 @@ class BikeTest {
 		Assert.assertTrue(bike.getId() != 0);
 	}
 	
+	/**
+	 * Test a bike not exists in database
+	 * Test pass if not exists bike has id
+	 */
 	@Test
 	void getBikeByIdNotExistTest()
 	{
@@ -33,6 +41,10 @@ class BikeTest {
 		Assert.assertTrue(bike.getId() == 0);
 	}
 	
+	/**
+	 * Test get all bike in station exists in database 
+	 * Test pass if exists station has id
+	 */
 	@Test
 	void getListAllBikeInStationExistTest()
 	{
@@ -50,6 +62,10 @@ class BikeTest {
 		Assert.assertTrue(bikes.size() > 0);
 	}
 	
+	/**
+	 * Test get all bike in station not exists in database
+	 * Test pass if not exists station has id
+	 */
 	@Test
 	void getListAllBikeInStationNotExistTest()
 	{
