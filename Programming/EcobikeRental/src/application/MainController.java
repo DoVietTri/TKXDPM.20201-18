@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import ultilities.Contants;
 
 public class MainController implements Initializable {
 
@@ -26,9 +28,9 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		addEvents();
-	
+		connectDB();
 		showHomeScreen();
-	
+		
 		
 	}
 	
@@ -41,11 +43,22 @@ public class MainController implements Initializable {
 			showListStationScreen();
 		});
 		
-		
 	}
 	
 	public void addControll() {
 		
+	}
+	
+	public void connectDB() {
+		try {
+			Contants.conn = Contants.getSQLServerConnection();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void showHomeScreen() {

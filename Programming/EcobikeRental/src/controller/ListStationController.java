@@ -46,8 +46,11 @@ public class ListStationController implements Initializable {
 	
 	public void addEvents() {
 		btnViewStation.setOnMouseClicked(e -> {
+			if(tbvStation.getSelectionModel().getSelectedItem() != null) {
+				Contants.stationIDSelected = tbvStation.getSelectionModel().getSelectedItem().stationID;
+				viewStation();
+			}
 			
-		//	viewStation();
 		});
 		btnBack.setOnMouseClicked(e -> {
 			backToPrevious();
@@ -58,19 +61,13 @@ public class ListStationController implements Initializable {
 			row.setOnMouseClicked(e -> {
 				if (e.getClickCount() == 2 && !(row.isEmpty())) {
 					
-					Contants.stationSelected.setStation(row.getItem());
+					Contants.stationIDSelected = row.getItem().stationID;
 					viewStation();
 				}
 			});
 
 			return row;
 		});
-		
-	}
-		
-	
-	
-	public void addControll() {
 		
 	}
 	
@@ -98,12 +95,10 @@ public class ListStationController implements Initializable {
 	
 	
 	public void viewStation() {
-		//Contants.stationSelected.setStation(s);
 		try {
 			
 		//	FXMLLoader fxmlLoader
 			Parent root = FXMLLoader.load(getClass().getResource("/view/ViewStation.fxml"));
-			//Parent root = (Parent) fxmlLoader.load();
 	
 			contentView.getChildren().add(root);
 	} 	 catch (IOException e) {
@@ -115,7 +110,7 @@ public class ListStationController implements Initializable {
 	
 	public void backToPrevious() {
 		int i = contentView.getChildren().size() - 1;
-		if (i >= 0) contentView.getChildren().remove(i);
+		if (i > 0) contentView.getChildren().remove(i);
 	}
 
 }

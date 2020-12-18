@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -24,6 +23,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Bike;
 import model.Card;
+import model.Rent;
 import ultilities.Configs;
 import ultilities.Contants;
 import ultilities.InterbankService;
@@ -48,7 +48,7 @@ public class PaymentFormController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		bike.setBike(Contants.bikeSelected);
+		bike.setBikeFromID(Contants.bikeIDSelected);
 		addEvents();
 		setupTextField();
 		
@@ -73,11 +73,17 @@ public class PaymentFormController implements Initializable {
 			card.expirationDate = txtCardExpirationDate.getText();
 			card.securityCode = txtCardCVV.getText();
 			card.issuingBank = txtCardBank.getText();
-			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
-			LocalDateTime now = LocalDateTime.now();
-			String dateTimeNow = dtf.format(now);
-			current = Time.valueOf(dateTimeNow);
-			rentBike();
+
+			current = Contants.getCurrentTime();
+			
+			bike.createRent(current, Contants.currentUserID);
+			Contants.currentRentID = HomeController.currentUser.getRentingBike().rentID;
+			Rent rent = new Rent(Contants.currentRentID);
+			rent.createTransaction("deposit", "Deposit rent bike" , bike.getDepositMoney());
+			
+			updateBike();
+			
+			showMessage(Configs.MESSAGE_SUCCESS);
 		} else {
 			showMessage("Hãy nhập đầy đủ thông tin !");
 		}
@@ -106,15 +112,11 @@ public class PaymentFormController implements Initializable {
 	}
 	
 	public void updateBike() {
-		Contants.updateBike(bike.id, "renting");
+		bike.updateBike("renting", bike.stationID);
 	}
 	
 	public void createRent() {
-		Contants.rentBike(current, bike.id, HomeController.currentUser.customerID);
-	}
-	
-	public void createTransaction(int depositMoney) {
-		Contants.createTransaction("deposit", "Deposit rent bike " + bike.id, 0, depositMoney, 1);
+		
 	}
 	
 	public boolean checkBlankField() {
@@ -133,7 +135,6 @@ public class PaymentFormController implements Initializable {
 		dialog.showAndWait();
 	}
 	
-	
 	public void clearTextField() {
 		txtCardHolderName.setText("");
 		txtCardNumber.setText("");
@@ -144,16 +145,9 @@ public class PaymentFormController implements Initializable {
 	}
 	
 	public void setupTextField() {
-		try {
-			card = new Card();
-			card.setCard(Contants.getCustomerCard());
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		card = new Card();
+		card.setCardFromCardNumber(Contants.cardSelected.cardHolderName);
+		
 		lbMoney.setText("" + Contants.getDepositMoney(bike.getType()));
 		txtCardHolderName.setText("" + card.cardHolderName);
 		txtCardNumber.setText("" + card.cardNumber);

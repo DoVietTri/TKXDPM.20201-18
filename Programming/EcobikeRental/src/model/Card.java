@@ -1,5 +1,11 @@
 package model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import ultilities.Contants;
+
 public class Card {
 
 	public int cardID;
@@ -31,6 +37,25 @@ public class Card {
 		this.expirationDate = c.expirationDate;
 		this.securityCode = c.securityCode;
 		this.issuingBank = c.issuingBank;
+	}
+	
+	public void setCardFromCardNumber(String cardNumber) {
+		try {
+			String select1 = "SELECT * FROM Card WHERE cardNumber = \'" + cardNumber +"\'";
+			Statement stmt = Contants.conn.createStatement();
+			ResultSet rs = stmt.executeQuery(select1);
+			while(rs.next()) {
+				this.cardID = rs.getInt(1);
+				this.cardHolderName = rs.getString(2);
+				this.cardNumber = rs.getString(3);
+				this.expirationDate = rs.getString(5);
+				this.securityCode = rs.getString(6);
+				this.issuingBank = rs.getString(7);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public int getCardID() {

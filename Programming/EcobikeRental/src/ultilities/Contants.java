@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import controller.HomeController;
@@ -22,14 +24,15 @@ public final class Contants {
 	
 	public static int currentUserID = 20173410;
 	public static int currentRentID = 0;
-	public static Station stationSelected = new Station();
-	public static Bike bikeSelected = new Bike();
+	public static int stationIDSelected = 0;
+	public static int bikeIDSelected = 0;
 	public static Card cardSelected = new Card();
+	public static Connection conn;
 	
 	public static Connection getSQLServerConnection() throws ClassNotFoundException, SQLException {
 
 		 String dbURL = "jdbc:sqlserver://localhost;databaseName=EcoBikeRentalDatabase;user=group18;password=123456";
-		    Connection conn = DriverManager.getConnection(dbURL);
+		 Connection conn = DriverManager.getConnection(dbURL);
 	 
 	     return conn;
 	 }
@@ -57,193 +60,25 @@ public final class Contants {
 		return list;
 	}
 	
-	public static ArrayList<Bike> getAllBikes(int stationId) throws ClassNotFoundException, SQLException {
-		Connection conn = getSQLServerConnection();
-		ArrayList<Bike> list = new ArrayList<Bike>();
-		String sel = "SELECT * FROM Bike WHERE stationID = \'" + stationId +"\'";
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery(sel);
 	
-		while(rs.next()) {
-			int id = rs.getInt(1);
-			String type = rs.getString(2);
-			String desc = rs.getString(3);
-			int price = rs.getInt(4);
-			String name = rs.getString(5);
-			String status = rs.getString(6);
-			int battery = rs.getInt(7);
-			int stationID = rs.getInt(8);
-			
-			Bike st = new Bike(id, battery, stationID, price, name, status, type, desc) ;
-			list.add(st);
-		}
-		return list;
+	
+	public static Time getCurrentTime() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+		String dateTimeNow = dtf.format(now);
+		return Time.valueOf(dateTimeNow);
 	}
 	
-	public static Rent getRentingBike(int customerID ){
-		Connection conn;
-		try {
-			conn = getSQLServerConnection();
-			String select1 = "SELECT * FROM Rent WHERE customerID = " + customerID +" AND status=\'renting\'";
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(select1);
-			while(rs.next()) {
-				int rentID = rs.getInt(1);
-				String status = rs.getString(2);
-				Time timeStart = rs.getTime(3);
-				int bikeID = rs.getInt(6);
-		
-				return new Rent(rentID,status, customerID, bikeID, timeStart);
-			} 
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
-		
-		return new Rent();
+	public static int calculateTotalTime(Time timeStart) {
+		Time current = getCurrentTime();
+		return (int) ((current.getTime() -timeStart.getTime())/60000);
 	}
 	
-	public static Bike getBikeInfomation(int bikeID) {
-		
-		Connection conn;
-		try {
-			conn = getSQLServerConnection();
-			String select1 = "SELECT * FROM Bike WHERE bikeID = \'" + bikeID +"\'";
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(select1);
-
-			while(rs.next()) {
-				String type = rs.getString(2);
-				String description = rs.getString(3);
-				int price = rs.getInt(4);
-				String name = rs.getString(5);
-				String status = rs.getString(6);
-				int battery = rs.getInt(7);
-				int stationID = rs.getInt(8);
-				return new Bike(bikeID, battery, stationID, price, name, status, type, description);
-			} 
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		
-		return  new Bike();
-	}
-	
-	public static Card getCustomerCard() throws ClassNotFoundException, SQLException {
-		Connection conn = getSQLServerConnection();
-		String select1 = "SELECT * FROM Card WHERE cardNumber = \'118609_group18_2020\'";
-				// + HomeController.currentUser.getCard().getCardID();
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery(select1);
-		while(rs.next()) {
-			int cardID = rs.getInt(1);
-			String cardHolderName = rs.getString(2);
-			String cardNumber = rs.getString(3);
-			String expirationDate = rs.getString(5);
-			String securityCode = rs.getString(6);
-			String issuingBank = rs.getString(7);
-			Card card = new Card(cardID, cardHolderName, cardNumber, "", expirationDate, securityCode, issuingBank);
-			return card;
-		} 
-		return new Card();
-	}
-	
-	public static boolean updateBike(int bikeID, String status)  {
-		Connection conn;
-		try {
-			conn = getSQLServerConnection();
-			String upd = "UPDATE Bike SET status = \'" + status + "\' WHERE bikeID = \'" + bikeID + "\'" ;
-			Statement stmt = conn.createStatement();
-			return stmt.execute(upd);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
-	}
-	
-	public static boolean rentBike(Time timeStart, int bikeID, int customerID)  {
-		Connection conn;
-		try {
-			conn = getSQLServerConnection();
-			String ins = "INSERT INTO Rent(status, timeStart, bikeID, customerID) VALUES(?,?,?,?) ";
-			PreparedStatement stm = conn.prepareStatement(ins);
-			stm.setString(1, "renting");
-			stm.setTime(2, timeStart);
-			stm.setInt(3, bikeID);
-			stm.setInt(4, customerID);
-			return stm.execute();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
-	}
-	
-	public static boolean returnBike(int rentID, Time timeEnd, int totalTimeRent) {
-		Connection conn;
-		try {
-			conn = getSQLServerConnection();
-			String ins = "UPDATE Rent SET status = ?, timeEnd = ?, totalTimeRent = ? WHERE RentID = ?";
-			PreparedStatement stm = conn.prepareStatement(ins);
-			stm.setString(1, "done");
-			stm.setTime(2, timeEnd);
-			stm.setInt(3, totalTimeRent);
-			stm.setInt(4, rentID);
-			return stm.execute();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
-	}
-	
-	public static boolean createTransaction(String code, String transactionName,int totalTimeRent, int totalMoney, int rentID) {
-		Connection conn;
-		try {
-			conn = getSQLServerConnection();
-			String ins = "INSERT INTO Transaction(code, transactionName, totalTimeRent, totalMoney, rentID) VALUES(?,?,?,?,?)";
-			PreparedStatement stm = conn.prepareStatement(ins);
-			stm.setString(1, code);
-			stm.setString(2, transactionName);
-			stm.setInt(3, totalTimeRent);
-			stm.setInt(4, totalMoney);
-			stm.setInt(5, rentID);
-			return stm.execute();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
-	}
-	
-	
-	public static long calculateMoney(int price, long totalTime) {
+	public static int calculateMoney(int price, int totalTime) {
 		if (totalTime <= 30) {
 			return 10000;
 		} else {
-			long total = 10000;
+			int total = 10000;
 			totalTime -= 30;
 			total += price*(totalTime/15);
 			totalTime -= 15*(totalTime/15);

@@ -58,6 +58,7 @@ public class ViewStationController  implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		
 		getStationInfo();
 		getAllBikes();
 		addEvents();
@@ -68,7 +69,11 @@ public class ViewStationController  implements Initializable{
 	public void addEvents() {
 		
 		btnViewBike.setOnMouseClicked(e -> {
-			showBikeInfo();
+			if(tbvListBike.getSelectionModel().getSelectedItem() != null) {
+				Contants.bikeIDSelected = tbvListBike.getSelectionModel().getSelectedItem().id;
+				showBikeInfo();
+			}
+			
 		});
 		
 		btnReturnBike.setOnMouseClicked(e -> {
@@ -86,7 +91,7 @@ public class ViewStationController  implements Initializable{
 			row.setOnMouseClicked(e -> {
 				if (e.getClickCount() == 2 && !(row.isEmpty())) {
 					
-					Contants.bikeSelected.setBike(row.getItem());
+					Contants.bikeIDSelected = row.getItem().id;
 					showBikeInfo();;
 					
 				}
@@ -107,13 +112,13 @@ public class ViewStationController  implements Initializable{
 	}
 	
 	public void getStationInfo() {
+		station.setStationFromID(Contants.stationIDSelected);
 		
-		lbStationID.setText("" + Contants.stationSelected.stationID);
-		lbStationName.setText(Contants.stationSelected.getName());
-		lbStationAddress.setText(Contants.stationSelected.address);
-		lbStationTotalBike.setText("" + Contants.stationSelected.totalBike);
-		lbStationAvailable.setText("" + Contants.stationSelected.available);
-		
+		lbStationID.setText("" + station.stationID);
+		lbStationName.setText(station.getName());
+		lbStationAddress.setText(station.address);
+		lbStationTotalBike.setText("" + station.totalBike);
+		lbStationAvailable.setText("" + station.available);
 	}
 	
 	public void getAllBikes() {
@@ -121,7 +126,7 @@ public class ViewStationController  implements Initializable{
 		listBike = FXCollections.observableArrayList();
 		try {
 			
-			listBike.addAll(Contants.getAllBikes(Contants.stationSelected.stationID));
+			listBike.addAll(station.getAllBikes());
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			
@@ -188,9 +193,9 @@ public class ViewStationController  implements Initializable{
 		if (txtBikeCode.getText().isEmpty()) return ;
 		else {
 			int id = Integer.parseInt(txtBikeCode.getText());
-			int bikeID = Contants.getBikeInfomation(id).id;
+			int bikeID = station.getBikeByID(id).id;
 			if (bikeID != 0) {
-				Contants.bikeSelected.setId(bikeID);;
+				Contants.bikeIDSelected = bikeID;
 				showBikeInfo(); 
 			}
 			else {

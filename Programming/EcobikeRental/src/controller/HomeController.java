@@ -63,10 +63,10 @@ public class HomeController implements Initializable {
 	}
 	
 	public void getRentingInfo() {
-		rent.setRent(Contants.getRentingBike(currentUser.customerID));
+		rent.setRent(currentUser.getRentingBike());
 		Contants.currentRentID = rent.rentID;
 		if (rent.rentID != 0) {
-			bike.setBike(Contants.getBikeInfomation(rent.bikeID));
+			bike.setBikeFromID(rent.bikeID);
 			updateView();
 		} else {
 			clearView();
@@ -93,7 +93,7 @@ public class HomeController implements Initializable {
 		
 		Time time = rent.timeStart;
 		Time time2 = Time.valueOf(timeNow);
-		long totalTimeRent = (time2.getTime() - time.getTime())/60000;
+		int totalTimeRent = (int) ((time2.getTime() - time.getTime())/60000);
 		lbTotalTime.setText("" + totalTimeRent + " phút");
 		lbTotalMoney.setText("" + Contants.toString(Contants.calculateMoney(bike.getPrice() , totalTimeRent)) + " VNĐ");
 		

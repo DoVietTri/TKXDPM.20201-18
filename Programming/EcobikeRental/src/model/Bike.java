@@ -1,6 +1,11 @@
 package model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Time;
 
 import ultilities.Contants;
 
@@ -16,8 +21,6 @@ public class Bike {
 	public Bike() {
 		this.id = 0;
 	}
-
-	
 	
 	public Bike(int id, int battery, int stationID, int price, String name, String status, String type,
 			String description) {
@@ -32,6 +35,76 @@ public class Bike {
 		this.description = description;
 	}
 
+	public void  setBikeFromID(int bikeID) {
+		try {
+			String select1 = "SELECT * FROM Bike WHERE bikeID = " + bikeID;
+			Statement stmt = Contants.conn.createStatement();
+			ResultSet rs = stmt.executeQuery(select1);
+
+			while(rs.next()) {
+				this.id = bikeID;
+				this.type = rs.getString(2);
+				this.description = rs.getString(3);
+				this.price = rs.getInt(4);
+				this.name = rs.getString(5);
+				this.status = rs.getString(6);
+				this.battery = rs.getInt(7);
+				this.stationID = rs.getInt(8);
+			} 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public boolean updateBike(String status, int stationID)  {
+		try {
+			String upd = "UPDATE Bike SET stationID = " + stationID + ", status = \'" + status + "\' WHERE bikeID = " + this.id;
+			Statement stmt = Contants.conn.createStatement();
+			return stmt.execute(upd);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean createRent(Time timeStart, int customerID)  {
+
+		try {
+			
+			String ins = "INSERT INTO Rent(status, timeStart, bikeID, customerID) VALUES(?,?,?,?) ";
+			PreparedStatement stm = Contants.conn.prepareStatement(ins);
+			stm.setString(1, "renting");
+			stm.setTime(2, timeStart);
+			stm.setInt(3, this.id);
+			stm.setInt(4, customerID);
+			return stm.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public  int getDepositMoney() {
+		switch (this.type) {
+		case "1": {
+			return 100000;
+		}
+		case "2": {
+
+			return 200000;
+		}
+		case "3": {
+
+			return 300000;
+		}
+		default:
+			return 100000;
+		}
+
+	}
 	
 	
 	public int getBattery() {
@@ -69,9 +142,6 @@ public class Bike {
 		this.stationID = b.stationID;
 	}
 
-	public void getBikeInfo() {
-		this.setBike(Contants.getBikeInfomation(this.getId()));
-	}
 
 	public int getPrice() {
 		return price;

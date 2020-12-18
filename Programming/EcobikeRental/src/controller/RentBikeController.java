@@ -24,13 +24,13 @@ public class RentBikeController implements Initializable {
 	Label lbCardNumber, lbCardHolderName, lbMoney;
 	
 	Card card = new Card();
-	Bike Bike = new Bike();
+	Bike bike = new Bike();
 	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		card.setCard(Contants.cardSelected);
-		Bike.setBike(Contants.bikeSelected);
+		bike.setBikeFromID(Contants.bikeIDSelected);
 		showTransactionInfo();
 		addEvents();
 	}

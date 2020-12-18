@@ -38,7 +38,7 @@ public class ViewBikeController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		bike.setBike(Contants.bikeSelected);
+		bike.setBikeFromID(Contants.bikeIDSelected);;
 		addEvents();
 		showBikeInfo();
 		
@@ -59,7 +59,7 @@ public class ViewBikeController implements Initializable {
 	}
 	
 	public void showBikeInfo() {
-		bike.setBike(Contants.getBikeInfomation(Contants.bikeSelected.id));
+		bike.setBikeFromID(Contants.bikeIDSelected);;
 		String type = bike.getType();
 		Image img = new Image("/resources/bike"+ type +".jpg");
 		
@@ -86,11 +86,11 @@ public class ViewBikeController implements Initializable {
 	}
 	
 	public void checkRentAvailable() {
-		if(Contants.getRentingBike(HomeController.currentUser.customerID).rentID != 0) {
+		if(HomeController.currentUser.getRentingBike().rentID != 0) {
 			showMessage(Configs.CUSTOMER_IS_RENTING);
 			return;
 		}
-		if(!"available".equals(Contants.getBikeInfomation(bike.id).status)) {
+		if(!"available".equals(bike.status)) {
 			showMessage(Configs.BIKE_IS_RENTING);
 			return;
 		}
