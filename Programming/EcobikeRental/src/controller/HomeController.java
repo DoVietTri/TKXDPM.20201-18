@@ -42,7 +42,7 @@ public class HomeController implements Initializable {
 	public Rent rent = new Rent();
 	public Bike bike = new Bike();
 	
-	public static Customer currentUser = new Customer(20173410, "118609_group18_2020", 1, "Tran Van Tri");
+	public static Customer currentUser = new Customer(20173410, "118609_group18_2020", 1, "Group 18");
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -64,6 +64,7 @@ public class HomeController implements Initializable {
 	
 	public void getRentingInfo() {
 		rent.setRent(Contants.getRentingBike(currentUser.customerID));
+		Contants.currentRentID = rent.rentID;
 		if (rent.rentID != 0) {
 			bike.setBike(Contants.getBikeInfomation(rent.bikeID));
 			updateView();
@@ -74,7 +75,7 @@ public class HomeController implements Initializable {
 	
 	public void updateView() {
 		// message
-		lbMessage.setText("Bạn đang thuê xe có ID " + bike.getId() );
+		lbMessage.setText("Bạn đang thuê xe có code " + bike.getId() );
 		
 		// user
 		lbTitle.setText("" + currentUser.getCustomerName());
@@ -117,7 +118,11 @@ public class HomeController implements Initializable {
 		lbBikeCode.setText("");
 		lbBikeBattery.setText("");
 		lbBikePrice.setText("");
-				
+		
+		//money
+		lbTotalTime.setText("0");
+		lbTotalMoney.setText("0");
+		
 		//rent
 		lbTimeStart.setText("");
 		

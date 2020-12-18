@@ -24,7 +24,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Bike;
 import model.Card;
-
+import ultilities.Configs;
 import ultilities.Contants;
 import ultilities.InterbankService;
 
@@ -92,7 +92,7 @@ public class PaymentFormController implements Initializable {
 			if("00".equals(code)) {
 				createRent();
 				updateBike();
-				showMessage("Thành công");
+				showMessage(Configs.MESSAGE_SUCCESS);
 			}
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
@@ -102,7 +102,7 @@ public class PaymentFormController implements Initializable {
 	}
 	
 	public void updateView() {
-		showMessage("Thành công");
+		showMessage(Configs.MESSAGE_SUCCESS);
 	}
 	
 	public void updateBike() {
@@ -128,7 +128,7 @@ public class PaymentFormController implements Initializable {
 	
 	public void showMessage(String mess) {
 		Alert dialog = new Alert(AlertType.ERROR);
-		dialog.setTitle("Thông báo");
+		dialog.setTitle(Configs.TITLE_FOR_ALERT);
 		dialog.setHeaderText(mess);
 		dialog.showAndWait();
 	}
@@ -140,7 +140,7 @@ public class PaymentFormController implements Initializable {
 		txtCardBank.setText("");
 		txtCardExpirationDate.setText("");
 		txtCardCVV.setText("");
-		txtContent.setText(HomeController.currentUser.customerName + " thue xe " + Contants.bikeSelected.getId());
+		txtContent.setText(HomeController.currentUser.customerName + " thue xe " + bike.getId());
 	}
 	
 	public void setupTextField() {
@@ -154,13 +154,13 @@ public class PaymentFormController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		lbMoney.setText("" + Contants.getDepositMoney(Contants.bikeSelected.type));
+		lbMoney.setText("" + Contants.getDepositMoney(bike.getType()));
 		txtCardHolderName.setText("" + card.cardHolderName);
 		txtCardNumber.setText("" + card.cardNumber);
 		txtCardBank.setText("" + card.issuingBank);
 		txtCardExpirationDate.setText("" + card.expirationDate);
 		txtCardCVV.setText("");
-		txtContent.setText(HomeController.currentUser.customerName + " thue xe " + Contants.bikeSelected.getId());
+		txtContent.setText(HomeController.currentUser.customerName + " thue xe " + bike.getId());
 	}
 
 }

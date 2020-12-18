@@ -20,6 +20,8 @@ import model.Station;
 public final class Contants {
 	public Contants() {}
 	
+	public static int currentUserID = 20173410;
+	public static int currentRentID = 0;
 	public static Station stationSelected = new Station();
 	public static Bike bikeSelected = new Bike();
 	public static Card cardSelected = new Card();

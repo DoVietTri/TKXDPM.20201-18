@@ -48,14 +48,9 @@ public class ReturnBikeController implements Initializable {
 	}
 	
 	public void submitReturnBike() {
-		
-		
-		try {
-			InterbankService.processTransaction(card, "pay", 1000);
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		updateBike();
+		updateRent(null, totalMoney);
+		createTransaction(totalMoney, totalMoney, totalMoney);
 	}
 	
 	public void updateBike() {

@@ -72,7 +72,7 @@ public class ViewStationController  implements Initializable{
 		});
 		
 		btnReturnBike.setOnMouseClicked(e -> {
-			
+			checkBikeRenting();
 		});
 		
 		
@@ -157,6 +157,32 @@ public class ViewStationController  implements Initializable{
 		}
 
 	}
+	public void checkBikeRenting() {
+		if(Contants.currentRentID != 0) {
+			showReturnBike();
+		} else {
+			showMessage("Bạn chưa thuê xe !");
+		}
+		
+		
+	}
+	
+	public void showReturnBike() {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/view/ReturnBike.fxml"));
+			
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setTitle("Return Bike");
+			stage.initModality(Modality.WINDOW_MODAL);
+			stage.setResizable(false);
+			stage.showAndWait();
+
+	} 	 catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public void searchBike() {
 		if (txtBikeCode.getText().isEmpty()) return ;
@@ -168,7 +194,7 @@ public class ViewStationController  implements Initializable{
 				showBikeInfo(); 
 			}
 			else {
-				showMessage("Không tìm thấy xe trong bãi xe này !");
+				showMessage("Không tìm thấy xe !");
 			}
 		}
 	}
