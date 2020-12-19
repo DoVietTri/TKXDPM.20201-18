@@ -33,7 +33,7 @@ import ultilities.Contants;
 
 public class ViewStationController  implements Initializable{
 	@FXML
-	Button btnReturnBike, btnViewBike, btnSearch;
+	Button btnReturnBike, btnViewBike, btnSearch, btnRefresh;
 	
 	@FXML
 	TableView<Bike> tbvListBike;
@@ -80,6 +80,9 @@ public class ViewStationController  implements Initializable{
 			checkBikeRenting();
 		});
 		
+		btnRefresh.setOnMouseClicked(e -> {
+			getAllBikes();
+		});
 		
 		btnSearch.setOnMouseClicked(e -> {
 			searchBike();

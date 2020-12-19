@@ -194,17 +194,17 @@ public class InterbankService {
 		return statusCode;
 	}
 	
-//	public static void main(String args[]) {
-//		Card card = new Card(123, "Group 18", "118609_group18_2020", "Group 18 thue xe", "1125", "390", "VTB");
-//		String code;
-//		try {
-//			code = InterbankService.processTransaction(card, "pay", 10000);
-//			System.out.print("Code: " + code);
-//		} catch (UnsupportedEncodingException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
+	public static void main(String args[]) {
+		Card card = new Card(123, "Group 18", "118609_group18_2020", "Group 18 thue xe", "1125", "390", "VTB");
+		String code;
+		try {
+			code = InterbankService.processTransaction(card, "pay", 10000);
+			System.out.print("Code: " + code);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 }

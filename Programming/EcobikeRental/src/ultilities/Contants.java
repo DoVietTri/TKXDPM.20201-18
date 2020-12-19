@@ -106,24 +106,18 @@ public final class Contants {
 		return rs;
 	}
 	
-	public static int getDepositMoney(String type) {
-		switch (type) {
-		case "1": {
-
-			return 100000;
+	public static String response(String res) {
+		switch(res) {
+		case "00" : return "Thành công";
+		case "01" : return "Thẻ không hợp lí, hãy dùng thẻ khác";
+		case "02" : return "Thẻ không đủ số dư";	
+		case "03" : return "Server hiện tại đang bảo trì, hãy thử lại sau";	
+		case "04" : return "Bạn không thể thanh toán trên thiết bị này, hãy thử lại sau";	
+		case "05" : return "Bạn cần nhập đầy đủ các thông tin giao dịch";
+		case "06" : return Configs.SOME_ERROR_OCCUR;
+		case "07" : return Configs.SOME_ERROR_OCCUR;
 		}
-		case "2": {
-
-			return 200000;
-		}
-		case "3": {
-
-			return 300000;
-		}
-		default:
-			return 100000;
-		}
-
+		return Configs.SOME_ERROR_OCCUR;
 	}
 	
 }

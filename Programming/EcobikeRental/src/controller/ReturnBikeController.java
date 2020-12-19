@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import model.Bike;
 import model.Card;
 import model.Rent;
+import ultilities.Configs;
 import ultilities.Contants;
 import ultilities.InterbankService;
 
@@ -35,7 +36,7 @@ public class ReturnBikeController implements Initializable {
 	
 	int totalTimeRent = 0;
 	int totalMoney = 0;
-	
+	int depositMoney = 0;
 	Time current;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -76,7 +77,7 @@ public class ReturnBikeController implements Initializable {
 		lbTimeStart.setText("" + rent.timeStart);
 		totalTimeRent = Contants.calculateTotalTime(rent.timeStart);
 		lbTotalTime.setText("" + totalTimeRent);
-		int depositMoney = bike.getDepositMoney();
+		depositMoney = bike.getDepositMoney();
 		lbDepositMoney.setText("" + depositMoney);
 		totalMoney = Contants.calculateMoney(bike.price, totalTimeRent);
 		lbTotalMoneyRent.setText("" + totalMoney);
@@ -84,6 +85,7 @@ public class ReturnBikeController implements Initializable {
 		if(depositMoney > totalMoney) {
 			lbMessage.setText("Số tiền bạn được hoàn lại: ");
 			lbTotalMoney.setText("" + (depositMoney-totalMoney));
+			
 		} else {
 			lbMessage.setText("Số tiền bạn cần thanh toán: ");
 			lbTotalMoney.setText("" + (totalMoney-depositMoney));
@@ -96,11 +98,36 @@ public class ReturnBikeController implements Initializable {
 		totalMoney = Contants.calculateMoney(bike.price, totalTimeRent);
 		bike.updateBike("available", Contants.stationIDSelected);
 		
-		rent.updateRent(current, totalTimeRent);
+		
 
-		createTransaction(totalTimeRent, totalMoney, totalMoney);
-		updateRentingBike();
-		showMessage("Trả xe thành công");
+		updateView();
+		
+		if(depositMoney > totalMoney) {
+			returnBike("refund", totalMoney);
+			
+		} else {
+			returnBike("pay", totalMoney);
+		}
+	}
+	
+	public void returnBike( String code, int totalMoney) {
+		String res;
+		try {
+			res = InterbankService.processTransaction(card, code, totalMoney);
+			System.out.print("Code: " + res);
+			if("00".equals(res)) {
+				bike.updateBike("available", Contants.stationIDSelected);
+				rent.updateRent(current, totalTimeRent);
+				Rent rent = new Rent(Contants.currentRentID);
+				rent.createTransaction("return", "Return bike" , totalMoney);
+				updateRentingBike();
+				showMessage(Configs.MESSAGE_SUCCESS);
+			} else {
+				showMessage(Contants.response(res));
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void createTransaction(int totalTimeRent, int totalMoney, int rentID) {

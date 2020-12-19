@@ -19,8 +19,14 @@
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnRentBike" layoutX="580.0" layoutY="358.0" mnemonicParsing="false" text="Thuê xe" />
-                  <Button fx:id="btnReturnBike" layoutX="449.0" layoutY="358.0" mnemonicParsing="false" text="Trả xe" />
+                  <Button fx:id="btnRentBike" layoutX="611.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4b9ab8; -fx-background-radius: 10;" text="Thuê xe" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Button>
+                  <Button fx:id="btnReturnBike" layoutX="480.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4b9ab8; -fx-background-radius: 10;" text="Trả xe" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Button>
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="544.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/bike1.jpg" />
@@ -84,7 +90,7 @@
                         <Image url="@../../../../../../../Downloads/book8.png" />
                      </image>
                   </ImageView>
-                  <Pane layoutX="320.0" layoutY="258.0" prefHeight="83.0" prefWidth="429.0" style="-fx-border-color: orange;">
+                  <Pane layoutX="320.0" layoutY="258.0" prefHeight="83.0" prefWidth="429.0" style="-fx-background-color: #ebeae6; -fx-background-radius: 10;">
                      <children>
                         <Label layoutX="10.0" layoutY="14.0" text="Tổng thời gian" />
                         <Label layoutX="191.0" layoutY="14.0" text="Thành tiền" />
@@ -105,7 +111,10 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnRefresh" layoutX="322.0" layoutY="358.0" mnemonicParsing="false" text="Làm mới" />
+                  <Button fx:id="btnRefresh" layoutX="353.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4b9ab8; -fx-background-radius: 10;" text="Làm mới" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Button>
                </children>
             </Pane>
          </children></Pane>

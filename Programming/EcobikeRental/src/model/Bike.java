@@ -90,18 +90,18 @@ public class Bike {
 	public  int getDepositMoney() {
 		switch (this.type) {
 		case "1": {
-			return 100000;
+			return 400000;
 		}
 		case "2": {
 
-			return 200000;
+			return 700000;
 		}
 		case "3": {
 
-			return 300000;
+			return 550000;
 		}
 		default:
-			return 100000;
+			return 400000;
 		}
 
 	}

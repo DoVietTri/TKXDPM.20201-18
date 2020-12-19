@@ -103,10 +103,6 @@ public class HomeController implements Initializable {
 		
 	}
 	
-	public void calculateMoney() {
-		
-	}
-	
 	public void clearView() {
 		// message
 		lbMessage.setText("Bạn chưa thuê xe !");

@@ -93,7 +93,6 @@ public class ListStationController implements Initializable {
 		tbvStation.refresh();
 	}
 	
-	
 	public void viewStation() {
 		try {
 			

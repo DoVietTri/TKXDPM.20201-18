@@ -7,15 +7,27 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <Pane layoutY="100.0" prefHeight="500.0" prefWidth="120.0" style="-fx-background-color: blue;">
+      <Pane layoutY="100.0" prefHeight="500.0" prefWidth="120.0" style="-fx-background-color: #4b9ab8;">
          <children>
-            <Button fx:id="btnHome" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Trang chủ" />
-            <Button fx:id="btnListStation" layoutY="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Các bãi xe" />
+            <Button fx:id="btnHome" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" text="Trang chủ">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Button>
+            <Button fx:id="btnListStation" layoutY="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #4b9ab8; -fx-border-color: #ffffff; -fx-border-radius: 10; -fx-border-width: 2;" text="Các bãi xe">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Button>
+            <Button fx:id="btnExit" layoutX="-8.0" layoutY="190.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-border-color: red; -fx-border-width: 2; -fx-border-radius: 10;" text="Thoát" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="20.0" layoutY="472.0" text="Version: 1.0.1" />
          </children>
       </Pane>
-      <Pane layoutX="120.0" prefHeight="100.0" prefWidth="780.0" style="-fx-background-color: blue;">
+      <Pane layoutX="120.0" prefHeight="100.0" prefWidth="780.0" style="-fx-background-color: #4b9ab8;">
          <children>
             <Label layoutX="121.0" layoutY="27.0" text="Chào mừng bạn đến với EcoBikeRental" textFill="WHITE">
                <font>
@@ -24,7 +36,10 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="contentView" layoutX="120.0" layoutY="100.0" prefHeight="500.0" prefWidth="780.0" />
-      <ImageView fx:id="imgAva" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+      <Pane fx:id="contentView" layoutX="120.0" layoutY="100.0" prefHeight="500.0" prefWidth="780.0" style="-fx-background-color: #ffffff;" />
+      <ImageView fx:id="imgAva" fitHeight="100.0" fitWidth="120.0" layoutX="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/icon.png" />
+         </image></ImageView>
    </children>
 </AnchorPane>

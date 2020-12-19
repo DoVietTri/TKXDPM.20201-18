@@ -67,7 +67,7 @@ public class ViewBikeController implements Initializable {
 		lbBikeCode.setText("" + bike.getId());
 		lbBikeBattery.setText("" + bike.getBattery());
 		lbBikeName.setText(bike.getName());
-		lbBikeType.setText("" + Contants.getDepositMoney(bike.getType()) );
+		lbBikeType.setText("" + bike.getDepositMoney());
 
 		lbBikeStatus.setText(bike.getStatus());
 		

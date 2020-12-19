@@ -44,6 +44,8 @@ public class PaymentFormController implements Initializable {
 	
 	Card card;
 	Bike bike = new Bike();
+	Rent rent = new Rent();
+	
 	Time current;
 	
 	@Override
@@ -65,7 +67,9 @@ public class PaymentFormController implements Initializable {
 
 		
 	}
-	
+	/**
+	 * 
+	 */
 	public void submitPaymentForm() {
 		if (checkBlankField()) {
 			card.cardHolderName = txtCardHolderName.getText();
@@ -76,12 +80,7 @@ public class PaymentFormController implements Initializable {
 
 			current = Contants.getCurrentTime();
 			
-			bike.createRent(current, Contants.currentUserID);
-			Contants.currentRentID = HomeController.currentUser.getRentingBike().rentID;
-			Rent rent = new Rent(Contants.currentRentID);
-			rent.createTransaction("deposit", "Deposit rent bike" , bike.getDepositMoney());
-			
-			updateBike();
+			rentBike(bike.getDepositMoney());
 			
 			showMessage(Configs.MESSAGE_SUCCESS);
 		} else {
@@ -89,34 +88,30 @@ public class PaymentFormController implements Initializable {
 		}
 	}
 	
-	public void rentBike() {
-		int depositMoney = 10000;
-		String code;
+	public void rentBike(int depositMoney) {
+		String res;
 		try {
-			code = InterbankService.processTransaction(card, "pay", depositMoney);
-			System.out.print("Code: " + code);
-			if("00".equals(code)) {
-				createRent();
-				updateBike();
+			res = InterbankService.processTransaction(card, "pay", depositMoney);
+			System.out.print("Code: " + res);
+			if("00".equals(res)) {
+				bike.updateBike("renting", bike.stationID);
+				bike.createRent(current, Contants.currentUserID);
+				Contants.currentRentID = HomeController.currentUser.getRentingBike().rentID;
+				Rent rent = new Rent(Contants.currentRentID);
+				rent.createTransaction("deposit", "Deposit rent bike" , bike.getDepositMoney());
+				
+				
 				showMessage(Configs.MESSAGE_SUCCESS);
+			} else {
+				showMessage(Contants.response(res));
 			}
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 	
 	public void updateView() {
 		showMessage(Configs.MESSAGE_SUCCESS);
-	}
-	
-	public void updateBike() {
-		bike.updateBike("renting", bike.stationID);
-	}
-	
-	public void createRent() {
-		
 	}
 	
 	public boolean checkBlankField() {
@@ -148,7 +143,7 @@ public class PaymentFormController implements Initializable {
 		card = new Card();
 		card.setCardFromCardNumber(Contants.cardSelected.cardHolderName);
 		
-		lbMoney.setText("" + Contants.getDepositMoney(bike.getType()));
+		lbMoney.setText("" + bike.getDepositMoney());
 		txtCardHolderName.setText("" + card.cardHolderName);
 		txtCardNumber.setText("" + card.cardNumber);
 		txtCardBank.setText("" + card.issuingBank);

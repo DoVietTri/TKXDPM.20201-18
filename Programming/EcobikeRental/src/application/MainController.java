@@ -17,7 +17,7 @@ import ultilities.Contants;
 public class MainController implements Initializable {
 
 	@FXML 
-	Button btnHome, btnListStation;
+	Button btnHome, btnListStation, btnExit;
 	
 	@FXML 
 	ImageView imgAva;
@@ -31,16 +31,25 @@ public class MainController implements Initializable {
 		connectDB();
 		showHomeScreen();
 		
-		
 	}
 	
 	public void addEvents() {
 		btnHome.setOnMouseClicked(e -> {
+			
+			btnHome.setStyle("-fx-background-color:  #ffffff; -fx-background-radius:  10;");
+			
+			btnListStation.setStyle("-fx-background-color:   #4b9ab8; -fx-border-color:  #ffffff; -fx-border-radius:  10; -fx-border-width:  2;");
+
+			
 			showHomeScreen();
 		});
 		
 		btnListStation.setOnMouseClicked(e -> {
+			btnListStation.setStyle("-fx-background-color:  #ffffff; -fx-background-radius:  10;");
+			
+			btnHome.setStyle("-fx-background-color:   #4b9ab8; -fx-border-color:  #ffffff; -fx-border-radius:  10; -fx-border-width:  2;");
 			showListStationScreen();
+			
 		});
 		
 	}
