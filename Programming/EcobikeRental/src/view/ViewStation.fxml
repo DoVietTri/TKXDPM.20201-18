@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -8,102 +9,109 @@
 
 <AnchorPane prefHeight="450.0" prefWidth="780.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewStationController">
    <children>
-      <Pane layoutX="21.0" layoutY="12.0" prefHeight="421.0" prefWidth="234.0" style="-fx-background-color: #ebeae6; -fx-background-radius: 10;">
+      <Pane layoutX="9.0" layoutY="2.0" prefHeight="440.0" prefWidth="265.0" style="-fx-background-color: #ebeae6; -fx-background-radius: 10;">
          <children>
-            <Label layoutX="39.0" layoutY="14.0" text="Chi tiết bãi xe">
+            <Label layoutX="49.0" layoutY="11.0" text="Chi tiết bãi xe">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font></Label>
-            <Button fx:id="btnReturnBike" layoutX="66.0" layoutY="356.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="106.0" style="-fx-background-radius: 10; -fx-background-color: #4b9ab8;" text="Trả xe" textFill="WHITE">
+            <Button fx:id="btnReturnBike" layoutX="82.0" layoutY="373.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="105.0" style="-fx-background-radius: 10; -fx-background-color: #4b9ab8;" text="Trả xe" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="18.0" />
                </font></Button>
-            <Pane layoutX="3.0" layoutY="120.0" prefHeight="2.0" prefWidth="214.0" style="-fx-background-color: #4b9ab8;" />
-            <Label layoutX="5.0" layoutY="44.0" text="Mã số">
+            <Pane layoutX="20.0" layoutY="171.0" prefHeight="2.0" prefWidth="230.0" style="-fx-background-color: #4b9ab8;" />
+            <Label layoutX="20.0" layoutY="144.0" text="Mã số:">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lbStationID" layoutX="120.0" layoutY="46.0" text="1111">
+            <Label fx:id="lbStationID" alignment="CENTER" layoutX="76.0" layoutY="144.0" prefHeight="27.0" prefWidth="174.0" text="1111">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="22.0" layoutY="75.0" text="Bãi xe">
+            <Label layoutX="19.0" layoutY="189.0" text="Tên bãi xe: ">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lbStationName" layoutX="117.0" layoutY="81.0" text="HUST">
+            <Label fx:id="lbStationName" alignment="CENTER" layoutX="110.0" layoutY="189.0" prefHeight="27.0" prefWidth="143.0" text="HUST">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="13.0" layoutY="133.0" text="Địa chỉ">
+            <Label layoutX="17.0" layoutY="319.0" text="Địa chỉ:">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lbStationAddress" layoutX="84.0" layoutY="131.0" text="Số 1 Đại Cồ Việt">
+            <Label fx:id="lbStationAddress" alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="319.0" prefHeight="27.0" prefWidth="165.0" text="Số 1 Đại Cồ Việt">
                <font>
-                  <Font size="21.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="24.0" layoutY="151.0" text="Tổng xe">
+            <Label layoutX="18.0" layoutY="231.0" text="Tổng số xe: ">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lbStationTotalBike" layoutX="126.0" layoutY="151.0" text="10">
+            <Label fx:id="lbStationTotalBike" alignment="CENTER" contentDisplay="CENTER" layoutX="113.0" layoutY="231.0" prefHeight="27.0" prefWidth="134.0" text="10">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="24.0" layoutY="195.0" text="Sẵn có">
+            <Label layoutX="16.0" layoutY="276.0" text="Số xe sẵn có:">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lbStationAvailable" layoutX="134.0" layoutY="195.0" text="10">
+            <Label fx:id="lbStationAvailable" alignment="CENTER" layoutX="122.0" layoutY="275.0" prefHeight="27.0" prefWidth="116.0" text="10">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
+            <Pane layoutX="17.0" layoutY="345.0" prefHeight="2.0" prefWidth="230.0" style="-fx-background-color: #4b9ab8;" />
+            <ImageView fitHeight="80.0" fitWidth="150.0" layoutX="52.0" layoutY="53.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/hust.jpeg" />
+               </image></ImageView>
+            <Pane layoutX="17.0" layoutY="301.0" prefHeight="2.0" prefWidth="230.0" style="-fx-background-color: #4b9ab8;" />
+            <Pane layoutX="18.0" layoutY="257.0" prefHeight="2.0" prefWidth="230.0" style="-fx-background-color: #4b9ab8;" />
          </children>
       </Pane>
-      <Pane layoutX="267.0" layoutY="12.0" prefHeight="421.0" prefWidth="496.0" style="-fx-background-color: #ebeae6; -fx-background-radius: 10;">
+      <Pane layoutX="281.0" layoutY="2.0" prefHeight="440.0" prefWidth="492.0" style="-fx-background-color: #ebeae6; -fx-background-radius: 10;">
          <children>
-            <Label layoutX="22.0" layoutY="9.0" text="Danh sách xe trong bãi">
+            <Label layoutX="22.0" layoutY="10.0" text="Danh sách xe trong bãi">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="22.0" />
                </font></Label>
-            <TableView fx:id="tbvListBike" layoutX="8.0" layoutY="54.0" prefHeight="303.0" prefWidth="483.0">
+            <TableView fx:id="tbvListBike" layoutX="8.0" layoutY="56.0" prefHeight="314.0" prefWidth="477.0" style="-fx-background-color: #ffffff; -fx-border-radius: 10;">
               <columns>
-                <TableColumn fx:id="codeCol" prefWidth="75.0" text="Code" />
-                <TableColumn fx:id="nameCol" prefWidth="139.0" text="Tên xe" />
-                  <TableColumn fx:id="statusCol" prefWidth="102.0" text="Tình trạng" />
-                  <TableColumn fx:id="priceCol" prefWidth="86.0" text="Giá thuê" />
-                  <TableColumn fx:id="batteryCol" prefWidth="76.0" text="\% pin" />
+                <TableColumn fx:id="codeCol" prefWidth="92.33334350585938" text="Code" />
+                <TableColumn fx:id="nameCol" prefWidth="154.33331298828125" text="Tên xe" />
+                  <TableColumn fx:id="statusCol" prefWidth="110.33331298828125" text="Tình trạng" />
+                  <TableColumn fx:id="priceCol" prefWidth="117.0" text="Giá thuê (15p)" />
               </columns>
             </TableView>
-            <Button fx:id="btnViewBike" layoutX="249.0" layoutY="370.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4b9ab8; -fx-background-radius: 10;" text="Xem xe" textFill="WHITE">
+            <Button fx:id="btnViewBike" layoutX="256.0" layoutY="379.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4b9ab8; -fx-background-radius: 10;" text="Xem xe" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-            <TextField fx:id="txtBikeCode" layoutX="303.0" layoutY="12.0" prefHeight="30.0" prefWidth="139.0" promptText="bike code" style="-fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: #4b9ab8; -fx-background-radius: 15;">
+            <TextField fx:id="txtBikeCode" layoutX="279.0" layoutY="11.0" prefHeight="32.0" prefWidth="139.0" promptText="bike code" style="-fx-border-radius: 15; -fx-border-width: 1; -fx-border-color: #4b9ab8; -fx-background-radius: 15;">
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <Button fx:id="btnSearch" layoutX="447.0" layoutY="12.0" maxHeight="35.0" maxWidth="35.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" style="-fx-background-radius: 15; -fx-border-color: #4b9ab8; -fx-border-radius: 15; -fx-border-width: 2; -fx-background-color: #ffffff;">
+            <Button fx:id="btnSearch" layoutX="423.0" layoutY="11.0" maxHeight="35.0" maxWidth="35.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" style="-fx-background-radius: 16; -fx-border-color: #4b9ab8; -fx-border-radius: 16; -fx-border-width: 1; -fx-background-color: #ffffff;">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button fx:id="btnRefresh" layoutX="128.0" layoutY="370.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4b9ab8; -fx-background-radius: 10;" text="Làm mới" textFill="WHITE">
+            <Button fx:id="btnRefresh" layoutX="135.0" layoutY="379.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4b9ab8; -fx-background-radius: 10;" text="Làm mới" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
          </children>
       </Pane>
+      <Pane layoutX="28.0" layoutY="217.0" prefHeight="2.0" prefWidth="230.0" style="-fx-background-color: #4b9ab8;" />
    </children>
 </AnchorPane>

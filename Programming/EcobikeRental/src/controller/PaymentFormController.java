@@ -6,6 +6,7 @@ import java.net.URL;
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -16,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -77,12 +79,9 @@ public class PaymentFormController implements Initializable {
 			card.expirationDate = txtCardExpirationDate.getText();
 			card.securityCode = txtCardCVV.getText();
 			card.issuingBank = txtCardBank.getText();
-
 			current = Contants.getCurrentTime();
-			
 			rentBike(bike.getDepositMoney());
-			
-			showMessage(Configs.MESSAGE_SUCCESS);
+	
 		} else {
 			showMessage("Hãy nhập đầy đủ thông tin !");
 		}
@@ -92,26 +91,23 @@ public class PaymentFormController implements Initializable {
 		String res;
 		try {
 			res = InterbankService.processTransaction(card, "pay", depositMoney);
-			System.out.print("Code: " + res);
+		//	System.out.print("Code: " + res);
 			if("00".equals(res)) {
 				bike.updateBike("renting", bike.stationID);
 				bike.createRent(current, Contants.currentUserID);
 				Contants.currentRentID = HomeController.currentUser.getRentingBike().rentID;
 				Rent rent = new Rent(Contants.currentRentID);
 				rent.createTransaction("deposit", "Deposit rent bike" , bike.getDepositMoney());
-				
-				
+			
 				showMessage(Configs.MESSAGE_SUCCESS);
+				Stage stage = (Stage) btnClose.getScene().getWindow();
+				stage.close();
 			} else {
 				showMessage(Contants.response(res));
 			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public void updateView() {
-		showMessage(Configs.MESSAGE_SUCCESS);
 	}
 	
 	public boolean checkBlankField() {
@@ -127,7 +123,8 @@ public class PaymentFormController implements Initializable {
 		Alert dialog = new Alert(AlertType.ERROR);
 		dialog.setTitle(Configs.TITLE_FOR_ALERT);
 		dialog.setHeaderText(mess);
-		dialog.showAndWait();
+		 dialog.showAndWait();
+		
 	}
 	
 	public void clearTextField() {
@@ -140,9 +137,8 @@ public class PaymentFormController implements Initializable {
 	}
 	
 	public void setupTextField() {
-		card = new Card();
-		card.setCardFromCardNumber(Contants.cardSelected.cardHolderName);
-		
+		card = HomeController.currentUser.getCustomerCard();
+				
 		lbMoney.setText("" + bike.getDepositMoney());
 		txtCardHolderName.setText("" + card.cardHolderName);
 		txtCardNumber.setText("" + card.cardNumber);

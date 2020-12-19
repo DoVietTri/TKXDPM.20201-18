@@ -14,11 +14,6 @@
          <children>
             <Pane prefHeight="450.0" prefWidth="780.0">
                <children>
-                  <Label fx:id="lbTitle" layoutX="72.0" layoutY="271.0" text="Trần Văn Trí">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                  </Label>
                   <Button fx:id="btnRentBike" layoutX="611.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4b9ab8; -fx-background-radius: 10;" text="Thuê xe" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -27,97 +22,100 @@
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font></Button>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="544.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/bike1.jpg" />
-                     </image>
-                  </ImageView>
-                  <GridPane layoutX="321.0" layoutY="85.0" prefHeight="150.0" prefWidth="224.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="104.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="120.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label text="Mã code">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label text="Pin còn" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label text="Giá thuê" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbBikeCode" prefHeight="35.0" prefWidth="120.0" text="Label" GridPane.columnIndex="1">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbBikeBattery" prefHeight="35.0" prefWidth="122.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbBikePrice" prefHeight="35.0" prefWidth="123.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="24.0" />
-                           </font></Label>
-                        <Label text="Bắt đầu" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbTimeStart" text="16:30" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </GridPane>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="71.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../Downloads/book8.png" />
-                     </image>
-                  </ImageView>
                   <Pane layoutX="320.0" layoutY="258.0" prefHeight="83.0" prefWidth="429.0" style="-fx-background-color: #ebeae6; -fx-background-radius: 10;">
                      <children>
-                        <Label layoutX="10.0" layoutY="14.0" text="Tổng thời gian" />
-                        <Label layoutX="191.0" layoutY="14.0" text="Thành tiền" />
-                        <Label fx:id="lbTotalTime" layoutX="72.0" layoutY="34.0" text="90 phút">
+                        <Label layoutX="10.0" layoutY="13.0" text="Tổng thời gian" />
+                        <Label layoutX="191.0" layoutY="13.0" text="Thành tiền" />
+                        <Label fx:id="lbTotalTime" alignment="CENTER" layoutX="54.0" layoutY="37.0" prefHeight="35.0" prefWidth="134.0" text="90 phút">
                            <font>
-                              <Font size="29.0" />
+                              <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbTotalMoney" layoutX="230.0" layoutY="31.0" text="150,000 VNĐ">
+                        <Label fx:id="lbTotalMoney" alignment="CENTER" layoutX="231.0" layoutY="37.0" prefHeight="35.0" prefWidth="185.0" text="150,000 VNĐ">
                            <font>
-                              <Font size="30.0" />
+                              <Font size="24.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Label fx:id="lbMessage" alignment="CENTER" layoutX="322.0" layoutY="38.0" prefHeight="35.0" prefWidth="429.0" text="Bạn chưa thuê xe">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
                   <Button fx:id="btnRefresh" layoutX="353.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4b9ab8; -fx-background-radius: 10;" text="Làm mới" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font></Button>
+                  <Pane layoutX="36.0" layoutY="26.0" prefHeight="377.0" prefWidth="245.0" style="-fx-background-color: ebeae6; -fx-background-radius: 10;">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../Downloads/book8.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lbTitle" alignment="CENTER" layoutX="11.0" layoutY="226.0" prefHeight="40.0" prefWidth="224.0" text="Trần Văn Trí">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="319.0" layoutY="20.0" prefHeight="229.0" prefWidth="429.0">
+                     <children>
+                        <Label layoutX="12.0" layoutY="65.0" text="Mã code:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="12.0" layoutY="105.0" text="Giá thuê:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbBikePrice" alignment="CENTER" layoutX="90.0" layoutY="103.0" prefHeight="35.0" prefWidth="120.0" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbBikeCode" alignment="CENTER" layoutX="103.0" layoutY="62.0" prefHeight="35.0" prefWidth="112.0" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbMessage" alignment="CENTER" layoutY="10.0" prefHeight="35.0" prefWidth="429.0" text="Bạn chưa thuê xe">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="223.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/bike1.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lbTimeStart" alignment="CENTER" layoutX="84.0" layoutY="184.0" prefHeight="35.0" prefWidth="127.0" text="16:30">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="12.0" layoutY="186.0" text="Bắt đầu:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="13.0" layoutY="91.0" prefHeight="2.0" prefWidth="200.0" style="-fx-background-color: #4b9ab8;" />
+                        <Pane layoutX="12.0" layoutY="132.0" prefHeight="2.0" prefWidth="200.0" style="-fx-background-color: #4b9ab8;" />
+                        <Pane layoutX="13.0" layoutY="213.0" prefHeight="2.0" prefWidth="200.0" style="-fx-background-color: #4b9ab8;" />
+                        <Pane layoutX="14.0" layoutY="174.0" prefHeight="2.0" prefWidth="200.0" style="-fx-background-color: #4b9ab8;" />
+                        <Label layoutX="13.0" layoutY="147.0" text="Đã đặt cọc:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbDepositMoney" alignment="CENTER" layoutX="103.0" layoutY="145.0" prefHeight="35.0" prefWidth="112.0" text="16:30">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </Pane>
          </children></Pane>
-      <Pane layoutX="280.0" layoutY="100.0" prefHeight="300.0" prefWidth="2.0" style="-fx-background-color: orange;" />
    </children>
 </AnchorPane>

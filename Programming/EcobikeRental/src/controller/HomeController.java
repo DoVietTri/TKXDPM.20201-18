@@ -37,7 +37,7 @@ public class HomeController implements Initializable {
 	Button btnRentBike, btnReturnBike, btnRefresh;
 	
 	@FXML
-	Label lbMessage,lbTitle, lbBikeCode, lbBikeBattery, lbBikePrice, lbTotalTime, lbTimeStart, lbTotalMoney;
+	Label lbMessage,lbTitle, lbBikeCode, lbDepositMoney, lbBikePrice, lbTotalTime, lbTimeStart, lbTotalMoney;
 	
 	public Rent rent = new Rent();
 	public Bike bike = new Bike();
@@ -82,7 +82,7 @@ public class HomeController implements Initializable {
 		
 		//bike
 		lbBikeCode.setText("" + bike.getId());
-		lbBikeBattery.setText("" + bike.getBattery());
+		lbDepositMoney.setText("" +Contants.toString(bike.getDepositMoney()));
 		lbBikePrice.setText("" + Contants.toString(bike.getPrice()) );
 		
 		//rent
@@ -112,7 +112,7 @@ public class HomeController implements Initializable {
 				
 		//bike
 		lbBikeCode.setText("");
-		lbBikeBattery.setText("");
+		lbDepositMoney.setText("");
 		lbBikePrice.setText("");
 		
 		//money

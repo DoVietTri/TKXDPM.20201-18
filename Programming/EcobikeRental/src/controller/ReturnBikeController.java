@@ -35,7 +35,7 @@ public class ReturnBikeController implements Initializable {
 	Bike bike = new Bike();
 	
 	int totalTimeRent = 0;
-	int totalMoney = 0;
+	int totalMoneyRent = 0;
 	int depositMoney = 0;
 	Time current;
 	@Override
@@ -68,7 +68,7 @@ public class ReturnBikeController implements Initializable {
 	public void updateView() {
 		current = Contants.getCurrentTime();
 		totalTimeRent = (int) ((current.getTime() - rent.timeStart.getTime())/60000);
-		totalMoney = Contants.calculateMoney(bike.price, totalTimeRent);
+		totalMoneyRent = Contants.calculateMoney(bike.price, totalTimeRent);
 		
 		lbCardHolderName.setText(card.cardHolderName);
 		lbCardNumber.setText(card.cardNumber);
@@ -79,34 +79,31 @@ public class ReturnBikeController implements Initializable {
 		lbTotalTime.setText("" + totalTimeRent);
 		depositMoney = bike.getDepositMoney();
 		lbDepositMoney.setText("" + depositMoney);
-		totalMoney = Contants.calculateMoney(bike.price, totalTimeRent);
-		lbTotalMoneyRent.setText("" + totalMoney);
+		totalMoneyRent = Contants.calculateMoney(bike.price, totalTimeRent);
+		lbTotalMoneyRent.setText("" + totalMoneyRent);
 		
-		if(depositMoney > totalMoney) {
+		if(depositMoney > totalMoneyRent) {
 			lbMessage.setText("Số tiền bạn được hoàn lại: ");
-			lbTotalMoney.setText("" + (depositMoney-totalMoney));
+			lbTotalMoney.setText("" + (depositMoney-totalMoneyRent));
 			
 		} else {
 			lbMessage.setText("Số tiền bạn cần thanh toán: ");
-			lbTotalMoney.setText("" + (totalMoney-depositMoney));
+			lbTotalMoney.setText("" + (totalMoneyRent-depositMoney));
 		}
 	}
 	
 	public void submitReturnBike() {
 		current = Contants.getCurrentTime();
 		totalTimeRent = Contants.calculateTotalTime(rent.timeStart);
-		totalMoney = Contants.calculateMoney(bike.price, totalTimeRent);
+		totalMoneyRent = Contants.calculateMoney(bike.price, totalTimeRent);
 		bike.updateBike("available", Contants.stationIDSelected);
-		
-		
 
 		updateView();
 		
-		if(depositMoney > totalMoney) {
-			returnBike("refund", totalMoney);
-			
+		if(depositMoney > totalMoneyRent) {
+			returnBike("refund",depositMoney - totalMoneyRent);
 		} else {
-			returnBike("pay", totalMoney);
+			returnBike("pay", totalMoneyRent - depositMoney);
 		}
 	}
 	
@@ -114,7 +111,7 @@ public class ReturnBikeController implements Initializable {
 		String res;
 		try {
 			res = InterbankService.processTransaction(card, code, totalMoney);
-			System.out.print("Code: " + res);
+		//	System.out.print("Code: " + res);
 			if("00".equals(res)) {
 				bike.updateBike("available", Contants.stationIDSelected);
 				rent.updateRent(current, totalTimeRent);
@@ -122,6 +119,8 @@ public class ReturnBikeController implements Initializable {
 				rent.createTransaction("return", "Return bike" , totalMoney);
 				updateRentingBike();
 				showMessage(Configs.MESSAGE_SUCCESS);
+				Stage stage = (Stage) btnClose.getScene().getWindow();
+				stage.close();
 			} else {
 				showMessage(Contants.response(res));
 			}

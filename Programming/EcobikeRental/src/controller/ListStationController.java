@@ -16,13 +16,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import model.Station;
 import ultilities.Contants;
 
 public class ListStationController implements Initializable {
 	@FXML
-	Button btnBack, btnViewStation;
+	Button btnBack, btnViewStation, btnSearch;
 
 	@FXML
 	Pane contentView;
@@ -42,6 +44,7 @@ public class ListStationController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		getAllStation();
 		addEvents();
+		addControl();
 	}
 	
 	public void addEvents() {
@@ -68,6 +71,17 @@ public class ListStationController implements Initializable {
 
 			return row;
 		});
+		
+	}
+	
+	public void addControl() {
+		Image img = new Image("/resources/search.png");
+		ImageView imgview = new ImageView(img);
+		imgview.setFitWidth(20);
+		
+		imgview.setFitHeight(20);
+		
+		btnSearch.setGraphic(imgview);
 		
 	}
 	

@@ -28,7 +28,7 @@ public class ViewBikeController implements Initializable {
 	Button btnRentBike, btnClose;
 	
 	@FXML
-	Label lbBikeCode, lbBikeDesc, lbBikeStatus, lbBikeName, lbBikePrice, lbBikeBattery, lbBikeType;
+	Label lbBikeCode, lbBikeDesc, lbBikeStatus, lbBikeName, lbBikePrice, lbBikeDepositMoney;
 	
 	@FXML
 	ImageView imgBike;
@@ -47,7 +47,9 @@ public class ViewBikeController implements Initializable {
 	public void addEvents() {
 		
 		btnRentBike.setOnMouseClicked(e -> {
-			checkRentAvailable();
+			if (checkRentAvailable()) {
+				showPaymentForm();
+			}
 		});
 		
 		btnClose.setOnMouseClicked(e -> {
@@ -65,36 +67,35 @@ public class ViewBikeController implements Initializable {
 		
 		imgBike.setImage(img);
 		lbBikeCode.setText("" + bike.getId());
-		lbBikeBattery.setText("" + bike.getBattery());
 		lbBikeName.setText(bike.getName());
-		lbBikeType.setText("" + bike.getDepositMoney());
+		lbBikeDepositMoney.setText("" +Contants.toString(bike.getDepositMoney()));
 
 		lbBikeStatus.setText(bike.getStatus());
 		
 	
-		lbBikePrice.setText("" +Contants.toString(bike.getPrice()));
+		lbBikePrice.setText("" + Contants.toString(bike.getPrice()));
 		lbBikeDesc.setText(bike.getDescription());
 		
-		if("available".equals(bike.status)) {
-			btnRentBike.setDisable(false);
-			lbBikeStatus.setStyle("-fx-text-fill: black;");
-		} else {
-			btnRentBike.setDisable(true);
-			lbBikeStatus.setStyle("-fx-text-fill: red;");
-		}
+//		if("available".equals(bike.status)) {
+//			btnRentBike.setDisable(false);
+//			lbBikeStatus.setStyle("-fx-text-fill: black;");
+//		} else {
+//			btnRentBike.setDisable(true);
+//			lbBikeStatus.setStyle("-fx-text-fill: red;");
+//		}
 		
 	}
 	
-	public void checkRentAvailable() {
+	public boolean checkRentAvailable() {
 		if(HomeController.currentUser.getRentingBike().rentID != 0) {
 			showMessage(Configs.CUSTOMER_IS_RENTING);
-			return;
+			return false;
 		}
 		if(!"available".equals(bike.status)) {
 			showMessage(Configs.BIKE_IS_RENTING);
-			return;
+			return false;
 		}
-		showPaymentForm();
+		return true;
 	}
 	
 	public void showMessage(String mess) {
@@ -108,7 +109,6 @@ public class ViewBikeController implements Initializable {
 		try {
 			
 			Parent root = FXMLLoader.load(getClass().getResource("/view/PaymentForm.fxml"));
-			
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
 			stage.setScene(scene);

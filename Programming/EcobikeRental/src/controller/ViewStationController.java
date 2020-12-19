@@ -39,7 +39,7 @@ public class ViewStationController  implements Initializable{
 	TableView<Bike> tbvListBike;
 	
 	@FXML
-	TableColumn<Bike, Integer> codeCol,priceCol, batteryCol;
+	TableColumn<Bike, Integer> codeCol,priceCol;
 	
 	
 	@FXML
@@ -141,7 +141,6 @@ public class ViewStationController  implements Initializable{
 		priceCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("price"));
 		statusCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("status"));
 		nameCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("name"));
-		batteryCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("battery"));
 		
 		tbvListBike.setItems(listBike);
 		tbvListBike.refresh();
