@@ -13,10 +13,24 @@ public class Card {
 	
 	public Card() {}
 	
+	/**
+	 * Nhiệm vụ: khởi tao Card
+	 * @param cardID
+	 */
 	public Card(int cardID) {
 		this.cardID = cardID;
 	}
 	
+	/**
+	 * Nhiệm vụ: Khởi tạo Card
+	 * @param cardID:
+	 * @param cardHolderName: Tên chủ thẻ
+	 * @param cardNumber: mã thẻ
+	 * @param transactionDescription: mô tả giao dịch
+	 * @param expirationDate: ngày hết hạn
+	 * @param securityCode: mã bảo mật (cvv)
+	 * @param issuingBank: ngân hàng phát hàng
+	 */
 	public Card(int cardID, String cardHolderName, String cardNumber, String transactionDescription,
 			String expirationDate, String securityCode, String issuingBank) {
 		super();
@@ -29,6 +43,10 @@ public class Card {
 		this.issuingBank = issuingBank;
 	}
 	
+	/**
+	 * Nhiệm vụ: Định nghĩa card
+	 * @param c: thông tin thẻ
+	 */
 	public void setCard(Card c) {
 		this.cardID = c.cardID;
 		this.cardHolderName = c.cardHolderName;
@@ -39,6 +57,10 @@ public class Card {
 		this.issuingBank = c.issuingBank;
 	}
 	
+	/**
+	 * Nhiệm vụ: định nghĩa card từ cơ sở dữ liệu
+	 * @param cardNumber
+	 */
 	public void setCardFromCardNumber(String cardNumber) {
 		try {
 			String select1 = "SELECT * FROM Card WHERE cardNumber = \'" + cardNumber +"\'";

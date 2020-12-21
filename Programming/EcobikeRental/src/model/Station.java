@@ -28,6 +28,10 @@ public class Station {
 		this.setAddress(address);
 	}
 	
+	/**
+	 * Nhiệm vụ: Khởi tạo station từ database
+	 * @param stationID: mã station
+	 */
 	public void setStationFromID(int stationID) {
 		try {
 			String sel = "SELECT * FROM Station WHERE stationID = " + stationID;
@@ -47,6 +51,12 @@ public class Station {
 		}
 	}
 	
+	/**
+	 * Nhiệm vụ: Lấy tất cả xe có trong bãi
+	 * @return danh sách xe
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public ArrayList<Bike> getAllBikes() throws ClassNotFoundException, SQLException {
 	
 		ArrayList<Bike> list = new ArrayList<Bike>();
@@ -70,7 +80,12 @@ public class Station {
 		return list;
 	}
 	
-public Bike getBikeByID(int bikeID) {
+	/**
+	 * Nhiệm vụ: Lấy thông tin chi tiết của xe
+	 * @param bikeID: mã xe
+	 * @return thông tin xe
+	 */
+	public Bike getBikeByID(int bikeID) {
 		try {
 			String select1 = "SELECT * FROM Bike WHERE bikeID = " + bikeID;
 			Statement stmt = Contants.conn.createStatement();
@@ -91,17 +106,25 @@ public Bike getBikeByID(int bikeID) {
 		}
 		return  new Bike();
 	}
-
+	
+	/**
+	 * Nhiệm vụ: Khởi tạo station
+	 * @param stationID: mã station
+	 * @param totalBike: tổng số xe có trong bãi
+	 * @param available: số xe còn lại trong bãi
+	 * @param name: tên bãi
+	 * @param address: địa chỉ bãi xe
+	 */
 	public Station(int stationID, int totalBike, int available, String name, String address) {
-	super();
-	this.stationID = stationID;
-	this.totalBike = totalBike;
-	this.available = available;
-	this.name = name;
-	this.address = address;
-}
+		super();
+		this.stationID = stationID;
+		this.totalBike = totalBike;
+		this.available = available;
+		this.name = name;
+		this.address = address;
+	}
 
-public Station() {}
+	public Station() {}
 
 	public int getStationID() {
 		return stationID;

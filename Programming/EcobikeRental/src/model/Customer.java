@@ -12,8 +12,15 @@ public class Customer {
 	public int customerID, rentID;
 	public String customerName;
 	
+	/**
+	 * Nhiệm vụ: khởi tạo customer
+	 */
 	public Customer() {}
 	
+	/**
+	 * Nhiệm vụ: Lấy thông tin thuê về xe đang được khách hàng thuê
+	 * @return thông tin thuê
+	 */
 	public  Rent getRentingBike(){
 		try {
 			String select1 = "SELECT * FROM Rent WHERE customerID = " + this.customerID +" AND status=\'renting\'";
@@ -34,6 +41,10 @@ public class Customer {
 		return new Rent();
 	}
 	
+	/**
+	 * Nhiệm vụ: Lấy thông tin thẻ của khách hàng
+	 * @return thông tin thẻ
+	 */
 	public Card getCustomerCard() {
 		try {
 			String select1 = "SELECT * FROM Card WHERE cardNumber = \'" + this.cardNumber +"\'";
@@ -56,6 +67,13 @@ public class Customer {
 		return new Card();
 	}
 	
+	/**
+	 * Nhiệm vụ: Khởi tạo khách hàng
+	 * @param customerID: mã khách hàng
+	 * @param cardNumber: mã thẻ
+	 * @param rentID: mã thuê
+	 * @param customerName: tên khách hàng
+	 */
 	public Customer(int customerID, String cardNumber,  int rentID, String customerName) {
 		super();
 		this.cardNumber = cardNumber;

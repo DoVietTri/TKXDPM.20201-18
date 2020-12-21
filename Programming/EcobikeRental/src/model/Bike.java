@@ -13,15 +13,33 @@ public class Bike {
 	public int id, price, battery, stationID;
 	public String name, status, type, description;
 
+	/**
+	 * Khởi tạo Bike
+	 * @param id
+	 */
 	public Bike(int id) {
 		super();
 		this.id = id;
 	}
 	
+	/**
+	 * Khởi tạo Bike nếu không tìm thấy trong cơ sở dữ liệu
+	 */
 	public Bike() {
 		this.id = 0;
 	}
 	
+	/**
+	 * Nhiệm vụ: Khởi tạo bike
+	 * @param id: mã xe
+	 * @param battery: thời lượng pin còn lại của xe
+	 * @param stationID: mã bãi xe
+	 * @param price: giá thuê xe
+	 * @param name: tên xe
+	 * @param status: tình trạng xe: "renting" (đang thuê), "available": (sẵn có)
+	 * @param type: 
+	 * @param description
+	 */
 	public Bike(int id, int battery, int stationID, int price, String name, String status, String type,
 			String description) {
 		super();
@@ -34,7 +52,11 @@ public class Bike {
 		this.type = type;
 		this.description = description;
 	}
-
+	
+	/**
+	 * Nhiệm vụ: khởi tạo bike
+	 * @param bikeID
+	 */
 	public void  setBikeFromID(int bikeID) {
 		try {
 			String select1 = "SELECT * FROM Bike WHERE bikeID = " + bikeID;
@@ -57,6 +79,12 @@ public class Bike {
 		}
 	}
 	
+	/**
+	 * Nhiệm vụ: cập nhật xe
+	 * @param status: trạng thái xe "renting" hay "available"
+	 * @param stationID: mã bãi xe
+	 * @return
+	 */
 	public boolean updateBike(String status, int stationID)  {
 		try {
 			String upd = "UPDATE Bike SET stationID = " + stationID + ", status = \'" + status + "\' WHERE bikeID = " + this.id;
@@ -69,6 +97,12 @@ public class Bike {
 		return false;
 	}
 	
+	/**
+	 * Nhiệm vụ: tạo rent
+	 * @param timeStart: thời gian bắt đầu thuê
+	 * @param customerID: mã khách hàng
+	 * @return thaành công hay thất bại
+	 */
 	public boolean createRent(Time timeStart, int customerID)  {
 
 		try {
@@ -87,6 +121,10 @@ public class Bike {
 		return false;
 	}
 	
+	/**
+	 * Nhiệm vụ: lấy tiền cọc của xe dựa vào type
+	 * @return tiền cọc
+	 */
 	public  int getDepositMoney() {
 		switch (this.type) {
 		case "1": {

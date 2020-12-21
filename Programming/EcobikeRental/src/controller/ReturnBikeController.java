@@ -23,10 +23,15 @@ import ultilities.Contants;
 import ultilities.InterbankService;
 
 public class ReturnBikeController implements Initializable {
-
+	/**
+	 * Các nút được định nghĩa id bên view
+	 */
 	@FXML 
 	Button btnSubmit, btnClose, btnRefresh;
 	
+	/**
+	 * Các nhãn dán được định nghĩa bên view
+	 */
 	@FXML
 	Label lbCardNumber, lbCardHolderName, lbDepositMoney, lbTotalMoneyRent, lbTotalMoney, lbBikeCode, lbBikePrice, lbTimeStart, lbTotalTime, lbMessage;
 	
@@ -38,12 +43,19 @@ public class ReturnBikeController implements Initializable {
 	int totalMoneyRent = 0;
 	int depositMoney = 0;
 	Time current;
+	
+	/**
+	 * Khởi chạy
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		getRentingInfo();
 		addEvents();
 	}
 	
+	/**
+	 * Bắt sự kiện click vào các nút
+	 */
 	public void addEvents() {
 		btnSubmit.setOnMouseClicked(e -> {
 			submitReturnBike();
@@ -57,6 +69,9 @@ public class ReturnBikeController implements Initializable {
 		});
 	}
 	
+	/**
+	 * Lấy thông tin thuê xe nếu người đó đang thuê xe
+	 */
 	public void getRentingInfo() {
 		rent.setRentFromID(Contants.currentRentID);
 		bike.setBikeFromID(rent.bikeID);
@@ -65,6 +80,9 @@ public class ReturnBikeController implements Initializable {
 		updateView();
 	}
 	
+	/**
+	 * Cập nhật lại view
+	 */
 	public void updateView() {
 		current = Contants.getCurrentTime();
 		totalTimeRent = (int) ((current.getTime() - rent.timeStart.getTime())/60000);
@@ -92,6 +110,9 @@ public class ReturnBikeController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Xác nhận trả xe
+	 */
 	public void submitReturnBike() {
 		current = Contants.getCurrentTime();
 		totalTimeRent = Contants.calculateTotalTime(rent.timeStart);
@@ -107,6 +128,11 @@ public class ReturnBikeController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Nhiệm vụ: xử lý trả xe, gọi đến api trả xe
+	 * @param code: lệnh giao dịch: "pay" hay "refund"
+	 * @param totalMoney: tổng số tiền giao dịch
+	 */
 	public void returnBike( String code, int totalMoney) {
 		String res;
 		try {
@@ -129,6 +155,12 @@ public class ReturnBikeController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Nhiệm vụ: tạo mới 1 giao dịch
+	 * @param totalTimeRent: tổng thời gian thuê
+	 * @param totalMoney: tổng số tiền thuê
+	 * @param rentID: mã thuê
+	 */
 	public void createTransaction(int totalTimeRent, int totalMoney, int rentID) {
 		rent.createTransaction("pay", "Pay for rent bike " + bike.id, totalMoney);
 	}
@@ -137,6 +169,10 @@ public class ReturnBikeController implements Initializable {
 		Contants.currentRentID = 0;
 	}
 	
+	/**
+	 * Hiển thị thông báo
+	 * @param mess: thông báo
+	 */
 	public void showMessage(String mess) {
 		Alert dialog = new Alert(AlertType.ERROR);
 		dialog.setTitle("Thông báo");

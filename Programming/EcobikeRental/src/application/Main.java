@@ -8,6 +8,10 @@ import javafx.fxml.FXMLLoader;
 
 
 public class Main extends Application {
+	
+	/**
+	 * Nhiệm vụ: khởi tạo các giá trị ban đầu truyền vào stage
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {

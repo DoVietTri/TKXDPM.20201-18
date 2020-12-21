@@ -33,6 +33,9 @@ public class MainController implements Initializable {
 		
 	}
 	
+	/**
+	 * Nhiệm vụ: Bắt các sự hiện bấm nút
+	 */
 	public void addEvents() {
 		btnHome.setOnMouseClicked(e -> {
 			
@@ -58,6 +61,9 @@ public class MainController implements Initializable {
 		
 	}
 	
+	/**
+	 * Nhiệm vụ: kết nối đến cơ sở dữ liệu
+	 */
 	public void connectDB() {
 		try {
 			Contants.conn = Contants.getSQLServerConnection();
@@ -70,6 +76,9 @@ public class MainController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Nhiệm vụ: Hiển thị màn hình trang chủ
+	 */
 	public void showHomeScreen() {
 		
 		try {
@@ -84,6 +93,9 @@ public class MainController implements Initializable {
 
 	}
 	
+	/**
+	 * Hiển thị màn hình danh sách các bãi xe
+	 */
 	public void showListStationScreen() {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/view/ListStation.fxml"));

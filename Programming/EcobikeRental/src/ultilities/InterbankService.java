@@ -29,15 +29,37 @@ import org.json.JSONObject;
 import application.Main;
 import model.Card;
 
+/**
+ * @author tridoviet
+ *
+ */
 public class InterbankService {
+	/**
+	 * mã bảo mật của ứng dụng
+	 */
 	private static final String SECRETKEY = "BJrapO8Wdtw=";
+	
+	/**
+	 * Mã ứng dụng
+	 */
 	private static final String APPCODE = "CUgp9eRNgwU=";
+	
+	/**
+	 * Phiên bản của ứng dụng
+	 */
 	private static final String VERSION = "1.0.1";
+	
 	private static final String CARDCODE = null;
 	private static final String OWNER = null;
 	private static final String CVVCODE = null;
 	private static final String DATEEXPIRED = null;
 	
+	/**
+	 * Nhiệm vụ: chuyển một chuỗi bản rõ thành một chuỗi băm sử dụng mã băm MD5
+	 * @param input: chuỗi rõ
+	 * @return chuỗi băm
+	 * @throws UnsupportedEncodingException
+	 */
 	public static String getMD5(String input) throws UnsupportedEncodingException
 	{
 		try { 
@@ -66,6 +88,14 @@ public class InterbankService {
         } 
 	}
 	
+	/**
+	 * Nhiệm vụ: Định nghĩa chuỗi cần băm
+	 * @param card: thông tin tài khoản thẻ
+	 * @param command: lệnh giao dịch "pay" hoặc "refund"
+	 * @param amount: số tiền cần giao dịch
+	 * @param currentTime: thời gian hiện tại
+	 * @return chuỗi cần băm
+	 */
 	public static String jsonInforToHash (Card card, String command, int amount, String currentTime)
 	{
 		String result = "{"
@@ -84,7 +114,10 @@ public class InterbankService {
 		return result;
 	}
 	
-	//Test api
+	/**
+	 * Chuỗi test api
+	 * @return Chuỗi cần test
+	 */
 	public static String jsonResetBalance()
 	{
 		String result = "{"
@@ -96,6 +129,14 @@ public class InterbankService {
 		return result;
 	}
 	
+	/**
+	 * Nhiệm vụ: thực hiện giao dịch
+	 * @param card: thông tin tài khoản thẻ
+	 * @param command: lệnh thực hiện giao dịch
+	 * @param amount: số tiền cần giao dịch
+	 * @return mã giao dịch
+	 * @throws UnsupportedEncodingException
+	 */
 	public static String processTransaction(Card card, String command, int amount) throws UnsupportedEncodingException
 	{
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -150,7 +191,11 @@ public class InterbankService {
 		return statusCode;
 	}
 	
-	//String cardCode, String owner, String cvvCode, String dateExpired
+	/**
+	 * Nhiệm vụ: reset lại số dư
+	 * @param card: thông tin tài khoản thẻ
+	 * @return mã giao dịch
+	 */
 	public static String resetBalance(Card card)
 	{
 		String result = null;

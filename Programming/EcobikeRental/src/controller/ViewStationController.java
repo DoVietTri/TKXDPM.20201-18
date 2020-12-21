@@ -32,8 +32,13 @@ import model.Station;
 import ultilities.Contants;
 
 public class ViewStationController  implements Initializable{
+	
+	/**
+	 * Các nút được định nghĩa id bên view
+	 */
 	@FXML
 	Button btnReturnBike, btnViewBike, btnSearch, btnRefresh;
+	
 	
 	@FXML
 	TableView<Bike> tbvListBike;
@@ -45,6 +50,9 @@ public class ViewStationController  implements Initializable{
 	@FXML
 	TableColumn<Bike, String> nameCol, statusCol;
 	
+	/**
+	 * Các nhãn dán được định nghĩa bên view
+	 */
 	@FXML
 	Label lbStationID, lbStationName, lbStationAddress, lbStationTotalBike, lbStationAvailable;
 	
@@ -54,7 +62,10 @@ public class ViewStationController  implements Initializable{
 	Station station = new Station();
 	
 	public ObservableList<Bike> listBike;
-		
+	
+	/**
+	 * Khởi chạy
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -66,6 +77,9 @@ public class ViewStationController  implements Initializable{
 		
 	}
 	
+	/**
+	 * Bắt sự kiện click vào các nút
+	 */
 	public void addEvents() {
 		
 		btnViewBike.setOnMouseClicked(e -> {
@@ -103,7 +117,7 @@ public class ViewStationController  implements Initializable{
 			return row;
 		});
 	}
-		
+	
 	public void addControl() {
 		Image img = new Image("/resources/search.png");
 		ImageView imgview = new ImageView(img);
@@ -114,6 +128,9 @@ public class ViewStationController  implements Initializable{
 		
 	}
 	
+	/**
+	 * Ghi thông tin lấy được từ database lên màn hình
+	 */
 	public void getStationInfo() {
 		station.setStationFromID(Contants.stationIDSelected);
 		
@@ -124,6 +141,9 @@ public class ViewStationController  implements Initializable{
 		lbStationAvailable.setText("" + station.available);
 	}
 	
+	/**
+	 * Hiển thị toàn xe có trong bãi
+	 */
 	public void getAllBikes() {
 		
 		listBike = FXCollections.observableArrayList();
@@ -146,7 +166,9 @@ public class ViewStationController  implements Initializable{
 		tbvListBike.refresh();
 	}
 	
-	
+	/**
+	 * Hiển thị chi tiết xe
+	 */
 	public void showBikeInfo() {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/view/ViewBike.fxml"));
@@ -174,6 +196,9 @@ public class ViewStationController  implements Initializable{
 		
 	}
 	
+	/**
+	 * Hiển thị thông tin trả xe
+	 */
 	public void showReturnBike() {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/view/ReturnBike.fxml"));
@@ -191,6 +216,9 @@ public class ViewStationController  implements Initializable{
 		}
 	}
 	
+	/**
+	 * Tìm kiếm xe theo mã id xe
+	 */
 	public void searchBike() {
 		if (txtBikeCode.getText().isEmpty()) return ;
 		else {
@@ -206,6 +234,10 @@ public class ViewStationController  implements Initializable{
 		}
 	}
 	
+	/**
+	 * Hiển thị thông báo
+	 * @param mess: thông báo
+	 */
 	public void showMessage(String mess) {
 		Alert dialog = new Alert(AlertType.ERROR);
 		dialog.setTitle("Thông báo");

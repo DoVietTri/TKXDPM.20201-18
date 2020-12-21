@@ -27,8 +27,18 @@ public final class Contants {
 	public static int stationIDSelected = 0;
 	public static int bikeIDSelected = 0;
 	public static Card cardSelected = new Card();
+	
+	/**
+	 * Biến tạo kết nối đến cơ sở dữ liệu
+	 */
 	public static Connection conn;
 	
+	/**
+	 * Nhiệm vụ: kết nối đến cơ sở dữ liệu
+	 * @return kết quả kết nối
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public static Connection getSQLServerConnection() throws ClassNotFoundException, SQLException {
 
 		 String dbURL = "jdbc:sqlserver://localhost;databaseName=EcoBikeRentalDatabase;user=group18;password=123456";
@@ -37,6 +47,12 @@ public final class Contants {
 	     return conn;
 	 }
 	
+	/**
+	 * Nhiệm vụ: Lấy tất cả các bãi xe có trong cơ sở dữ liệu
+	 * @return danh sách bãi xe
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public static ArrayList<Station> getAllStations() throws ClassNotFoundException, SQLException {
 		
 		Connection conn = getSQLServerConnection();
@@ -61,7 +77,10 @@ public final class Contants {
 	}
 	
 	
-	
+	/**
+	 * Nhiệm vụ: Lấy thời gian hiện tại
+	 * @return thời gian hiện tại
+	 */
 	public static Time getCurrentTime() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
@@ -69,11 +88,22 @@ public final class Contants {
 		return Time.valueOf(dateTimeNow);
 	}
 	
+	/**
+	 * Nhiệm vụ: tính tổng thời gian thuê xe
+	 * @param timeStart: thời gian bắt đầu thuê
+	 * @return thời gian thuê xe tính theo giờ
+	 */
 	public static int calculateTotalTime(Time timeStart) {
 		Time current = getCurrentTime();
 		return (int) ((current.getTime() -timeStart.getTime())/60000);
 	}
 	
+	/**
+	 * Nhiệm vụ: tính tiền thuê xe
+	 * @param price: giá thuê xe
+	 * @param totalTime: tổng thời gian thuê xe
+	 * @return số tiền phải trả
+	 */
 	public static int calculateMoney(int price, int totalTime) {
 		if (totalTime <= 30) {
 			return 10000;
@@ -87,7 +117,11 @@ public final class Contants {
 		}
 	}
 	
-	
+	/**
+	 * Nhiệm vụ: chuyển đổi một số thành một String
+	 * @param d: số cần chuyển đổi
+	 * @return chuỗi 
+	 */
 	public static String toString(long d) {
 		
 		String s = "" + d ;
@@ -106,6 +140,11 @@ public final class Contants {
 		return rs;
 	}
 	
+	/**
+	 * Nhiệm vụ: Định nghĩa các thông báo cho người dùng
+	 * @param res
+	 * @return thông báo
+	 */
 	public static String response(String res) {
 		switch(res) {
 		case "00" : return "Thành công";

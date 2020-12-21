@@ -34,6 +34,12 @@ public class Rent {
 		this.totalTimeRent = r.totalTimeRent;
 	}
 	
+	/**
+	 * Nhiệm vụ: update lại thông tin thuê trước đó 
+	 * @param timeEnd: thời gian trả xe
+	 * @param totalTimeRent: tổng thời gian thuê xe
+	 * @return: update thành công hay thất bại
+s	 */
 	public boolean updateRent(Time timeEnd, int totalTimeRent) {
 		try {
 
@@ -51,6 +57,10 @@ public class Rent {
 		return false;
 	}
 	
+	/**
+	 * Nhiệm vụ: Định nghĩa thông tin thuê từ bảng Rent trong csdl
+	 * @param rentID: mã thuê
+	 */
 	public void setRentFromID(int rentID) {
 		try {
 			String sel = "SELECT * FROM Rent WHERE rentID = " + rentID;
@@ -72,6 +82,13 @@ public class Rent {
 		}
 	}
 	
+	/**
+	 * Nhiệm vụ: tạo một giao dịch
+	 * @param code: mã giao dịch
+	 * @param transactionName: thông tin giao dịch
+	 * @param totalMoney: tổng số tiền giao dịch
+	 * @return: giao dịch thành công hay thất bại
+	 */
 	public boolean createTransaction(String code, String transactionName,int totalMoney) {
 		try {
 			String ins = "INSERT INTO Transactions(code, transactionName, totalMoney, rentID) VALUES(?,?,?,?)";
@@ -87,7 +104,16 @@ public class Rent {
 		}
 		return false;
 	}
-	
+	/**
+	 * Nhiệm vụ: khởi tạo Rent
+	 * @param rentID: mã rent
+	 * @param status: trạng thái
+	 * @param customerID: mã khách hàng
+	 * @param bikeID: mã xe
+	 * @param timeStart: thời gian bắt đầu thuê
+	 * @param timeEnd: thời gian kết thúc
+	 * @param totalTimeRent: tổng thời gian thuê
+	 */
 	public Rent(int rentID, String status, int customerID, int bikeID, Time timeStart, Time timeEnd, int totalTimeRent) {
 		super();
 		this.rentID = rentID;

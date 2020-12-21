@@ -140,7 +140,29 @@
 - Các file đặt trong thư mục (DetailDesign/DataModeling)
 
 ## Phân công nhiệm vụ
-- Đỗ Viết Trí: Vẽ biểu đồ thực thể liên kết và thiết kế cở sở dữ liệu cho use case Xem thông tin bãi xe (View Bike in Station)
+- Đỗ Viết Trí: Vẽ biểu đồ thực thể liên kết và thiết kế cở sở dữ liệu cho use case Xem thông tin bãi xe (View Bike in Station), hoàn thành tài liệu SDD
 - Nguyễn Ngọc Trinh: Thiết kế cơ sở dữ liệu cho use case Trả xe (ReturnBike)
 - Nguyễn Mạnh Trường: Thiết kế cơ sở dữ liệu cho use case Xem thông tin xe (ViewBikeInfo)
 - Trần Văn Trí: Thiết kế cơ sở dữ liệu cho use case Thuê xe (RentBike)
+
+# Lab05
+
+## Nhiệm vụ
+- Lập trình cho phần mềm EcobikeRental
+
+## Phân công nhiệm vụ
+- Nguyễn Ngọc Trinh: lập trình cho chức năng xem bãi xe
+- Nguyễn Mạnh Trường: lập trình cho chức năng xem thông tin chi tiết xe
+- Trần Văn Trí: lập trình cho chức năng thuê xe, tìm kiếm xe
+- Đỗ Viết Trí: Lập trình cho chức năng trả xe
+
+# Lab06
+
+## Nhiệm vụ
+- Kiểm thử đơn vị cho phần mềm EcobikeRental
+
+## Phân công nhiệm vụ
+- Nguyễn Ngọc Trinh: Kiểm thử các lớp liên quan đến chức năng xem thông tin bãi xe
+- Nguyễn Mạnh Trường: Kiểm thử các lớp liên quan đến chức năng xem thông tin chi tiết xe
+- Trần Văn Trí: Kiểm thử các lớp liên quan đến chức năng thuê xe, tìm kiếm xe
+- Đỗ Viết Trí: Kiểm thử các lớp liên quan đến chức năng trả xe

@@ -31,16 +31,25 @@ import ultilities.Contants;
 import ultilities.InterbankService;
 
 public class PaymentFormController implements Initializable {
-
+	
+	/**
+	 * Các nút được định nghĩa id bên view
+	 */
 	@FXML 
 	Button btnOK, btnClose;
 	
+	/**
+	 * Các nhãn dán được định nghĩa bên view
+	 */
 	@FXML 
 	Label lbMessage, lbMoney;
 	
 	@FXML 
 	GridPane form;
 	
+	/**
+	 * Các text field bên view
+	 */
 	@FXML
 	TextField txtCardHolderName, txtCardNumber, txtCardBank, txtCardExpirationDate, txtCardCVV, txtContent;
 	
@@ -49,7 +58,9 @@ public class PaymentFormController implements Initializable {
 	Rent rent = new Rent();
 	
 	Time current;
-	
+	/**
+	 * Khởi chạy
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		bike.setBikeFromID(Contants.bikeIDSelected);
@@ -58,6 +69,9 @@ public class PaymentFormController implements Initializable {
 		
 	}
 	
+	/**
+	 * Bắt sự kiện click vào các nút
+	 */
 	public void addEvents() {
 		btnOK.setOnMouseClicked(e -> {
 			submitPaymentForm();
@@ -70,7 +84,7 @@ public class PaymentFormController implements Initializable {
 		
 	}
 	/**
-	 * 
+	 * Nhiệm vụ: xử lý khi submit form
 	 */
 	public void submitPaymentForm() {
 		if (checkBlankField()) {
@@ -87,6 +101,10 @@ public class PaymentFormController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Nhiệm vụ: xử lý khi thuê xe
+	 * @param depositMoney: tiền đặt cọc
+	 */
 	public void rentBike(int depositMoney) {
 		String res;
 		try {
@@ -110,6 +128,10 @@ public class PaymentFormController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Nhiệm vụ: Kiểm tra xem tất cả các trường trong form đã được nhập chưa
+	 * @return true hoặc false
+	 */
 	public boolean checkBlankField() {
 		if (txtCardHolderName.getText().isEmpty()) return false;
 		if (txtCardNumber.getText().isEmpty()) return false;
@@ -119,6 +141,10 @@ public class PaymentFormController implements Initializable {
 		return true;
 	}
 	
+	/**
+	 * Hiển thị thông báo
+	 * @param mess: thông báo
+	 */
 	public void showMessage(String mess) {
 		Alert dialog = new Alert(AlertType.ERROR);
 		dialog.setTitle(Configs.TITLE_FOR_ALERT);
@@ -127,6 +153,9 @@ public class PaymentFormController implements Initializable {
 		
 	}
 	
+	/**
+	 * Làm rỗng các trường trong form
+	 */
 	public void clearTextField() {
 		txtCardHolderName.setText("");
 		txtCardNumber.setText("");
@@ -136,6 +165,9 @@ public class PaymentFormController implements Initializable {
 		txtContent.setText(HomeController.currentUser.customerName + " thue xe " + bike.getId());
 	}
 	
+	/**
+	 * Định nghĩa thông tin tài khoản thẻ nhập vào
+	 */
 	public void setupTextField() {
 		card = HomeController.currentUser.getCustomerCard();
 				

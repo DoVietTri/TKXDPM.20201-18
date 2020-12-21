@@ -32,10 +32,16 @@ import model.Station;
 import ultilities.Contants;
 
 public class HomeController implements Initializable {
-
+	
+	/**
+	 * Các nút được định nghĩa id bên view
+	 */
 	@FXML
 	Button btnRentBike, btnReturnBike, btnRefresh;
 	
+	/**
+	 * Các nhãn dán được định nghĩa bên view
+	 */
 	@FXML
 	Label lbMessage,lbTitle, lbBikeCode, lbDepositMoney, lbBikePrice, lbTotalTime, lbTimeStart, lbTotalMoney;
 	
@@ -44,12 +50,18 @@ public class HomeController implements Initializable {
 	
 	public static Customer currentUser = new Customer(20173410, "118609_group18_2020", 1, "Group 18");
 	
+	/**
+	 * Khởi chạy
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		addEvents();
 		getRentingInfo();
 	}
 	
+	/**
+	 * Bắt các sự kiện bấm nút
+	 */
 	public void addEvents() {
 		btnRentBike.setOnMouseClicked(e -> {
 			viewListStation();
@@ -62,6 +74,9 @@ public class HomeController implements Initializable {
 		});
 	}
 	
+	/**
+	 * Lấy thông tin đang thuê xe, nếu khách hàng đang thuê xe
+	 */
 	public void getRentingInfo() {
 		rent.setRent(currentUser.getRentingBike());
 		Contants.currentRentID = rent.rentID;
@@ -73,6 +88,9 @@ public class HomeController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Cập nhật lại màn hình
+	 */
 	public void updateView() {
 		// message
 		lbMessage.setText("Bạn đang thuê xe có code " + bike.getId() );
@@ -103,6 +121,9 @@ public class HomeController implements Initializable {
 		
 	}
 	
+	/**
+	 * Làm trống màn hình
+	 */
 	public void clearView() {
 		// message
 		lbMessage.setText("Bạn chưa thuê xe !");
@@ -128,6 +149,9 @@ public class HomeController implements Initializable {
 				
 	}
 	
+	/**
+	 * Hiển thị danh sách bãi xe
+	 */
 	public void viewListStation() {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/view/ViewStation.fxml"));

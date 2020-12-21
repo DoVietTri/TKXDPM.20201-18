@@ -23,6 +23,9 @@ import model.Station;
 import ultilities.Contants;
 
 public class ListStationController implements Initializable {
+	/**
+	 * Các nút được định nghĩa id bên view
+	 */
 	@FXML
 	Button btnBack, btnViewStation, btnSearch;
 
@@ -39,7 +42,9 @@ public class ListStationController implements Initializable {
 	TableColumn<Station, Integer> idCol, availableCol, totalBikeCol;
 	
 	public ObservableList<Station> listStation;
-	
+	/**
+	 * Khởi chạy
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		getAllStation();
@@ -47,6 +52,9 @@ public class ListStationController implements Initializable {
 		addControl();
 	}
 	
+	/**
+	 * Bắt sự kiện click vào các nút
+	 */
 	public void addEvents() {
 		btnViewStation.setOnMouseClicked(e -> {
 			if(tbvStation.getSelectionModel().getSelectedItem() != null) {
@@ -85,6 +93,9 @@ public class ListStationController implements Initializable {
 		
 	}
 	
+	/**
+	 * Hiển thị tất cả bãi xe lên màn hình
+	 */
 	public void getAllStation() {
 		listStation = FXCollections.observableArrayList();
 		try {
@@ -121,6 +132,9 @@ public class ListStationController implements Initializable {
 
 	}
 	
+	/**
+	 * Xử lý khi nhấn vào nút back
+	 */
 	public void backToPrevious() {
 		int i = contentView.getChildren().size() - 1;
 		if (i > 0) contentView.getChildren().remove(i);

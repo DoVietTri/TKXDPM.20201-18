@@ -24,9 +24,15 @@ import ultilities.Contants;
 
 public class ViewBikeController implements Initializable {
 
+	/**
+	 * Các nút được định nghĩa id bên view
+	 */
 	@FXML
 	Button btnRentBike, btnClose;
 	
+	/**
+	 * Các nhãn dán được định nghĩa bên view
+	 */
 	@FXML
 	Label lbBikeCode, lbBikeDesc, lbBikeStatus, lbBikeName, lbBikePrice, lbBikeDepositMoney;
 	
@@ -35,6 +41,9 @@ public class ViewBikeController implements Initializable {
 	
 	Bike bike = new Bike();
 	
+	/**
+	 * Khởi chạy
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -44,6 +53,9 @@ public class ViewBikeController implements Initializable {
 		
 	}
 	
+	/**
+	 * Bắt sự kiện click vào các nút
+	 */
 	public void addEvents() {
 		
 		btnRentBike.setOnMouseClicked(e -> {
@@ -59,7 +71,9 @@ public class ViewBikeController implements Initializable {
 
 		
 	}
-	
+	/**
+	 * Hiển thị thông tin chi tiết của xe
+	 */
 	public void showBikeInfo() {
 		bike.setBikeFromID(Contants.bikeIDSelected);;
 		String type = bike.getType();
@@ -86,6 +100,10 @@ public class ViewBikeController implements Initializable {
 		
 	}
 	
+	/**
+	 * Kiểm tra xe đó có dang được thuê hay chưa
+	 * @return true hoặc false
+	 */
 	public boolean checkRentAvailable() {
 		if(HomeController.currentUser.getRentingBike().rentID != 0) {
 			showMessage(Configs.CUSTOMER_IS_RENTING);
@@ -98,6 +116,10 @@ public class ViewBikeController implements Initializable {
 		return true;
 	}
 	
+	/**
+	 * Hiển thị thông báo đến người dùng
+	 * @param mess: thông báo
+	 */
 	public void showMessage(String mess) {
 		Alert dialog = new Alert(AlertType.ERROR);
 		dialog.setTitle(Configs.TITLE_FOR_ALERT);
@@ -105,6 +127,9 @@ public class ViewBikeController implements Initializable {
 		dialog.showAndWait();
 	}
 	
+	/**
+	 * Hiển thị form thanh toán
+	 */
 	public void showPaymentForm() {
 		try {
 			
