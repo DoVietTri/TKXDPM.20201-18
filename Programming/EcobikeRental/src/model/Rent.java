@@ -49,7 +49,8 @@ s	 */
 			stm.setTime(2, timeEnd);
 			stm.setInt(3, totalTimeRent);
 			stm.setInt(4, this.rentID);
-			return stm.execute();
+			stm.execute();
+			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -97,7 +98,8 @@ s	 */
 			stm.setString(2, transactionName);
 			stm.setInt(3, totalMoney);
 			stm.setInt(4, this.rentID);
-			return stm.execute();
+			stm.execute();
+			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

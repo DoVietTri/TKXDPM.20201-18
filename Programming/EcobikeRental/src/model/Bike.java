@@ -89,7 +89,8 @@ public class Bike {
 		try {
 			String upd = "UPDATE Bike SET stationID = " + stationID + ", status = \'" + status + "\' WHERE bikeID = " + this.id;
 			Statement stmt = Contants.conn.createStatement();
-			return stmt.execute(upd);
+			stmt.execute(upd);
+			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,7 +114,8 @@ public class Bike {
 			stm.setTime(2, timeStart);
 			stm.setInt(3, this.id);
 			stm.setInt(4, customerID);
-			return stm.execute();
+			stm.execute();
+			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

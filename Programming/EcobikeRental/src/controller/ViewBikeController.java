@@ -72,7 +72,7 @@ public class ViewBikeController implements Initializable {
 		
 	}
 	/**
-	 * Hiển thị thông tin chi tiết của xe
+	 * Lấy thông tin chi tiết của xe và Hiển thị thông tin chi tiết của xe
 	 */
 	public void showBikeInfo() {
 		bike.setBikeFromID(Contants.bikeIDSelected);;
@@ -128,7 +128,7 @@ public class ViewBikeController implements Initializable {
 	}
 	
 	/**
-	 * Hiển thị form thanh toán
+	 * Gọi đến màn hình form thanh toán
 	 */
 	public void showPaymentForm() {
 		try {

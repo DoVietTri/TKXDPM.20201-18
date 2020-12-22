@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
+import java.util.regex.Pattern;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -179,6 +179,52 @@ public class PaymentFormController implements Initializable {
 		txtCardCVV.setText("");
 		txtContent.setText(HomeController.currentUser.customerName + " thue xe " + bike.getId());
 	}
-
+	
+	/**
+	 * Nhiệm vụ: kiểm tra số thẻ
+	 * @param cardNumber: mã thẻ
+	 * @return true hoặc false
+	 */
+	public boolean validateCardNumber(String cardNumber)
+	{
+    	if (cardNumber == null) return false;
+    	if ("".equals(cardNumber)) return false;
+    	if (!Pattern.matches("[a-zA-Z0-9_\s]*", cardNumber)) return false;
+    	
+    	return true;
+	}
+	
+	/**
+	 * Nhiệm vụ: Kiểm tra tên thẻ nhập vào
+	 * @param cardHolderName
+	 * @return
+	 */
+	public boolean validateCardHolderName(String cardHolderName)
+	{
+		// TODO: your work
+    	if (cardHolderName == null)return false;
+    	if ("".equals(cardHolderName)) return false;
+    	if (!Pattern.matches("[a-zA-Z0-9\s]*", cardHolderName)) return false;
+    	
+    	return true;
+	}
+	
+	public boolean validateCardCVV(String cvv)
+	{
+		if (cvv == null) return false;
+		if ("".equals(cvv)) return false;
+		
+		if (!Pattern.matches("[0-9]*", cvv)) return false;
+		return true;
+	}
+	
+	public boolean validateCardExpiration(String date)
+	{
+		if (date == null) return false;
+		if ("".equals(date)) return false;
+		
+		if (!Pattern.matches("[0-9]*", date)) return false;
+		return true;
+	}
 }
   

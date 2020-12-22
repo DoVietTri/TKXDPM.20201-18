@@ -94,7 +94,7 @@ public class ListStationController implements Initializable {
 	}
 	
 	/**
-	 * Hiển thị tất cả bãi xe lên màn hình
+	 * Lấy tất cả bãi xe và hiển thị tất cả bãi xe lên màn hình
 	 */
 	public void getAllStation() {
 		listStation = FXCollections.observableArrayList();

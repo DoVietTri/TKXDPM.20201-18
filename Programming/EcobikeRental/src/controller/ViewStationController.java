@@ -5,6 +5,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -142,7 +143,7 @@ public class ViewStationController  implements Initializable{
 	}
 	
 	/**
-	 * Hiển thị toàn xe có trong bãi
+	 *Lấy toàn xe có trong bãi từ cơ sở dữ liệu và hiển thị lên màn hình
 	 */
 	public void getAllBikes() {
 		
@@ -167,7 +168,7 @@ public class ViewStationController  implements Initializable{
 	}
 	
 	/**
-	 * Hiển thị chi tiết xe
+	 * Gọi đến màn hình chi tiết xe
 	 */
 	public void showBikeInfo() {
 		try {
@@ -186,6 +187,10 @@ public class ViewStationController  implements Initializable{
 		}
 
 	}
+	
+	/**
+	 * Kiểm tra xem người đó đã thuê xe hay chưa
+	 */
 	public void checkBikeRenting() {
 		if(Contants.currentRentID != 0) {
 			showReturnBike();
@@ -197,7 +202,7 @@ public class ViewStationController  implements Initializable{
 	}
 	
 	/**
-	 * Hiển thị thông tin trả xe
+	 * Gọi đến màn hình trả xe
 	 */
 	public void showReturnBike() {
 		try {
@@ -232,6 +237,20 @@ public class ViewStationController  implements Initializable{
 				showMessage("Không tìm thấy xe !");
 			}
 		}
+	}
+	
+	/**
+	 * Nhiệm vụ: Kiểm tra xâu id của xe nhập vào khi tìm kiếm
+	 * @param bikeID: id của xe
+	 * @return
+	 */
+	public boolean validateSearchBike(String bikeID)
+	{
+		if (bikeID == null) return false;
+		if ("".equals(bikeID)) return false;
+		
+		if (!Pattern.matches("[0-9]*", bikeID)) return false;
+		return true;
 	}
 	
 	/**

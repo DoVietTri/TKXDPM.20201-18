@@ -150,7 +150,7 @@ public class HomeController implements Initializable {
 	}
 	
 	/**
-	 * Hiển thị danh sách bãi xe
+	 * Gọi đến màn hình xem bãi xe
 	 */
 	public void viewListStation() {
 		try {
