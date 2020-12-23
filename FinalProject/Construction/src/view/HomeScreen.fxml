@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="780.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+   <children>
+      <Pane layoutY="50.0" prefHeight="450.0" prefWidth="780.0">
+         <children>
+            <Pane prefHeight="450.0" prefWidth="780.0">
+               <children>
+                  <Button fx:id="btnRentBike" layoutX="611.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4b9ab8; -fx-background-radius: 10;" text="Thuê xe" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Button>
+                  <Button fx:id="btnReturnBike" layoutX="480.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4b9ab8; -fx-background-radius: 10;" text="Trả xe" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Button>
+                  <Pane layoutX="320.0" layoutY="258.0" prefHeight="83.0" prefWidth="429.0" style="-fx-background-color: #ebeae6; -fx-background-radius: 10;">
+                     <children>
+                        <Label layoutX="10.0" layoutY="13.0" text="Tổng thời gian" />
+                        <Label layoutX="191.0" layoutY="13.0" text="Thành tiền" />
+                        <Label fx:id="lbTotalTime" alignment="CENTER" layoutX="54.0" layoutY="37.0" prefHeight="35.0" prefWidth="134.0" text="90 phút">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbTotalMoney" alignment="CENTER" layoutX="231.0" layoutY="37.0" prefHeight="35.0" prefWidth="185.0" text="150,000 VNĐ">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Button fx:id="btnRefresh" layoutX="353.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4b9ab8; -fx-background-radius: 10;" text="Làm mới" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Button>
+                  <Pane layoutX="36.0" layoutY="26.0" prefHeight="377.0" prefWidth="245.0" style="-fx-background-color: ebeae6; -fx-background-radius: 10;">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../Downloads/book8.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lbTitle" alignment="CENTER" layoutX="11.0" layoutY="226.0" prefHeight="40.0" prefWidth="224.0" text="Trần Văn Trí">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="319.0" layoutY="20.0" prefHeight="229.0" prefWidth="429.0">
+                     <children>
+                        <Label layoutX="12.0" layoutY="65.0" text="Mã code:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="12.0" layoutY="105.0" text="Giá thuê:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbBikePrice" alignment="CENTER" layoutX="90.0" layoutY="103.0" prefHeight="35.0" prefWidth="120.0" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbBikeCode" alignment="CENTER" layoutX="103.0" layoutY="62.0" prefHeight="35.0" prefWidth="112.0" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbMessage" alignment="CENTER" layoutY="10.0" prefHeight="35.0" prefWidth="429.0" text="Bạn chưa thuê xe">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="223.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/bike1.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lbTimeStart" alignment="CENTER" layoutX="84.0" layoutY="184.0" prefHeight="35.0" prefWidth="127.0" text="16:30">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="12.0" layoutY="186.0" text="Bắt đầu:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="13.0" layoutY="91.0" prefHeight="2.0" prefWidth="200.0" style="-fx-background-color: #4b9ab8;" />
+                        <Pane layoutX="12.0" layoutY="132.0" prefHeight="2.0" prefWidth="200.0" style="-fx-background-color: #4b9ab8;" />
+                        <Pane layoutX="13.0" layoutY="213.0" prefHeight="2.0" prefWidth="200.0" style="-fx-background-color: #4b9ab8;" />
+                        <Pane layoutX="14.0" layoutY="174.0" prefHeight="2.0" prefWidth="200.0" style="-fx-background-color: #4b9ab8;" />
+                        <Label layoutX="13.0" layoutY="147.0" text="Đã đặt cọc:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbDepositMoney" alignment="CENTER" layoutX="103.0" layoutY="145.0" prefHeight="35.0" prefWidth="112.0" text="16:30">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children></Pane>
+   </children>
+</AnchorPane>

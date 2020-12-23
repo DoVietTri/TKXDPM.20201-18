@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="401.0" prefWidth="722.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewBikeController">
+   <children>
+      <Label layoutX="256.0" layoutY="14.0" text="Thông tin về xe">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font></Label>
+      <Button fx:id="btnRentBike" layoutX="365.0" layoutY="341.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #4b9ab8; -fx-background-radius: 10;" text="Thuê " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="btnClose" layoutX="256.0" layoutY="341.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Đóng">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Pane layoutX="364.0" layoutY="74.0" prefHeight="250.0" prefWidth="340.0" style="-fx-background-color: ebeae6; -fx-background-radius: 10;">
+         <children>
+            <Label fx:id="lbBikeDesc" alignment="CENTER" layoutX="151.0" layoutY="209.0" prefHeight="27.0" prefWidth="168.0" text="Tình trạng">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="209.0" text="Mô tả:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="172.0" text="Tình trạng:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbBikeStatus" alignment="CENTER" layoutX="152.0" layoutY="167.0" prefHeight="35.0" prefWidth="168.0" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="134.0" text="Cần đặt cọc:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbBikeDepositMoney" alignment="CENTER" layoutX="152.0" layoutY="125.0" prefHeight="35.0" prefWidth="168.0" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbBikePrice" alignment="CENTER" layoutX="151.0" layoutY="92.0" prefHeight="35.0" prefWidth="168.0" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="96.0" text="Giá thuê 15p:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="58.0" text="Tên gọi:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbBikeName" alignment="CENTER" layoutX="96.0" layoutY="53.0" prefHeight="35.0" prefWidth="223.0" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbBikeCode" alignment="CENTER" layoutX="151.0" layoutY="15.0" prefHeight="35.0" prefWidth="168.0" text="1919101">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="20.0" text="Mã code:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Pane layoutX="20.0" layoutY="236.0" prefHeight="2.0" prefWidth="300.0" style="-fx-background-color: #4b9ab8;" />
+            <Pane layoutX="20.0" layoutY="199.0" prefHeight="2.0" prefWidth="300.0" style="-fx-background-color: #4b9ab8;" />
+            <Pane layoutX="20.0" layoutY="161.0" prefHeight="2.0" prefWidth="300.0" style="-fx-background-color: #4b9ab8;" />
+            <Pane layoutX="20.0" layoutY="122.0" prefHeight="2.0" prefWidth="300.0" style="-fx-background-color: #4b9ab8;" />
+            <Pane layoutX="20.0" layoutY="84.0" prefHeight="2.0" prefWidth="300.0" style="-fx-background-color: #4b9ab8;" />
+            <Pane layoutX="20.0" layoutY="46.0" prefHeight="2.0" prefWidth="300.0" style="-fx-background-color: #4b9ab8;" />
+         </children>
+      </Pane>
+      <Pane layoutX="14.0" layoutY="74.0" prefHeight="250.0" prefWidth="340.0">
+         <children>
+            <ImageView fx:id="imgBike" fitHeight="250.0" fitWidth="340.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../../../../Downloads/ảnh%208.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
