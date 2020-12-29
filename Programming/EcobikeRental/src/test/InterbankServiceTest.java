@@ -8,8 +8,8 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import Subsystem.InterbankService;
 import model.Card;
-import ultilities.InterbankService;
 
 class InterbankServiceTest {
 	

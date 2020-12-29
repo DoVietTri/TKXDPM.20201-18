@@ -41,7 +41,7 @@ public final class Contants {
 	 */
 	public static Connection getSQLServerConnection() throws ClassNotFoundException, SQLException {
 
-		 String dbURL = "jdbc:sqlserver://localhost;databaseName=EcoBikeRentalDatabase;user=group18;password=123456";
+		 String dbURL = "jdbc:sqlserver://localhost;databaseName=EcoBikeRentalDatabase;user=sa;password=tri.dv27091999";
 		 Connection conn = DriverManager.getConnection(dbURL);
 	 
 	     return conn;

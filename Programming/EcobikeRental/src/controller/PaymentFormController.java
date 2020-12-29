@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
+import Subsystem.InterbankService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,7 +29,6 @@ import model.Card;
 import model.Rent;
 import ultilities.Configs;
 import ultilities.Contants;
-import ultilities.InterbankService;
 
 public class PaymentFormController implements Initializable {
 	
