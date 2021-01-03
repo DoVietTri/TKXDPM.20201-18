@@ -25,6 +25,10 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * Hàm main khởi chạy hệ thống
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

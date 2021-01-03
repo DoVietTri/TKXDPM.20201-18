@@ -55,8 +55,8 @@ public class RentBikeController implements Initializable {
 	 * Hiển thị thông tin giao dịch
 	 */
 	public void showTransactionInfo() {
-		lbCardHolderName.setText(card.cardHolderName);
-		lbCardNumber.setText(card.cardNumber);
+		lbCardHolderName.setText(card.getCardHolderName());
+		lbCardNumber.setText(card.getCardNumber());
 	}
 	
 	/**

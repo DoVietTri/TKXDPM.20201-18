@@ -42,6 +42,7 @@ public class ListStationController implements Initializable {
 	TableColumn<Station, Integer> idCol, availableCol, totalBikeCol;
 	
 	public ObservableList<Station> listStation;
+	
 	/**
 	 * Khởi chạy
 	 */
@@ -58,7 +59,7 @@ public class ListStationController implements Initializable {
 	public void addEvents() {
 		btnViewStation.setOnMouseClicked(e -> {
 			if(tbvStation.getSelectionModel().getSelectedItem() != null) {
-				Contants.stationIDSelected = tbvStation.getSelectionModel().getSelectedItem().stationID;
+				Contants.stationIDSelected = tbvStation.getSelectionModel().getSelectedItem().getStationID();
 				viewStation();
 			}
 			
@@ -70,13 +71,11 @@ public class ListStationController implements Initializable {
 		tbvStation.setRowFactory(tv -> {
 			TableRow<Station> row = new TableRow<>();
 			row.setOnMouseClicked(e -> {
-				if (e.getClickCount() == 2 && !(row.isEmpty())) {
-					
-					Contants.stationIDSelected = row.getItem().stationID;
+				if (e.getClickCount() == 2 && !(row.isEmpty())) {		
+					Contants.stationIDSelected = row.getItem().getStationID();
 					viewStation();
 				}
 			});
-
 			return row;
 		});
 		
@@ -86,11 +85,8 @@ public class ListStationController implements Initializable {
 		Image img = new Image("/resources/search.png");
 		ImageView imgview = new ImageView(img);
 		imgview.setFitWidth(20);
-		
 		imgview.setFitHeight(20);
-		
-		btnSearch.setGraphic(imgview);
-		
+		btnSearch.setGraphic(imgview);	
 	}
 	
 	/**
@@ -121,15 +117,13 @@ public class ListStationController implements Initializable {
 	public void viewStation() {
 		try {
 			
-		//	FXMLLoader fxmlLoader
+			//	FXMLLoader fxmlLoader
 			Parent root = FXMLLoader.load(getClass().getResource("/view/ViewStation.fxml"));
-	
 			contentView.getChildren().add(root);
-	} 	 catch (IOException e) {
+		}catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 	
 	/**

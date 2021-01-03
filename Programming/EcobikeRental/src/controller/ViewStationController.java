@@ -69,13 +69,10 @@ public class ViewStationController  implements Initializable{
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		
 		getStationInfo();
 		getAllBikes();
 		addEvents();
 		addControl();
-		
 	}
 	
 	/**
@@ -85,7 +82,7 @@ public class ViewStationController  implements Initializable{
 		
 		btnViewBike.setOnMouseClicked(e -> {
 			if(tbvListBike.getSelectionModel().getSelectedItem() != null) {
-				Contants.bikeIDSelected = tbvListBike.getSelectionModel().getSelectedItem().id;
+				Contants.bikeIDSelected = tbvListBike.getSelectionModel().getSelectedItem().getId();
 				showBikeInfo();
 			}
 			
@@ -104,17 +101,13 @@ public class ViewStationController  implements Initializable{
 		});
 		
 		tbvListBike.setRowFactory(tv -> {
-			
 			TableRow<Bike> row = new TableRow<>();
 			row.setOnMouseClicked(e -> {
-				if (e.getClickCount() == 2 && !(row.isEmpty())) {
-					
-					Contants.bikeIDSelected = row.getItem().id;
-					showBikeInfo();;
-					
+				if (e.getClickCount() == 2 && !(row.isEmpty())) {	
+					Contants.bikeIDSelected = row.getItem().getId();
+					showBikeInfo();;	
 				}
 			});
-
 			return row;
 		});
 	}
@@ -135,27 +128,22 @@ public class ViewStationController  implements Initializable{
 	public void getStationInfo() {
 		station.setStationFromID(Contants.stationIDSelected);
 		
-		lbStationID.setText("" + station.stationID);
+		lbStationID.setText("" + station.getStationID());
 		lbStationName.setText(station.getName());
-		lbStationAddress.setText(station.address);
-		lbStationTotalBike.setText("" + station.totalBike);
-		lbStationAvailable.setText("" + station.available);
+		lbStationAddress.setText(station.getAddress());
+		lbStationTotalBike.setText("" + station.getTotalBike());
+		lbStationAvailable.setText("" + station.getAvailable());
 	}
 	
 	/**
 	 *Lấy toàn xe có trong bãi từ cơ sở dữ liệu và hiển thị lên màn hình
 	 */
 	public void getAllBikes() {
-		
 		listBike = FXCollections.observableArrayList();
 		try {
-			
-			listBike.addAll(station.getAllBikes());
-			
+			listBike.addAll(station.getAllBikes());	
 		} catch (ClassNotFoundException | SQLException e) {
-			
 			e.printStackTrace();
-			
 		}
 		
 		codeCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("id"));
@@ -182,10 +170,9 @@ public class ViewStationController  implements Initializable{
 			stage.setResizable(false);
 			stage.showAndWait();
 
-	} 	 catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 	
 	/**
@@ -197,8 +184,6 @@ public class ViewStationController  implements Initializable{
 		} else {
 			showMessage("Bạn chưa thuê xe !");
 		}
-		
-		
 	}
 	
 	/**
@@ -228,7 +213,7 @@ public class ViewStationController  implements Initializable{
 		if (txtBikeCode.getText().isEmpty()) return ;
 		else {
 			int id = Integer.parseInt(txtBikeCode.getText());
-			int bikeID = station.getBikeByID(id).id;
+			int bikeID = station.getBikeByID(id).getId();
 			if (bikeID != 0) {
 				Contants.bikeIDSelected = bikeID;
 				showBikeInfo(); 

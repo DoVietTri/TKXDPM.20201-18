@@ -79,9 +79,9 @@ public class HomeController implements Initializable {
 	 */
 	public void getRentingInfo() {
 		rent.setRent(currentUser.getRentingBike());
-		Contants.currentRentID = rent.rentID;
-		if (rent.rentID != 0) {
-			bike.setBikeFromID(rent.bikeID);
+		Contants.currentRentID = rent.getRentID();
+		if (rent.getRentID() != 0) {
+			bike.setBikeFromID(rent.getBikeID());
 			updateView();
 		} else {
 			clearView();
@@ -109,7 +109,7 @@ public class HomeController implements Initializable {
 		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
 		String timeNow = formatter.format(date);
 		
-		Time time = rent.timeStart;
+		Time time = rent.getTimeStart();
 		Time time2 = Time.valueOf(timeNow);
 		int totalTimeRent = (int) ((time2.getTime() - time.getTime())/60000);
 		lbTotalTime.setText("" + totalTimeRent + " phút");
@@ -160,8 +160,5 @@ public class HomeController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
-
-
 }

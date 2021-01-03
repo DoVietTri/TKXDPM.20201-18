@@ -83,21 +83,9 @@ public class ViewBikeController implements Initializable {
 		lbBikeCode.setText("" + bike.getId());
 		lbBikeName.setText(bike.getName());
 		lbBikeDepositMoney.setText("" +Contants.toString(bike.getDepositMoney()));
-
 		lbBikeStatus.setText(bike.getStatus());
-		
-	
 		lbBikePrice.setText("" + Contants.toString(bike.getPrice()));
 		lbBikeDesc.setText(bike.getDescription());
-		
-//		if("available".equals(bike.status)) {
-//			btnRentBike.setDisable(false);
-//			lbBikeStatus.setStyle("-fx-text-fill: black;");
-//		} else {
-//			btnRentBike.setDisable(true);
-//			lbBikeStatus.setStyle("-fx-text-fill: red;");
-//		}
-		
 	}
 	
 	/**
@@ -105,11 +93,11 @@ public class ViewBikeController implements Initializable {
 	 * @return true hoặc false
 	 */
 	public boolean checkRentAvailable() {
-		if(HomeController.currentUser.getRentingBike().rentID != 0) {
+		if(HomeController.currentUser.getRentingBike().getRentID() != 0) {
 			showMessage(Configs.CUSTOMER_IS_RENTING);
 			return false;
 		}
-		if(!"available".equals(bike.status)) {
+		if(!"available".equals(bike.getStatus())) {
 			showMessage(Configs.BIKE_IS_RENTING);
 			return false;
 		}
@@ -141,9 +129,7 @@ public class ViewBikeController implements Initializable {
 			stage.show();
 
 	} 	 catch (IOException e) {
-		
 			e.printStackTrace();
-			
 		}
 	}
 }

@@ -12,7 +12,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import controller.HomeController;
-import controller.ReturnBikeController;
 import model.Bike;
 import model.Card;
 import model.Customer;
@@ -22,9 +21,24 @@ import model.Station;
 public final class Contants {
 	public Contants() {}
 	
+	/**
+	 * id của user
+	 */
 	public static int currentUserID = 20173410;
+	
+	/**
+	 * id rent
+	 */
 	public static int currentRentID = 0;
+	
+	/**
+	 * id station khi click vào
+	 */
 	public static int stationIDSelected = 0;
+	
+	/**
+	 * id của xe
+	 */
 	public static int bikeIDSelected = 0;
 	public static Card cardSelected = new Card();
 	
