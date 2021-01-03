@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
+import Subsystem.InterbankService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,7 +29,6 @@ import model.Card;
 import model.Rent;
 import ultilities.Configs;
 import ultilities.Contants;
-import ultilities.InterbankService;
 
 public class PaymentFormController implements Initializable {
 	
@@ -65,8 +65,7 @@ public class PaymentFormController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		bike.setBikeFromID(Contants.bikeIDSelected);
 		addEvents();
-		setupTextField();
-		
+		setupTextField();	
 	}
 	
 	/**
@@ -79,20 +78,18 @@ public class PaymentFormController implements Initializable {
 		btnClose.setOnMouseClicked(e -> {
 			Stage stage = (Stage) btnClose.getScene().getWindow();
 			stage.close();
-		});
-
-		
+		});	
 	}
 	/**
 	 * Nhiệm vụ: xử lý khi submit form
 	 */
 	public void submitPaymentForm() {
 		if (checkBlankField()) {
-			card.cardHolderName = txtCardHolderName.getText();
-			card.cardNumber = txtCardNumber.getText();
-			card.expirationDate = txtCardExpirationDate.getText();
-			card.securityCode = txtCardCVV.getText();
-			card.issuingBank = txtCardBank.getText();
+			card.setCardHolderName(txtCardHolderName.getText());
+			card.setCardNumber(txtCardNumber.getText());
+			card.setExpirationDate(txtCardExpirationDate.getText());
+			card.setSecurityCode(txtCardCVV.getText());
+			card.setIssuingBank(txtCardBank.getText());
 			current = Contants.getCurrentTime();
 			rentBike(bike.getDepositMoney());
 	
@@ -111,9 +108,9 @@ public class PaymentFormController implements Initializable {
 			res = InterbankService.processTransaction(card, "pay", depositMoney);
 		//	System.out.print("Code: " + res);
 			if("00".equals(res)) {
-				bike.updateBike("renting", bike.stationID);
+				bike.updateBike("renting", bike.getStationID());
 				bike.createRent(current, Contants.currentUserID);
-				Contants.currentRentID = HomeController.currentUser.getRentingBike().rentID;
+				Contants.currentRentID = HomeController.currentUser.getRentingBike().getRentID();
 				Rent rent = new Rent(Contants.currentRentID);
 				rent.createTransaction("deposit", "Deposit rent bike" , bike.getDepositMoney());
 			
@@ -149,8 +146,7 @@ public class PaymentFormController implements Initializable {
 		Alert dialog = new Alert(AlertType.ERROR);
 		dialog.setTitle(Configs.TITLE_FOR_ALERT);
 		dialog.setHeaderText(mess);
-		 dialog.showAndWait();
-		
+		dialog.showAndWait();	
 	}
 	
 	/**
@@ -162,7 +158,7 @@ public class PaymentFormController implements Initializable {
 		txtCardBank.setText("");
 		txtCardExpirationDate.setText("");
 		txtCardCVV.setText("");
-		txtContent.setText(HomeController.currentUser.customerName + " thue xe " + bike.getId());
+		txtContent.setText(HomeController.currentUser.getCustomerName() + " thue xe " + bike.getId());
 	}
 	
 	/**
@@ -172,12 +168,12 @@ public class PaymentFormController implements Initializable {
 		card = HomeController.currentUser.getCustomerCard();
 				
 		lbMoney.setText("" + bike.getDepositMoney());
-		txtCardHolderName.setText("" + card.cardHolderName);
-		txtCardNumber.setText("" + card.cardNumber);
-		txtCardBank.setText("" + card.issuingBank);
-		txtCardExpirationDate.setText("" + card.expirationDate);
+		txtCardHolderName.setText("" + card.getCardHolderName());
+		txtCardNumber.setText("" + card.getCardNumber());
+		txtCardBank.setText("" + card.getIssuingBank());
+		txtCardExpirationDate.setText("" + card.getExpirationDate());
 		txtCardCVV.setText("");
-		txtContent.setText(HomeController.currentUser.customerName + " thue xe " + bike.getId());
+		txtContent.setText(HomeController.currentUser.getCustomerName() + " thue xe " + bike.getId());
 	}
 	
 	/**

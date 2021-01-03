@@ -10,9 +10,30 @@ import ultilities.Contants;
 
 public class Station {
 
-	public int stationID, totalBike, available;
-	public String name, address;
+	/**
+	 * mã bãi xe
+	 */
+	private int stationID;
 	
+	/**
+	 * tổng số xe có trong bãi
+	 */
+	private int totalBike;
+	
+	/**
+	 * Số xe hiện có
+	 */
+	private int available;
+	
+	/**
+	 * Tên bãi xe
+	 */
+	private String name;
+	
+	/**
+	 * Địa chỉ bãi xe
+	 */
+	private String address;
 	
 	public void setStation(Station s) {
 		this.stationID = s.stationID;
@@ -130,43 +151,29 @@ public class Station {
 		return stationID;
 	}
 
-
-
 	public void setStationID(int stationID) {
 		this.stationID = stationID;
 	}
-
-
 
 	public int getTotalBike() {
 		return totalBike;
 	}
 
-
-
 	public void setTotalBike(int totalBike) {
 		this.totalBike = totalBike;
 	}
-
-
 
 	public int getAvailable() {
 		return available;
 	}
 
-
-
 	public void setAvailable(int available) {
 		this.available = available;
 	}
 
-
-
 	public String getAddress() {
 		return address;
 	}
-
-
 
 	public String getPosition() {
 		return address;
@@ -183,7 +190,4 @@ public class Station {
 	public void setName(String name) {
 		this.name = name;
 	} 
-	
-	
-	
 }

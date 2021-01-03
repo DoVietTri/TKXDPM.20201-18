@@ -8,9 +8,25 @@ import java.sql.Time;
 import ultilities.Contants;
 
 public class Customer {
-	public String cardNumber;	
-	public int customerID, rentID;
-	public String customerName;
+	/**
+	 * Mã thẻ của khách hàng
+	 */
+	private String cardNumber;
+	
+	/**
+	 * Mã khách hàng
+	 */
+	private int customerID;
+	
+	/**
+	 * Mã thuê xe
+	 */
+	private int rentID;
+	
+	/**
+	 * Tên khách hàng
+	 */
+	private String customerName;
 	
 	/**
 	 * Nhiệm vụ: khởi tạo customer
@@ -95,19 +111,13 @@ public class Customer {
 		this.customerName = name;
 	}
 
-
-
 	public String getCardNumber() {
 		return cardNumber;
 	}
 
-
-
 	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
-
-
 
 	public int getCustomerID() {
 		return customerID;
@@ -132,6 +142,5 @@ public class Customer {
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
-	
 	
 }

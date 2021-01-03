@@ -11,11 +11,41 @@ import java.sql.Time;
 import ultilities.Contants;
 
 public class Rent {
-
-	public int rentID, customerID, bikeID;
-	public  Time timeStart, timeEnd;
-	public int totalTimeRent;
-	public String status;
+	
+	/**
+	 * mã thuê xe
+	 */
+	private int rentID;
+	
+	/**
+	 * Mã khách hàng
+	 */
+	private int customerID;
+	
+	/**
+	 * Mã xe đang thuê
+	 */
+	private int bikeID;
+	
+	/**
+	 * Thời gian bắt đầu thuê
+	 */
+	private  Time timeStart;
+	
+	/**
+	 * Thời gian kết thúc thuê xe
+	 */
+	private Time timeEnd;
+	
+	/**
+	 * Tổng thời gian thuê xe
+	 */
+	private int totalTimeRent;
+	
+	/**
+	 * Trạng thái của mã thuê
+	 */
+	private String status;
 	
 	public Rent() {
 		this.rentID = 0;
@@ -42,7 +72,6 @@ public class Rent {
 s	 */
 	public boolean updateRent(Time timeEnd, int totalTimeRent) {
 		try {
-
 			String ins = "UPDATE Rent SET status = ?, timeEnd = ?, totalTimeRent = ? WHERE RentID = ?";
 			PreparedStatement stm = Contants.conn.prepareStatement(ins);
 			stm.setString(1, "done");
@@ -181,7 +210,4 @@ s	 */
 	public void setTotalTimeRent(int totalTimeRent) {
 		this.totalTimeRent = totalTimeRent;
 	}
-	
-	
-	
 }

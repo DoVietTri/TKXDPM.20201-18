@@ -10,9 +10,46 @@ import java.sql.Time;
 import ultilities.Contants;
 
 public class Bike {
-	public int id, price, battery, stationID;
-	public String name, status, type, description;
-
+	/**
+	 * id của xe
+	 */
+	private int id;
+	
+	/**
+	 * Giá của xe
+	 */
+	private int price;
+	
+	/**
+	 * Thời lượng pin còn lại của xe
+	 */
+	private int battery;
+	
+	/**
+	 * mã bãi xe
+	 */
+	private int stationID;
+	
+	/**
+	 * tên của xe
+	 */
+	private String name;
+	
+	/**
+	 * trạng thái của xe
+	 */
+	private String status;
+	
+	/**
+	 * Kiểu của xe
+	 */
+	private String type;
+	
+	/**
+	 * Mô tả xe
+	 */
+	private String description;
+	
 	/**
 	 * Khởi tạo Bike
 	 * @param id
@@ -105,9 +142,7 @@ public class Bike {
 	 * @return thaành công hay thất bại
 	 */
 	public boolean createRent(Time timeStart, int customerID)  {
-
 		try {
-			
 			String ins = "INSERT INTO Rent(status, timeStart, bikeID, customerID) VALUES(?,?,?,?) ";
 			PreparedStatement stm = Contants.conn.prepareStatement(ins);
 			stm.setString(1, "renting");
@@ -133,19 +168,15 @@ public class Bike {
 			return 400000;
 		}
 		case "2": {
-
 			return 700000;
 		}
 		case "3": {
-
 			return 550000;
 		}
 		default:
 			return 400000;
 		}
-
 	}
-	
 	
 	public int getBattery() {
 		return battery;
@@ -222,8 +253,5 @@ public class Bike {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
-	
 	
 }

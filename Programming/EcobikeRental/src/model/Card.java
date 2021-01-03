@@ -7,9 +7,41 @@ import java.sql.Statement;
 import ultilities.Contants;
 
 public class Card {
-
-	public int cardID;
-	public String cardHolderName, cardNumber, transactionDescription, expirationDate , securityCode, issuingBank;
+	
+	/**
+	 * id của thẻ
+	 */
+	private int cardID;
+	
+	/**
+	 * Tên chủ thẻ
+	 */
+	private String cardHolderName;
+	
+	/**
+	 * Mã thẻ
+	 */
+	private String cardNumber;
+	
+	/**
+	 * Nội dung giao dịch
+	 */
+	private String transactionDescription;
+	
+	/**
+	 * Ngày hết hạn 
+	 */
+	private String expirationDate;
+	
+	/**
+	 * Mã bảo mật
+	 */
+	private String securityCode;
+	
+	/**
+	 * Ngân hàng phát sinh thẻ
+	 */
+	private String issuingBank;
 	
 	public Card() {}
 	
@@ -121,8 +153,5 @@ public class Card {
 	}
 	public void setIssuingBank(String issuingBank) {
 		this.issuingBank = issuingBank;
-	}
-	
-	
-	
+	}	
 }
