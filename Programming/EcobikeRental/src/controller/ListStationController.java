@@ -114,6 +114,9 @@ public class ListStationController implements Initializable {
 		tbvStation.refresh();
 	}
 	
+	/**
+	 * Hiển thị màn hình station
+	 */
 	public void viewStation() {
 		try {
 			
